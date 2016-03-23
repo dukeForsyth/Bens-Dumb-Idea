@@ -68,8 +68,13 @@ class SiteController {
 
 
 	public function home() {
+		if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+			include_once SYSTEM_PATH.'/view/Home.tpl';
+		}
+		else{
+			include_once SYSTEM_PATH.'/view/Logon.tpl';
 
-		include_once SYSTEM_PATH.'/view/Home.tpl';
+		}
 	}
 
 	public function user() {
