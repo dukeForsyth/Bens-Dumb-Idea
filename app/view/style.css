@@ -202,3 +202,11 @@ ul#browseBuilds li
     list-style-type: none;
 }
 
+#userInfo
+{
+    position: fixed;
+    top: 15%;
+    right:5%;
+    
+}
+
