@@ -13,9 +13,9 @@
 <h1 id="header">   <br> PC Helper  </h1>  
 
 <ul id="sideMenu">
-    <li> <a href="<? = BASE_URL ?>/Home">Home</a></li>
-    <li> <a href="<? = BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
-    <li> <a href="<? = BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
+    <li> <a href="<?= BASE_URL ?>/Home">Home</a></li>
+    <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
+    <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
     <li> Submit Benchmarks</li>
 </ul>
     
@@ -34,21 +34,19 @@
     
 <! TODO Add PHP Variables to the builds>
 <! TODO Add Action that queries the right build
-<form id="buildDropDown" action="baseurl/changebuild/$buildID">
-<select>
+<form id="buildDropDown" action="<?= BASE_URL ?>/changebuild/$buildID">
+    <select>
     
-    <?php
+        <?php
 
-    foreach($builds as $build){
-        $buildID = $build->get('build_id');
+        foreach($builds as $build){
+            $buildID = $build->get('build_id');
 
-        echo '<option value="$buildID">$buildID  </option>';
-    }
-    ?>
-        
-    <! Example of Syntax of Option>
- <option value="build1"> Build 1</option>   
-</select>
+            echo '<option value="$buildID" > $buildID </option>';
+        }
+        ?>
+
+    </select>
     <input type="submit" value="Select Build">
     </form>
     
@@ -91,7 +89,7 @@ echo '<li $partName &emsp; &emsp; PRICE &emsp; &emsp;  <input type="checkbox"> <
     <! TODO add varialbe for user in the controller>
     <p id="userInfo">      
     
-Welcome <?= $user ?>, <a href="<? = BASE_URL ?>/Logout"> Log Out</a>    
+Welcome <? $_Session['username'] ?>, <a href="<? = BASE_URL ?>/Logout"> Log Out</a>    
 </p>
 </body>      
 </html>
