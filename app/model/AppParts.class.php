@@ -1,20 +1,20 @@
 <?php
 
-class AppUser extends DbObject {
+class AppParts extends DbObject {
     // name of database table
-    const DB_TABLE = 'users';
+    const DB_TABLE = 'parts';
 
     // database fields
     protected $unique_id;
-    protected $username;
-    protected $password;
+    protected $part_type;
+    protected $name;
 
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
             'unique_id' => null,
-            'username' => '',
-            'password' => ''
+            'part_type' => '',
+            'name' => ''
             );
 
         $args += $defaultArgs;
@@ -30,20 +30,20 @@ class AppUser extends DbObject {
         // omit id and any timestamps
         $db_properties = array(
             'unique_id' => $this->unique_id,
-			'username' => $this->username,
-            'password' => $this->password
+			'part_type' => $this->username,
+            'name' => $this->pw
 			);
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
 
-    // load object by ID
+    // load object by ID, use unique_id
     public static function loadById($id) {
         $db = Db::instance();
         $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
         return $obj;
     }
 
-    // load user by unique_id
+    // load part by unique_id
     public static function loadByUniqueId($unique_id=null) {
         if($unique_id === null)
             return null;
@@ -62,35 +62,6 @@ class AppUser extends DbObject {
             return ($obj);
         }
     }
-    //Retrive all users
-    public static function getAllUsers() {
-         $query = sprintf(" SELECT id FROM %s ",
-            self::DB_TABLE
-            );
-        $db = Db::instance();
-        $result = $db->lookup($query);
-        if(!mysqli_num_rows($result))
-            return null;
-        else {
-            $objects = array();
-            while($row = mysqli_fetch_assoc($result)) {
-                $objects[] = self::loadById($row['id']);
-            }
-            return ($objects);
-        }
-    }
-    //Delete the user with a query by unique_id
-    public static function deleteUser($unique_id=null) {
-        if($unique_id === null)
-            return null;
-
-
-        $query = "DELETE FROM users WHERE username='$username'";
-        $db = Db::instance();
-
-        
-        $db->execute($query);
-
-    }
+ 
 
 }
