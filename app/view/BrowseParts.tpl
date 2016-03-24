@@ -20,7 +20,7 @@
 </ul>
     
 <! TODO Action?>
-<form id="partDropDown" action="TODO">
+<form id="partDropDown" method="POST" action="<?= BASE_URL ?>/changepart">
    <select>
         <option value="cpu"> CPU </option>
         <option value="videocard">  Video Card </option>
@@ -31,10 +31,9 @@
     <input type="submit" value="Select Part Type">
 </form>
     
-    
-<! TODO Add PHP Variables to the builds>
-<! TODO Add Action that queries the right build
-<form id="buildDropDown" action="<?= BASE_URL ?>/changebuild/$buildID">
+
+
+<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changebuild/$buildID">
     <select>
     
         <?php
@@ -51,12 +50,12 @@
     </form>
     
 <p id="heading">
-    Part Name  &emsp; &emsp; Price  &emsp;  &emsp; Add To Current Build
+    Add To Current Build &emsp;  &emsp; Part Name  &emsp; &emsp; Price  &emsp;  &emsp;
 </p>
     
     
 <!TODO change to php that queries the database>
-<ul id="browseParts"> 
+<form id="browseParts" method="POST" action="baseurl/addpart/$partID"> 
     
     <?php
     
@@ -65,28 +64,17 @@
         $partName = $part->get('part_Name');
         $partPrice =$part->get('part_Price');
 
-        <! TODO STUFF FOR PRICE>
-
-echo '<li $partName &emsp; &emsp; PRICE &emsp; &emsp;  <input type="checkbox"> </li>';
+echo '<br> <input type="checkbox" value="$partName"> $partName &emsp; &emsp; &emsp; $partPrice &emsp; &emsp;>
     }
 
     ?>
     
-    
-    <! Example of Syntax of Option>
-    <li>  Part  &emsp; &emsp; &emsp;  Price   &emsp; &emsp; &emsp; <input type="checkbox">  </li>
+<br>
+<input type="submit" value="Add Part">   
 
-</ul>  
-    <! TODO just pass in the part name>
-    <form id="addButton" action="baseurl/addpart/$partID">
-    
-    <! Get the checklist> 
-    <input type="submit"  value="Add Part">
-    
-    </form>
+</form>  
     
     
-    <! TODO add varialbe for user in the controller>
     <p id="userInfo">      
     
 Welcome <? $_Session['username'] ?>, <a href="<? = BASE_URL ?>/Logout"> Log Out</a>    

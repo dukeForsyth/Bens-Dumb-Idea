@@ -1,6 +1,6 @@
 <html>
     <head>
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
         
     <title>  Welcome! </title>
     
@@ -18,7 +18,7 @@
         </p>
     
     <! TODO determine action when it's a new user>
-<form id="newUser" method="POST" action="<?= BASE_URL ?>/create">
+<form id="newUser" method="POST" action="<?= BASE_URL ?>/newuser">
     New User? Create an account! <br> <br>
     
     Email Address <br>
@@ -45,12 +45,12 @@
      Already A User? Sign In! <br> <br> <br>
     
     Email Address <br>
-    <input type="text" name="username" placeholder="Email Address" >
+    <input type="text" name="existusername" placeholder="Email Address" >
     
     <br> <br> <br>
     
     Password <br>
-    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="existpassword" placeholder="Password">
     
      <br> <br>
     <br> 
