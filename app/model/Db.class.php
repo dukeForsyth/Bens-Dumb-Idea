@@ -23,12 +23,12 @@ class Db {
 		return self::$_instance;
 	}
 
-    public function fetchById($id, $class_name, $db_table) {
+    public function fetchById($id, $value,$class_name, $db_table) {
 		if ($id === null) {
 			return null;
 		}
 
-		$query = sprintf("SELECT * FROM `%s` WHERE id = '%s';",
+		$query = sprintf("SELECT * FROM `%s` WHERE %s = '%s';",
 				$db_table,
 				$id
 			     );

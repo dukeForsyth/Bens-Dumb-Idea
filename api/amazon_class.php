@@ -9,19 +9,21 @@ function getAmazonPrice($asin) {
 		"IncludeReviewsSummary" => False,
 		"ResponseGroup" => "Medium,OfferSummary",
 	));
-	$price = htmlentities((string) $xml->Items->Item->OfferSummary->LowestNewPrice->Amount);
-    $response = number_format((float) ($price / 100), 2, '.', '');
+    $count = count($xml->Items->Item);
+    for ($i = 0; $i < $count; $i++) {
+        $price = htmlentities((string) $xml->Items->Item[$i]->OfferSummary->LowestNewPrice->Amount);
+        $response[$i] = number_format((float) ($price / 100), 2, '.', '');
+    }
 	return $response;
 }
  
 function aws_signed_request($region, $params) {
  
-	$public_key = "hi";
-    $private_key = "hi";
-    $params["AssociateTag"] = "hi-20";
+$public_key = "hi";
+$private_key = "hi";
+$params["AssociateTag"] = "hi-20";
     
 	$method = "GET";
-	$host = "ecs.amazonaws." . $region;
 	$host = "webservices.amazon." . $region;
 	$uri = "/onca/xml";
  
@@ -46,6 +48,7 @@ function aws_signed_request($region, $params) {
 	$signature = str_replace("%7E", "~", rawurlencode($signature));
  
 	$request = "http://" . $host . $uri . "?" . $canonicalized_query . "&Signature=" . $signature;
+
 	$response = file_get_contents($request);
 
 	$pxml = simplexml_load_string($response);

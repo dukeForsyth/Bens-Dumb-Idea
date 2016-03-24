@@ -8,7 +8,7 @@ class AppUser extends DbObject {
     protected $unique_id;
     protected $username;
     protected $password;
-
+	
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
@@ -19,9 +19,9 @@ class AppUser extends DbObject {
 
         $args += $defaultArgs;
 
-        $this->id = $args['id'];
+        $this->id = $args['unique_id'];
         $this->username = $args['username'];
-        $this->pw = $args['pw'];
+        $this->pw = $args['password'];
     }
 
     // save changes to object
@@ -39,7 +39,7 @@ class AppUser extends DbObject {
     // load object by ID
     public static function loadById($id) {
         $db = Db::instance();
-        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById($id, "id",__CLASS__, self::DB_TABLE);
         return $obj;
     }
 
@@ -85,7 +85,7 @@ class AppUser extends DbObject {
             return null;
 
 
-        $query = "DELETE FROM users WHERE username='$username'";
+        $query = "DELETE FROM users WHERE unique_id='$unique_id' ";
         $db = Db::instance();
 
         
