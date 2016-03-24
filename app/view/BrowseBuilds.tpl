@@ -36,6 +36,7 @@
     <! Example of Syntax of Option>
  <option value="build1"> Build 1</option>   
 </select>
+    <input type="submit" value="Select Build">
     </form>
     
 <! TODO Add echo calls to display information> 
