@@ -8,19 +8,15 @@ class AppUser extends DbObject {
     protected $id;
     protected $username;
     protected $pw;
-    protected $first_name;
-    protected $last_name;
-    protected $email;
+   
 
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
             'id' => null,
             'username' => '',
-            'pw' => '',
-            'email' => null,
-            'first_name' => null,
-            'last_name' => null
+            'pw' => ''
+            
             );
 
         $args += $defaultArgs;
@@ -28,9 +24,7 @@ class AppUser extends DbObject {
         $this->id = $args['id'];
         $this->username = $args['username'];
         $this->pw = $args['pw'];
-        $this->email = $args['email'];
-        $this->first_name = $args['first_name'];
-        $this->last_name = $args['last_name'];
+
     }
 
     // save changes to object
@@ -40,9 +34,7 @@ class AppUser extends DbObject {
         $db_properties = array(
             'username' => $this->username,
             'pw' => $this->pw,
-            'email' => $this->email,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name
+            
             );
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
@@ -50,7 +42,7 @@ class AppUser extends DbObject {
     // load object by ID
     public static function loadById($id) {
         $db = Db::instance();
-        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById($id, "id",__CLASS__, self::DB_TABLE);
         return $obj;
     }
 

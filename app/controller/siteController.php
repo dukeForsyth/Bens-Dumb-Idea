@@ -71,7 +71,7 @@ class SiteController {
 			include_once SYSTEM_PATH.'\view\Home.tpl';
 		}
 		else{
-			include_once SYSTEM_PATH.'\view\Logon.tpl';
+			include_once SYSTEM_PATH.'\view\Login.tpl';
 
 		}
 	}
@@ -100,8 +100,8 @@ class SiteController {
 	}
 
 	public function login() {
-		$username = $_POST['uname'];
-		$passwd = $_POST['pw'];
+		$username = $_POST['username'];
+		$passwd = $_POST['password'];
 		$us = AppUser::loadByUsername($username);
 		if($us == null) {
 					// username not found
@@ -167,10 +167,17 @@ class SiteController {
 			}
 			//creates a new user, and then stores it
 			public function create(){
-				$currValues = array('username' => $_POST['uname'], 'pw'=> $_POST['pw'],'email'=> $_POST['email'],'first_name'=> $_POST['first'],'last_name'=> $_POST['last']);
+				if($_POST[password] == $_POST[confirmPW]){
+				$currValues = array('username' => $_POST['username'], 
+					'pw'=> $_POST['password']
+					);
 				$curr = new AppUser($currValues);
 				$curr->save();
 				echo "New user has been created";
+				}
+				else{
+					echo "Your passwords don't match";
+				}
 			}
 
 			public function delete(){
