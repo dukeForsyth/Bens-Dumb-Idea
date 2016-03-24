@@ -16,9 +16,9 @@
     
 
 <ul id="sideMenu">
-    <li> <a href="home.html">Home</a></li>
-    <li> <a href="browseBuilds.html"> My Builds  </a> </li>
-    <li> <a href="browseparts.html"> Browse Parts </a> </li>
+    <li> <a href="<? = BASE_URL ?>/">Home</a></li>
+    <li> <a href="<? = BASE_URL ?>/BrosweBuilds"> My Builds  </a> </li>
+    <li> <a href="<? = BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
     <li> Submit Benchmarks</li>
 </ul>
      
@@ -34,10 +34,12 @@
     <button id="buildPC" type="button"> Build  A PC </button>
     
     <button id="resumeBuild" type="button"> Resume A Build </button>
+
     
-<p id="userInfo">      
+<! TODO add varialbe for user in the controller>
+<p id="userInfo"> 
     
-Welcome XXX, <a href="logon.html"> Log Out</a>    
+Welcome <?= $user ?>, <a href="logon.html"> Log Out</a>    
 </p>
 
     

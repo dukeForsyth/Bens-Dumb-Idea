@@ -4,7 +4,7 @@
     
 <title>   Browse Parts  </title>    
 
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/style.css">
     
 </head>
 
