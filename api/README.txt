@@ -1,0 +1,1 @@
+This folder contains the amazon_class that allows for api requests. The functions requires access keys that I can email you all seperately (since this is public). You can go in and enter them on your own local copies in order to access the data. Currently the method returns xml after it has been passed through simplexml_load_string().
