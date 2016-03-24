@@ -28,12 +28,13 @@
         <option value="memory"> Memory </option>
         <option value="storage"> Storage </option>        
     </select>
+    <input type="submit" value="Select Part Type">
 </form>
     
     
 <! TODO Add PHP Variables to the builds>
 <! TODO Add Action that queries the right build
-<form id="buildDropDown" action="TODO">
+<form id="buildDropDown" action="baseurl/changebuild/$buildID">
 <select>
     
     <?php
@@ -48,6 +49,7 @@
     <! Example of Syntax of Option>
  <option value="build1"> Build 1</option>   
 </select>
+    <input type="submit" value="Select Build">
     </form>
     
 <p id="heading">
@@ -63,31 +65,25 @@
     foreach($parts as $part)
     {
         $partName = $part->get('part_Name');
+        $partPrice =$part->get('part_Price');
 
         <! TODO STUFF FOR PRICE>
 
 echo '<li $partName &emsp; &emsp; PRICE &emsp; &emsp;  <input type="checkbox"> </li>';
-
-    
-
-
     }
 
-
     ?>
-    
     
     
     <! Example of Syntax of Option>
     <li>  Part  &emsp; &emsp; &emsp;  Price   &emsp; &emsp; &emsp; <input type="checkbox">  </li>
 
-
 </ul>  
     <! TODO just pass in the part name>
-    <form id="addButton" action="TODO">
+    <form id="addButton" action="baseurl/addpart/$partID">
     
-    <button>  Add Part   </button>
-    
+    <! Get the checklist> 
+    <input type="submit"  value="Add Part">
     
     </form>
     
@@ -97,20 +93,7 @@ echo '<li $partName &emsp; &emsp; PRICE &emsp; &emsp;  <input type="checkbox"> <
     
 Welcome <?= $user ?>, <a href="<? = BASE_URL ?>/Logout"> Log Out</a>    
 </p>
-    
-    
-
-   
-    
-
-    
-    
-</body>    
-    
-    
-    
-    
-
+</body>      
 </html>
 
 
