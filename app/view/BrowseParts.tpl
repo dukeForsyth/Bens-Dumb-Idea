@@ -23,7 +23,7 @@
 <! TODO Action?>
     <div>
 <form id="partDropDown" method="POST" action="<?= BASE_URL ?>/changepart">
-   <select>
+   <select name = "part">
         <option value="cpu"> CPU </option>
         <option value="videocard">  Video Card </option>
         <option value="motherboard">  Motherboard</option>

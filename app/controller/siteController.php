@@ -39,8 +39,12 @@ class SiteController {
 			break;
 
 			case 'browseParts':
-			$this->browseParts();
+			$this->browseParts("cpu");
 			break;
+                
+            case 'changepart':
+            $this->changepart();
+            break;
 		}
 
 	}
@@ -144,13 +148,13 @@ class SiteController {
                 $build = new AppBuilds($param);
                 $build->save();
                 $_SESSION['buildID'] = $build->get('unique_id');
-                $this->browseParts();
+                $this->browseParts("cpu");
             }
     
-            public function browseParts(){
+            public function browseParts($part){
                 $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
                 //print_r($builds);
-                $parts = AppParts::loadByPartType("cpu");
+                $parts = AppParts::loadByPartType($part);
                 $param = "";
                 foreach ($parts as $part) {
                     $param = $param . $part->get('unique_id') . ",";
@@ -158,5 +162,10 @@ class SiteController {
                 $param = substr($param,0,-1);
                 $prices = getAmazonPrice($param);
                 include_once SYSTEM_PATH.'/view/BrowseParts.tpl';
+            }
+    
+            public function changepart(){
+                //print_r($_POST['part']);
+                $this->browseParts($_POST['part']);
             }
 		}
