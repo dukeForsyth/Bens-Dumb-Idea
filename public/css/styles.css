@@ -210,3 +210,18 @@ ul#browseBuilds li
     
 }
 
+#buildDropDown
+{
+    position:fixed;
+    top: 20%;
+    left: 20%;
+    z-index: 10000;
+}
+
+#partDropDown
+{
+    position: fixed;
+    top:25%;
+    left: 20%;
+}
+
