@@ -31,7 +31,7 @@ class DbObject {
     }
     
     public function setId($val) {
-        $this->id = $val;
+        $this->unique_id = $val;
         $this->modified = true;
     }
 }

@@ -39,18 +39,18 @@ class AppUser extends DbObject {
     // load object by ID
     public static function loadById($id) {
         $db = Db::instance();
-        $obj = $db->fetchById($id, "id",__CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById($id, "unique_id",__CLASS__, self::DB_TABLE);
         return $obj;
     }
 
     // load user by unique_id
-    public static function loadByUniqueId($unique_id=null) {
-        if($unique_id === null)
+    public static function loadByUsername($username) {
+        if($username === null)
             return null;
 
-        $query = sprintf(" SELECT id FROM %s WHERE username = '%s' ",
+        $query = sprintf(" SELECT unique_id FROM %s WHERE username = '%s' ",
             self::DB_TABLE,
-            $unique_id
+            $username
             );
         $db = Db::instance();
         $result = $db->lookup($query);
@@ -58,7 +58,7 @@ class AppUser extends DbObject {
             return null;
         else {
             $row = mysqli_fetch_assoc($result);
-            $obj = self::loadById($row['id']);
+            $obj = self::loadById($row['unique_id']);
             return ($obj);
         }
     }

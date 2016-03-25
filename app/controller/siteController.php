@@ -103,21 +103,24 @@ class SiteController {
 		$username = $_POST['username'];
 		$passwd = $_POST['password'];
 		$us = AppUser::loadByUsername($username);
+        
 		if($us == null) {
 					// username not found
 			$_SESSION['error'] = "Incorrect username.";
-		} elseif ($us->get('pw') != $passwd) {
+		} elseif ($us->get('password') != $passwd) {
 					// passwords don't match
 			$_SESSION['error'] = "Incorrect password.";
 		} else {
 					// password matches!
 					// log me in
 			$_SESSION['username'] = $username;
+            print("logged in");
+            $this->home();
 					//$_SESSION['error'] = "You are logged in as ".$username.".";
 		}
 
 				// redirect to home page
-		header('Location: '.BASE_URL);
+//		$this->home();
 	}
 
 	public function logout() {
@@ -168,14 +171,16 @@ class SiteController {
 			//creates a new user, and then stores it
 			public function create(){
 				if($_POST['password'] == $_POST['confirmPW']){
-				$currValues = array('username' => $_POST['username'], 
-					'password'=> $_POST['password']
-					);
-				$curr = new AppUser($currValues);
-				$curr->save();
-				echo "New user has been created";
+                    $currValues = array('username' => $_POST['username'], 
+                        'password'=> $_POST['password']
+                        );
+                    $curr = new AppUser($currValues);
+                    $curr->save();
+                    $_SESSION['username'] = $_POST['username'];
+                    $this->home();
 				}
 				else{
+                    include_once SYSTEM_PATH.'/view/Home.tpl';
 					echo "Your passwords don't match";
 				}
 			}

@@ -34,7 +34,7 @@
 <! TODO add varialbe for user in the controller>
 <p id="userInfo"> 
     
-Welcome <? $_Session['username'] ?>, <a href="<? = BASE_URL ?>/Logout"> Log Out</a>    
+Welcome <? echo $_SESSION['username'] ?>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>    
 </p>
 
     
