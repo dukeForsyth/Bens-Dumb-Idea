@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2016 at 10:00 PM
+-- Generation Time: Mar 25, 2016 at 08:11 PM
 -- Server version: 10.1.10-MariaDB
--- PHP Version: 5.6.19
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -49,6 +49,28 @@ CREATE TABLE `parts` (
   `name` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `parts`
+--
+
+INSERT INTO `parts` (`unique_id`, `part_type`, `name`) VALUES
+('B009O7YORK', 'cpu_id', 'AMD FD6300WMHKBOX FX-6300'),
+('B00KPRWAX8', 'cpu', 'Intel Core BX80646I74790K'),
+('B009O7YORK', 'cpu', 'AMD FD6300WMHKBOX FX-6300'),
+('B009O7YU56', 'cpu', 'AMD FD8320FRHKBOX FX-8320'),
+('B00847TPH0', 'videocard', 'EVGA GeForce GT 610'),
+('B0049MPQA4', 'videocard', 'EVGA GeForce 8400GS'),
+('B0049MPQA4', 'videocard', 'EVGA GeForce 8400GS'),
+('B00LUY72F6', 'motherboard', 'MSI 970 GAMING DDR3 2133'),
+('B009FC3YJ8', 'motherboard', 'Gigabyte AM3+ AMD DDR3'),
+('B00F42W70A', 'motherboard', 'MSI Computer Corp LGA1150'),
+('B006WAGGUK', 'memory', 'Crucial Ballistix Sport'),
+('B00J8E8Y5C', 'memory', 'Kingston HyperX FURY 16GB'),
+('B006YG8X9Y', 'memory', 'Crucial 8GB Single DDR3'),
+('B00H4XH5GI', 'storage', 'Seagate Backup Plus Slim '),
+('B00TKFEEAS', 'memory', 'Seagate Expansion 1TB'),
+('B00W8XXRPM', 'storage', 'WD 1TB Black');
+
 -- --------------------------------------------------------
 
 --
@@ -90,7 +112,7 @@ ALTER TABLE `builds`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
