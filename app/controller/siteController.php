@@ -45,6 +45,10 @@ class SiteController {
             case 'changepart':
             $this->changepart();
             break;
+                
+            case 'addpart':
+            $this->addpart();
+            breal;
 		}
 
 	}
@@ -167,5 +171,15 @@ class SiteController {
             public function changepart(){
                 //print_r($_POST['part']);
                 $this->browseParts($_POST['part']);
+            }
+    
+            public function addpart(){
+                $partID = $_POST['addpart'];
+                $part = AppParts::loadByID($partID);
+                $build = AppBuilds::loadByID($_SESSION['buildID']);
+                switch ($part->get('part_type'))
+                    case 'cpu'
+                    
+                
             }
 		}
