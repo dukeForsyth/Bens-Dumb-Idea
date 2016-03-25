@@ -47,6 +47,39 @@
         <li> Part  &emsp; &emsp; &emsp; &emsp;  Name   &emsp; &emsp;&emsp;&emsp; Price &emsp; &emsp; &emsp; &emsp;  </li>
 
 </ul>  
+
+ <form style="position:fixed; top: 95%; left: 35%; z-index:1000;"> 
+ Total price: 
+ <input type="text" id= "total">
+ <button type="button" onclick="convertToGBP()">convert to GBP</button>
+ <button type="button" onclick="convertToUSD()">convert to USD</button>
+ </form>
+ 
+ <!-- Note we did not seperate the script section of our code since we only
+ <!-- use the script on this single page it is not meant to be lazy. -->
+ 
+<script>
+function convertToGBP()
+{
+	var elem;
+	
+	elem = document.getElementById("total");
+	elem.value = parseFloat(elem.value).toFixed(2);
+	elem.value = (elem.value * .707530).toFixed(2);
+	
+}
+
+function convertToUSD()
+{
+	var elem;
+	
+	elem = document.getElementById("total");
+	elem.value = parseFloat(elem.value).toFixed(2);
+	elem.value = (elem.value * 1.41337).toFixed(2);
+	}
+
+</script>
+
     
  <p id="userInfo">      
     

@@ -33,10 +33,14 @@ class SiteController {
 			case 'create':
 			$this->create();
 			break;
-                
-            case 'browseParts':
-            $this->browseParts();
-            break;
+
+			case 'changeBuild':
+			$this->changeBuild();
+			break;
+
+			case 'browseParts':
+			$this->browseParts();
+			break;
 		}
 
 	}
@@ -60,26 +64,11 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/User.tpl';
 	}
 
-	public function about() {
-
-		include_once SYSTEM_PATH.'/view/About.tpl';
-	}
-
-	public function contact() {
-
-		include_once SYSTEM_PATH.'/view/Contact.tpl';
-	}
-
-	public function forum() {
-
-		include_once SYSTEM_PATH.'/view/Forum.tpl';
-	}
-
 	public function login() {
 		$username = $_POST['username'];
 		$passwd = $_POST['password'];
 		$us = AppUser::loadByUsername($username);
-        
+
 		if($us == null) {
 					// username not found
 			$_SESSION['error'] = "Incorrect username.";
@@ -90,8 +79,11 @@ class SiteController {
 					// password matches!
 					// log me in
 			$_SESSION['username'] = $username;
-            print("logged in");
-            $this->home();
+			//Get build and set it to latest
+			$currentUser = AppUser::loadByUsername($_SESSION['username']);
+			$builds = AppBuilds::loadByUserKey($currKey);
+			$_SESSION['buildID'] = $builds[0]->get('unique_id');
+			$this->home();
 					//$_SESSION['error'] = "You are logged in as ".$username.".";
 		}
 
@@ -108,81 +100,41 @@ class SiteController {
 				header('Location: '.BASE_URL);
 			}
 
-			public function edit(){
-			//Get the current user
-				$curr = AppUser::loadByUsername($_SESSION['username']);
-			//Get the respective value that wants to be edited, change it, then save it.
-				switch ($_GET['editID']) {
-					case 'user':
-					$curr->set('username', $_POST['uname']);
-					$curr->save();
-					echo $curr->get('username') . " has been saved";
-					break;
-					case 'pass':
-					$curr->set('pw', $_POST['pw']);
-					$curr->save();
-					echo $curr->get('pw') . " has been saved";
-					break;
-					case 'email':
-					$curr->set('email', $_POST['email']);
-					$curr->save();
-					echo $curr->get('email') . " has been saved";
-					break;
-					case 'first':
-					$curr->set('first_name', $_POST['first']);
-					$curr->save();
-					echo $curr->get('first_name') . " has been saved";
-					break;
-					case 'last':
-					$curr->set('last_name', $_POST['last']);
-					$curr->save();
-					echo $curr->get('last_name') . " has been saved";
-					break;
-
-					default:
-					# code...
-					break;
-				}
-			}
 			//creates a new user, and then stores it
 			public function create(){
 				if($_POST['password'] == $_POST['confirmPW']){
-                    $currValues = array('username' => $_POST['username'], 
-                        'password'=> $_POST['password']
-                        );
-                    $curr = new AppUser($currValues);
-                    $curr->save();
-                    $_SESSION['username'] = $_POST['username'];
-                    $this->createBuild();
-                    $this->browseParts();
+					$currValues = array('username' => $_POST['username'], 
+						'password'=> $_POST['password']
+						);
+					$curr = new AppUser($currValues);
+					$curr->save();
+					$_SESSION['username'] = $_POST['username'];
+					$this->createBuild();
+					$this->browseParts();
 				}
 				else{
-                    include_once SYSTEM_PATH.'/view/Home.tpl';
+					include_once SYSTEM_PATH.'/view/Home.tpl';
 					echo "Your passwords don't match";
 				}
 			}
 
-			public function delete(){
-				//Ensure the user wants to delete the account
-				echo "Are You Sure?<br>";
-				echo '<a href="'.BASE_URL.'/deleteUser"> Yes </a><br>';
-				echo '<a href="'.BASE_URL.'/user"> No </a>';
-
-			}
-
-			public function deleteUser(){
-				//Go through with the deletion
-				AppUser::deleteUser($_SESSION['username']);
-				$this->logout();
-
-			}
-
-			public function listUsers(){
-				//Iterate through all the list of users
-				$users = AppUser::getAllUsers();
-				foreach($users as $user) {
-					echo $user->get('username') . "<br>";
+			public function changeBuild(){
+				$_SESSION['buildID'] = $_GET['buildID'];
+				if($_GET['site'] == build){
+					$this->browseBuild();
 				}
+				else{
+					$this->browseParts();
+				}
+
+			}
+
+
+			public function browseBuild(){
+				/*$currKey = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
+				$builds = AppBuilds::loadByUserKey($currKey);
+				$currBuild = $_SESSION['buildID']; */
+				include_once SYSTEM_PATH.'/view/browseBuilds.tpl';
 
 			}
     

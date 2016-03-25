@@ -35,7 +35,7 @@
 
 
 
-<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changebuild/$buildID">
+<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changebuild/$buildID/part">
     <select>
     
         <?php

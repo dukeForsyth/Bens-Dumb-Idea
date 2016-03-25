@@ -10,4 +10,9 @@ RewriteRule ^user/?$ app/controller/siteController.php?action=user [QSA,L]
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
 RewriteRule ^create/?$ app/controller/siteController.php?action=create [QSA,L]
+
+
+RewriteRule ^BrowseBuilds/?$ app/controller/siteController.php?action=browseBuild [QSA,L]
+RewriteRule ^changeBuilds/(\d+)/(\w+)?$ app/controller/siteController.php?action=changeBuild&buildID=$1&site=$2 [QSA,L]
+
 RewriteRule ^BrowseParts/? app/controller/siteController.php?action=browseParts [QSA,L]
