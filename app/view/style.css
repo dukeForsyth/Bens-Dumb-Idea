@@ -3,7 +3,7 @@ body
     background-color: gainsboro;
 }
 
-#header
+div.h1#header
 {
     position: fixed;
     width: 100%;

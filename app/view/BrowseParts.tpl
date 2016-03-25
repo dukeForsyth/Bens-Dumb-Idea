@@ -10,7 +10,7 @@
     
 <body>
     <div>
-<h1 id="header">   <br> PC Helper  </h1>  
+<h1 id="header">PC Helper</h1>  
 </div>
 <div style="float:left">
 <ul id="sideMenu">
@@ -41,19 +41,13 @@
         <?php
         foreach($builds as $build){
             $buildID = $build->get('unique_id');
-            echo '<option value=.$buildID> .$buildID </option>';
+            echo '<option value="'.$buildID.'">'.$buildID.'</option>';
         }
         ?>
 
     </select>
     <input type="submit" value="Select Build">
 </form>
-    
-<p id="heading">
-    Add To Current Build &emsp;  &emsp; Part Name  &emsp; &emsp; Price  &emsp;  &emsp;
-</p>
-    
-    
 <!TODO change to php that queries the database>
 <form id="browseParts" method="POST" action="baseurl/addpart/$partID">
     
@@ -64,6 +58,7 @@
         $partName = $part->get('name');
         $partPrice = $prices[$i];
         $string = sprintf("Name: %s Price: $%01.2f",$partName,$partPrice);
+        echo '<input type = "checkbox" value = $partName>';
         echo $string;
         echo '<br>';
         $i++;

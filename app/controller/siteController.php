@@ -197,6 +197,7 @@ class SiteController {
     
             public function browseParts(){
                 $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
+                //print_r($builds);
                 $parts = AppParts::loadByPartType("cpu");
                 $param = "";
                 foreach ($parts as $part) {

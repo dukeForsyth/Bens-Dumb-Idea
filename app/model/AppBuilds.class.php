@@ -66,21 +66,20 @@ class AppBuilds extends DbObject {
 
     // load all builds by a users unique_id(userkey)
     public static function loadByUserkey($userkey) {
-        if($userkey === null)
-            return null;
-
-        $query = sprintf(" SELECT unique_id FROM %s WHERE userkey = '%s' ",
+        $query = sprintf(" SELECT unique_id FROM %s WHERE userkey = '%s'",
             self::DB_TABLE,
-            $userkey
+            $userkey                     
             );
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysqli_num_rows($result))
             return null;
         else {
-            $row = mysqli_fetch_assoc($result);
-            $obj = self::loadById($row['unique_id']);
-            return ($obj);
+            $objects = array();
+            while($row = mysqli_fetch_assoc($result)) {
+                $objects[] = self::loadById($row['unique_id']);
+            }
+            return ($objects);
         }
     }
    
