@@ -55,7 +55,7 @@
     
     
 <!TODO change to php that queries the database>
-<form id="browseParts" method="POST" action="baseurl/addpart/$partID"> 
+<form id="browseParts" method="POST" action="baseurl/addpart/$partID">
     
     <?php
     
@@ -63,8 +63,8 @@
     {
         $partName = $part->get('part_Name');
         $partPrice =$part->get('part_Price');
-
-echo '<br> <input type="checkbox" value="$partName"> $partName &emsp; &emsp; &emsp; $partPrice &emsp; &emsp;>
+        echo <br> <input type="checkbox" value="$partName"> $partName &emsp; &emsp; &emsp; $partPrice &emsp; &emsp;>
+        
     }
 
     ?>
@@ -72,12 +72,12 @@ echo '<br> <input type="checkbox" value="$partName"> $partName &emsp; &emsp; &em
 <br>
 <input type="submit" value="Add Part">   
 
-</form>  
+</form>
     
     
-    <p id="userInfo">      
+    <p id="userInfo">    
     
-Welcome <? $_Session['username'] ?>, <a href="<? = BASE_URL ?>/Logout"> Log Out</a>    
+Welcome <? echo $_SESSION['username'] ?>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>
 </p>
 </body>      
 </html>

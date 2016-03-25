@@ -39,7 +39,7 @@ class AppUser extends DbObject {
     // load object by ID
     public static function loadById($id) {
         $db = Db::instance();
-        $obj = $db->fetchById($id, "unique_id",__CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
         return $obj;
     }
 

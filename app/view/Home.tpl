@@ -17,7 +17,7 @@
 
 <ul id="sideMenu">
     <li> <a href="<?= BASE_URL ?>/">Home</a></li>
-    <li> <a href="<?= BASE_URL ?>/BrosweBuilds"> My Builds  </a> </li>
+    <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
     <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
     <li> Submit Benchmarks</li>
 </ul>
@@ -25,10 +25,14 @@
 
     
 <p id="welcome">  Welcome Back!  </p>
+    <form action = "<?= BASE_URL ?>/BrowseParts">
+        <button id="buildPC" type="submit"> Build  A PC </button>
+    </form>
     
-    <button id="buildPC" type="button"> Build  A PC </button>
+    <form action = "<?= BASE_URL ?>/BrowseBuilds">
+        <button id="resumeBuild" type="submit"> Resume A Build </button>
+    </form>
     
-    <button id="resumeBuild" type="button"> Resume A Build </button>
 
     
 <! TODO add varialbe for user in the controller>

@@ -19,9 +19,9 @@ class AppParts extends DbObject {
 
         $args += $defaultArgs;
 
-        $this->id = $args['id'];
-        $this->username = $args['username'];
-        $this->pw = $args['pw'];
+        $this->unique_id = $args['unique_id'];
+        $this->part_type = $args['name'];
+        $this->name = $args['part_type'];
     }
 
     // save changes to object
@@ -44,13 +44,13 @@ class AppParts extends DbObject {
     }
 
     // load part by unique_id
-    public static function loadByUniqueId($unique_id=null) {
-        if($unique_id === null)
+    public static function loadByPartType($type) {
+        if($type === null)
             return null;
 
-        $query = sprintf(" SELECT id FROM %s WHERE username = '%s' ",
+        $query = sprintf(" SELECT unique_id FROM %s WHERE part_type = '%s' ",
             self::DB_TABLE,
-            $unique_id
+            $type
             );
         $db = Db::instance();
         $result = $db->lookup($query);
@@ -58,7 +58,7 @@ class AppParts extends DbObject {
             return null;
         else {
             $row = mysqli_fetch_assoc($result);
-            $obj = self::loadById($row['id']);
+            $obj = self::loadById($row['unique_id']);
             return ($obj);
         }
     }
