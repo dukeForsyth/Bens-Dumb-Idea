@@ -13,6 +13,6 @@ RewriteRule ^create/?$ app/controller/siteController.php?action=create [QSA,L]
 
 
 RewriteRule ^BrowseBuilds/?$ app/controller/siteController.php?action=browseBuild [QSA,L]
-RewriteRule ^changeBuilds/?$ app/controller/siteController.php?action=browseBuild [QSA,L]
+RewriteRule ^changeBuilds/(\d+)/?$ app/controller/siteController.php?action=changeBuild&buildID=$1 [QSA,L]
 
 RewriteRule ^BrowseParts/? app/controller/siteController.php?action=browseParts [QSA,L]
