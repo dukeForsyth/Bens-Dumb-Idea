@@ -19,7 +19,7 @@
 </ul>
     
 <! Change Build ID in session>
-<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changebuild/$buildID">
+<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changebuild/$buildID/build">
 <select>
     
     <?php
