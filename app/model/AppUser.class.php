@@ -19,9 +19,9 @@ class AppUser extends DbObject {
 
         $args += $defaultArgs;
 
-        $this->id = $args['unique_id'];
+        $this->unique_id = $args['unique_id'];
         $this->username = $args['username'];
-        $this->pw = $args['password'];
+        $this->password = $args['password'];
     }
 
     // save changes to object

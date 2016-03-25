@@ -169,7 +169,7 @@ class SiteController {
 			public function create(){
 				if($_POST['password'] == $_POST['confirmPW']){
 				$currValues = array('username' => $_POST['username'], 
-					'pw'=> $_POST['password']
+					'password'=> $_POST['password']
 					);
 				$curr = new AppUser($currValues);
 				$curr->save();

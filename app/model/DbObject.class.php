@@ -19,7 +19,7 @@ class DbObject {
     }
     
     public function getId() {
-        return ($this->id);   
+        return ($this->unique_id);   
     }
     
     public function set($field=null, $val=null) {

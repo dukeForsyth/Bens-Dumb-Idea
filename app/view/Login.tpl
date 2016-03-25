@@ -45,12 +45,12 @@
      Already A User? Sign In! <br> <br> <br>
     
     Email Address <br>
-    <input type="text" name="existusername" placeholder="Email Address" >
+    <input type="text" name="username" placeholder="Email Address" >
     
     <br> <br> <br>
     
     Password <br>
-    <input type="password" name="existpassword" placeholder="Password">
+    <input type="password" name="password" placeholder="Password">
     
      <br> <br>
     <br> 
