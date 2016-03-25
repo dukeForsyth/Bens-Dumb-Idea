@@ -139,9 +139,9 @@ class SiteController {
 
 
 			public function browseBuild(){
-				/*$currKey = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
+				$currKey = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
 				$builds = AppBuilds::loadByUserKey($currKey);
-				$currBuild = $_SESSION['buildID']; */
+				$currBuild = $_SESSION['buildID']; 
 				include_once SYSTEM_PATH.'/view/browseBuilds.tpl';
 
 			}
