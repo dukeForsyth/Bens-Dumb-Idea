@@ -177,8 +177,23 @@ class SiteController {
                 $partID = $_POST['addpart'];
                 $part = AppParts::loadByID($partID);
                 $build = AppBuilds::loadByID($_SESSION['buildID']);
-                switch ($part->get('part_type'))
-                    case 'cpu'
+                switch ($part->get('part_type')){
+                    case 'cpu':
+                    break;
+
+                     case 'cpu':
+                    break;
+                    
+                     case 'cpu':
+                    break;
+                    
+                     case 'cpu':
+                    break;
+                    
+                     case 'cpu':
+                    break;
+                    
+                }
                     
                 
             }
