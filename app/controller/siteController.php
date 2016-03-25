@@ -22,45 +22,21 @@ class SiteController {
 			$this->user();
 			break;
 
-			case 'about':
-			$this->about();
-			break;
-
 			case 'login':
 			$this->login();
-			break;
-
-			case 'contact':
-			$this->contact();
-			break;
-
-			case 'forum':
-			$this->forum();
 			break;
 
 			case 'logout':
 			$this->logout();
 			break;
 
-			case 'edit':
-			$this->edit();
-			break;
-
 			case 'create':
 			$this->create();
 			break;
-
-			case 'delete':
-			$this->delete();
-			break;
-
-			case 'deleteUser':
-			$this->deleteUser();
-			break;
-
-			case 'list':
-			$this->listUsers();
-			break;
+                
+            case 'browseParts':
+            $this->browseParts();
+            break;
 		}
 
 	}
@@ -177,7 +153,8 @@ class SiteController {
                     $curr = new AppUser($currValues);
                     $curr->save();
                     $_SESSION['username'] = $_POST['username'];
-                    $this->home();
+                    $this->createBuild();
+                    $this->browseParts();
 				}
 				else{
                     include_once SYSTEM_PATH.'/view/Home.tpl';
@@ -208,4 +185,19 @@ class SiteController {
 				}
 
 			}
+    
+            public function createBuild(){
+                $currentUser = AppUser::loadByUsername($_SESSION['username']);
+                $param = array('userkey' => $currentUser->get('unique_id'));
+                $build = new AppBuilds($param);
+                $build->save();
+                $_SESSION['buildID'] = $build->get('unique_id');
+                $this->browseParts();
+            }
+    
+            public function browseParts(){
+                $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
+                $parts = AppParts::loadByPartType("cpu");
+                include_once SYSTEM_PATH.'/view/BrowseParts.tpl';
+            }
 		}
