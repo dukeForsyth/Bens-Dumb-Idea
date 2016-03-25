@@ -1,7 +1,7 @@
 <?php
 
 include_once '../global.php';
-
+include_once '../../api/amazon_class.php';
 // get the identifier for the page we want to load
 $action = $_GET['action'];
 
@@ -198,6 +198,12 @@ class SiteController {
             public function browseParts(){
                 $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
                 $parts = AppParts::loadByPartType("cpu");
+                $param = "";
+                foreach ($parts as $part) {
+                    $param = $param . $part->get('unique_id') . ",";
+                }
+                $param = substr($param,0,-1);
+                $prices = getAmazonPrice($param);
                 include_once SYSTEM_PATH.'/view/BrowseParts.tpl';
             }
 		}

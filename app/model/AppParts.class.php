@@ -20,8 +20,8 @@ class AppParts extends DbObject {
         $args += $defaultArgs;
 
         $this->unique_id = $args['unique_id'];
-        $this->part_type = $args['name'];
-        $this->name = $args['part_type'];
+        $this->part_type = $args['part_type'];
+        $this->name = $args['name'];
     }
 
     // save changes to object
@@ -39,27 +39,26 @@ class AppParts extends DbObject {
     // load object by ID, use unique_id
     public static function loadById($id) {
         $db = Db::instance();
-        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById($id,"unique_id", __CLASS__, self::DB_TABLE);
         return $obj;
     }
 
     // load part by unique_id
     public static function loadByPartType($type) {
-        if($type === null)
-            return null;
-
-        $query = sprintf(" SELECT unique_id FROM %s WHERE part_type = '%s' ",
+        $query = sprintf(" SELECT unique_id FROM %s WHERE part_type = '%s'",
             self::DB_TABLE,
-            $type
+            $type                     
             );
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysqli_num_rows($result))
             return null;
         else {
-            $row = mysqli_fetch_assoc($result);
-            $obj = self::loadById($row['unique_id']);
-            return ($obj);
+            $objects = array();
+            while($row = mysqli_fetch_assoc($result)) {
+                $objects[] = self::loadById($row['unique_id']);
+            }
+            return ($objects);
         }
     }
  

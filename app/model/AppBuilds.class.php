@@ -60,7 +60,7 @@ class AppBuilds extends DbObject {
     // load object by ID, use the unique_id for the specifc build wanted
     public static function loadById($id) {
         $db = Db::instance();
-        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById($id, "unique_id", __CLASS__, self::DB_TABLE);
         return $obj;
     }
 

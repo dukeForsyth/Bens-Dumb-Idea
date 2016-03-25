@@ -10,6 +10,7 @@ function getAmazonPrice($asin) {
 		"ResponseGroup" => "Medium,OfferSummary",
 	));
     $count = count($xml->Items->Item);
+
     for ($i = 0; $i < $count; $i++) {
         $price = htmlentities((string) $xml->Items->Item[$i]->OfferSummary->LowestNewPrice->Amount);
         $response[$i] = number_format((float) ($price / 100), 2, '.', '');
@@ -19,9 +20,9 @@ function getAmazonPrice($asin) {
  
 function aws_signed_request($region, $params) {
  
-$public_key = "hi";
-$private_key = "hi";
-$params["AssociateTag"] = "hi-20";
+$public_key = "AKIAI5OHKOWHPILW4JBA";
+$private_key = "Y4Ft7B7q/z/tzoTsKQf1oLbUQYmhF1WzBJJw/h0i";
+$params["AssociateTag"] = "pche00b-20";
     
 	$method = "GET";
 	$host = "webservices.amazon." . $region;
