@@ -18,7 +18,7 @@
         </p>
     
     <! TODO determine action when it's a new user>
-<form id="newUser" method="POST" action="<?= BASE_URL ?>/newuser">
+<form id="newUser" method="POST" action="<?= BASE_URL ?>/create">
     New User? Create an account! <br> <br>
     
     Email Address <br>

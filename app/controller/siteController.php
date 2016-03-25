@@ -68,10 +68,10 @@ class SiteController {
 
 	public function home() {
 		if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
-			include_once SYSTEM_PATH.'\view\Home.tpl';
+			include_once SYSTEM_PATH.'/view/Home.tpl';
 		}
 		else{
-			include_once SYSTEM_PATH.'\view\Login.tpl';
+			include_once SYSTEM_PATH.'/view/Login.tpl';
 
 		}
 	}
@@ -167,7 +167,7 @@ class SiteController {
 			}
 			//creates a new user, and then stores it
 			public function create(){
-				if($_POST[password] == $_POST[confirmPW]){
+				if($_POST['password'] == $_POST['confirmPW']){
 				$currValues = array('username' => $_POST['username'], 
 					'pw'=> $_POST['password']
 					);
