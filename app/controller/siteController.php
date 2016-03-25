@@ -61,6 +61,10 @@ class SiteController {
 			case 'list':
 			$this->listUsers();
 			break;
+
+			case 'BrowseBuild':
+			$this->browseBuild();
+			break;
 		}
 
 	}
@@ -207,5 +211,14 @@ class SiteController {
 					echo $user->get('username') . "<br>";
 				}
 
+			}
+
+
+
+			public function browseBuild(){
+				$currKey = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
+				$builds = AppBuilds::loadByUserKey($currKey);
+				$currBuild = null;
+				
 			}
 		}

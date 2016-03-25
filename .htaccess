@@ -17,3 +17,7 @@ RewriteRule ^delete/?$ app/controller/siteController.php?action=delete [QSA,L]
 RewriteRule ^deleteUser/?$ app/controller/siteController.php?action=deleteUser [QSA,L]
 RewriteRule ^list/?$ app/controller/siteController.php?action=list [QSA,L]
 RewriteRule ^edit/(\w+)/?$ app/controller/siteController.php?action=edit&editID=$1 [QSA,L]
+
+RewriteRule ^BrowseBuilds/?$ app/controller/siteController.php?action=browseBuild [QSA,L]
+RewriteRule ^changeBuilds/?$ app/controller/siteController.php?action=browseBuild [QSA,L]
+
