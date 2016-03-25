@@ -30,6 +30,7 @@ class Db {
 
 		$query = sprintf("SELECT * FROM `%s` WHERE %s = '%s';",
 				$db_table,
+				$value,
 				$id
 			     );
 		//echo $query;
