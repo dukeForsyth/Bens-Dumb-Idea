@@ -35,8 +35,8 @@
 
 
 
-<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changebuild/part">
-    <select name = "changeBuild">
+<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/part">
+    <select name = "buildID">
     
         <?php
         foreach($builds as $build){

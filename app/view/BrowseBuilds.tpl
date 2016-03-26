@@ -8,53 +8,45 @@
 </head>
 
 <body>
-    
-<h1 id="header">   <br> PC Helper  </h1>  
-
+    <div>
+<h1 id="header">PC Helper</h1>  
+</div>
+<div style="float:left">
 <ul id="sideMenu">
     <li> <a href="<?= BASE_URL ?>/Home">Home</a></li>
     <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
     <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
     <li> Submit Benchmarks</li>
 </ul>
+</div>
     
-<! Change Build ID in session>
-<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changebuild/$buildID/build">
-<select>
+<form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/build">
+    <select name = "buildID">
     
-    <?php
+        <?php
+        foreach($builds as $build){
+            $buildID = $build->get('unique_id');
+            echo '<option value="'.$buildID.'">'.$buildID.'</option>';
+        }
+        ?>
 
-    foreach($builds as $build){
-        $buildID = $build->get('build_id');
-
-        echo '<option value="$buildID"> $buildID  </option>';
-    }
-    ?>
-</select>
+    </select>
     <input type="submit" value="Select Build">
 </form>
-    
 
 <p id="headingBuilds">
-    Part   &emsp; &emsp; &emsp;  &emsp; Name  &emsp;  &emsp;  &emsp;  &emsp; Price
-</p>
-        
-    <ul id="browseBuilds">         
-        
-        <?php
+    <?php
+        echo "CPU: &emsp "  . $names->cpu_id. " <br>";  
+      echo 'Video Card: &emsp'.$names->videocard_id.' <br>';  
+      echo 'Mother Board: &emsp '.$names->motherboard_id.' <br>';
+       echo 'Memory: &emsp  '.$names->memory_id.' <br>';
+       echo 'Storage: &emsp  '.$names->storage_id.' <br>'; 
+       echo 'Price: &emsp  '.$names->price.' <br>';
+       echo 'Build Id: &emsp '.$names->unique_id.' <br>'; 
+      ?>
 
-        foreach($builds as $build)
-        {
-            $partType = $build->get('part');
-            $partName = $build->get('name');
-            $partPrice = $build->get('price');
 
-            echo '<li> $partType  &emsp; &emsp; &emsp; &emsp; $partName  &emsp; &emsp; &emsp; &emsp; $partPrice  &emsp; &emsp; &emsp; &emsp; </li>';
-        }
-
-        ?>
-</ul>  
-  
+  </p>
 
 <p id="userInfo">      
     

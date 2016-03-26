@@ -97,4 +97,24 @@ class AppBuilds extends DbObject {
 
     }
 
+    public static function loadNameByID($id){
+        $curr = AppBuilds::loadById($id);
+        $names = (object)array();
+        foreach($curr as $key=>$value){
+            if(is_null($value) || $key == "userkey"){
+                $names->$key = "Nothing chosen";
+            }
+            else if($key == "unique_id"){
+                 $names->$key = $value;
+            }
+            else if($key == "price" || $key == "modified"){
+                //do nothing
+            }
+            else{
+                $names->$key = AppParts::loadByID($value)->get('name');
+            }
+        }
+        return $names;
+    }
+
 }

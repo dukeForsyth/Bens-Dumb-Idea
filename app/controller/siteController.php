@@ -53,10 +53,6 @@ class SiteController {
             case 'addpart':
             $this->addpart();
             break;
-
-            case 'changeBuildPart':
-            $this->changeBuildPart();
-            break;
         }
 
     }
@@ -120,7 +116,11 @@ public function logout() {
 
 
    public function browseBuild(){
-    $currBuild = AppBuilds::loadByID($_SESSION['buildID']); 
+   	$builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
+    $names = AppBuilds::loadNameByID($_SESSION['buildID']); 
+    //Load the names into the newly created object, by using the id
+    print_r($names);
+    
     include_once SYSTEM_PATH.'/view/BrowseBuilds.tpl';
 
 }
@@ -146,12 +146,12 @@ public function create(){
 
 
 public function changeBuild(){
-    $_SESSION['buildID'] = $_GET['buildID'];
-    if($_GET['site'] == build){
+    $_SESSION['buildID'] = $_POST['buildID'];
+    if($_GET['site'] == "build"){
         $this->browseBuild();
     }
     else{
-        $this->browseParts();
+    header('Location: ../BrowseParts');
     }
 
 }
@@ -163,10 +163,9 @@ public function createBuild(){
     $build = new AppBuilds($param);
     $build->save();
     $_SESSION['buildID'] = $build->get('unique_id');
-    $this->browseParts("cpu");
 }
 
-public function browseParts($part){
+public function browseParts($part = "cpu"){
     $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
         //print_r($builds);
     $parts = AppParts::loadByPartType($part);
@@ -207,10 +206,5 @@ public function addpart(){
     }
     $build->save();
     header('Location: BrowseParts');
-}
-
-public function changeBuildPart(){
-    $_SESSION['buildID'] = $_POST['changeBuild'];
-    header('Location: ../BrowseParts');
 }
 }
