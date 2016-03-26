@@ -195,6 +195,6 @@ class SiteController {
                     break;
                 }
                 $build->save();
-                header('Location: ../BrowseParts');
+                header('Location: BrowseParts');
             }
 		}

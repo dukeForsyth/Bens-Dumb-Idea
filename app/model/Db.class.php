@@ -139,7 +139,7 @@ class Db {
 		}
 
 		$query = substr($query, 0, -3); // cut off the last ', `'
-		$query .= " WHERE id = '" . $id . "';";
+		$query .= " WHERE unique_id = '" . $id . "';";
 
 		// only return a real query if there's something to update
 		if($all_null)
