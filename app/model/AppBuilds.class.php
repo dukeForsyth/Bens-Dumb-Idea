@@ -12,7 +12,6 @@ class AppBuilds extends DbObject {
 	protected $motherboard_id;
 	protected $memory_id;
 	protected $storage_id;
-	protected $price;
 
     // constructor
     public function __construct($args = array()) {
@@ -24,7 +23,6 @@ class AppBuilds extends DbObject {
 			'motherboard_id' => '',
 			'memory_id' => '',
 			'storage_id' => '',
-			'price' => ''
             );
 
         $args += $defaultArgs;
@@ -36,7 +34,6 @@ class AppBuilds extends DbObject {
 		$this->motherboard_id = $args['motherboard_id'];
 		$this->memory_id = $args['memory_id'];
 		$this->storage_id = $args['storage_id'];
-		$this->price = $args['price'];
     }
 
     // save changes to object
@@ -51,7 +48,6 @@ class AppBuilds extends DbObject {
 			'motherboard_id' => $this->motherboard_id,
 			'memory_id' => $this->memory_id,
 			'storage_id' => $this->storage_id,
-			'price' => $this->price
 			);
 			
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
