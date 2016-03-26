@@ -38,6 +38,10 @@ class SiteController {
 			$this->changeBuild();
 			break;
 
+			case 'browseBuild':
+			$this->browseBuild();
+			break;
+
 			case 'browseParts':
 			$this->browseParts("cpu");
 			break;
@@ -139,10 +143,8 @@ class SiteController {
 
 
 			public function browseBuild(){
-				$currKey = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
-				$builds = AppBuilds::loadByUserKey($currKey);
-				$currBuild = $_SESSION['buildID']; 
-				include_once SYSTEM_PATH.'/view/browseBuilds.tpl';
+				$currBuild = AppBuilds::loadByID($_SESSION['buildID']); 
+				include_once SYSTEM_PATH.'/view/BrowseBuilds.tpl';
 
 			}
     
