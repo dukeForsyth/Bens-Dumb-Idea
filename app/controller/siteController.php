@@ -49,6 +49,10 @@ class SiteController {
             case 'addpart':
             $this->addpart();
             break;
+                
+            case 'changeBuildPart':
+            $this->changeBuildPart();
+            break;
 		}
 
 	}
@@ -196,5 +200,10 @@ class SiteController {
                 }
                 $build->save();
                 header('Location: BrowseParts');
+            }
+    
+            public function changeBuildPart(){
+                $_SESSION['buildID'] = $_POST['changeBuild'];
+                header('Location: ../BrowseParts');
             }
 		}
