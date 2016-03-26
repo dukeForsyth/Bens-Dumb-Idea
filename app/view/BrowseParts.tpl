@@ -60,7 +60,9 @@
         $partID = $part->get('unique_id');
         $partPrice = $prices[$i];
         $string = sprintf("Name: %s Price: $%01.2f",$partName,$partPrice);
-        echo '<input type = "radio" name = "addpart" value = $partID>';
+    ?>
+        <input type = "radio" name = "addpart" value = "<?= $partID ?>">
+    <?php
         echo $string;
         echo '<br>';
         $i++;
