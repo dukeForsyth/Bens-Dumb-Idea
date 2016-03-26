@@ -1,4 +1,4 @@
-<html>
+ <html>
 
 <head>
     
@@ -52,6 +52,7 @@
 <form id="browseParts" method="POST" action="<?= BASE_URL ?>/addpart">
     
     <?php
+
     $i = 0;
     foreach($parts as $part)
     {
