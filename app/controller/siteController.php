@@ -89,7 +89,7 @@ class SiteController {
 			$_SESSION['username'] = $username;
 			//Get build and set it to latest
 			$currentUser = AppUser::loadByUsername($_SESSION['username']);
-			$builds = AppBuilds::loadByUserKey($currKey);
+			$builds = AppBuilds::loadByUserKey($currentUser->get('unique_id'));
 			$_SESSION['buildID'] = $builds[0]->get('unique_id');
 			$this->home();
 					//$_SESSION['error'] = "You are logged in as ".$username.".";
@@ -177,9 +177,24 @@ class SiteController {
                 $partID = $_POST['addpart'];
                 $part = AppParts::loadByID($partID);
                 $build = AppBuilds::loadByID($_SESSION['buildID']);
-                switch ($part->get('part_type'))
-                    case 'cpu'
-                    
-                
+                switch ($part->get('part_type')) {
+                    case 'cpu':
+                    $build->set('cpu_id',$partID);
+                    break;
+                    case 'videocard':
+                    $build->set('videocard_id',$partID);
+                    break;
+                    case 'motherboard':
+                    $build->set('motherboard_id',$partID);
+                    break;
+                    case 'memory':
+                    $build->set('memory_id',$partID);
+                    break;
+                    case 'storage':
+                    $build->set('storage_id',$partID);
+                    break;
+                }
+                $build->save();
+                header('Location: ../BrowseParts');
             }
 		}
