@@ -41,7 +41,7 @@
       echo 'Mother Board: '.$names->motherboard_id.' <br>';
        echo 'Memory: '.$names->memory_id.' <br>';
        echo 'Storage: '.$names->storage_id.' <br>'; 
-       echo 'Price: '.$names->price.' <br>';
+       echo 'Price: $'.$price.' <br>';
        echo 'Build Id: '.$names->unique_id.' <br>'; 
       ?>
 

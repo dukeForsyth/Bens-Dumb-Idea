@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2016 at 01:55 AM
+-- Generation Time: Mar 26, 2016 at 02:36 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -33,22 +33,24 @@ CREATE TABLE `builds` (
   `videocard_id` varchar(25) NOT NULL,
   `motherboard_id` varchar(25) NOT NULL,
   `memory_id` varchar(25) NOT NULL,
-  `storage_id` varchar(25) NOT NULL,
-  `price` float(25,2) NOT NULL
+  `storage_id` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `builds`
 --
 
-INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`, `price`) VALUES
-(1, 8, '', '', '', '', '', 0.00),
-(2, 8, '', '', '', '', '', 0.00),
-(3, 8, '', '', '', '', '', 0.00),
-(4, 8, '', '', '', '', '', 0.00),
-(5, 8, '', '', '', '', '', 0.00),
-(6, 8, '', '', '', '', '', 0.00),
-(7, 8, '', '', '', '', '', 0.00);
+INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
+(1, 8, 'B009O7YU56', '', 'B009FC3YJ8', '', ''),
+(2, 8, '', '', '', '', ''),
+(3, 8, 'B009O7YORK', '', '', '', ''),
+(4, 8, '', '', '', '', ''),
+(5, 8, '', '', '', '', ''),
+(6, 8, '', '', '', '', ''),
+(7, 8, '', '', '', '', ''),
+(8, 16, '', '', '', '', ''),
+(9, 17, 'B009O7YORK', 'B00847TPH0', 'B009FC3YJ8', 'B00J8E8Y5C', 'B00H4XH5GI'),
+(10, 16, 'B009O7YORK', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,10 @@ INSERT INTO `users` (`unique_id`, `username`, `password`) VALUES
 (12, 'e', 'd'),
 (13, 'e', 'd'),
 (14, 'e', 'd'),
-(15, 'e', 'd');
+(15, 'e', 'd'),
+(16, 'a', 's'),
+(17, 'c', 'v'),
+(18, 'a', 'z');
 
 --
 -- Indexes for dumped tables
@@ -129,12 +134,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,5 +1,5 @@
 <?php
-
+include_once '../../api/amazon_class.php';
 class AppBuilds extends DbObject {
     // name of database table
     const DB_TABLE = 'builds';
@@ -116,5 +116,29 @@ class AppBuilds extends DbObject {
         }
         return $names;
     }
+    
+    public static function loadTotalPrice($id){
+        $curr = AppBuilds::loadById($id);
+        $param = "";
+        foreach($curr as $key=>$value){
+            if($value == "" || $key == "userkey"){
 
+            }
+            else if($key == "unique_id"){
+            }
+            else if($key == "price" || $key == "modified"){
+                //do nothing
+            }
+            else{
+                $param = $param . $value . ",";
+            }
+        }
+        $param = substr($param,0,-1);
+        $prices = getAmazonPrice($param);
+        $totalPrice = 0;
+        foreach($prices as $price){
+            $totalPrice = $totalPrice + $price;
+        }
+        return $totalPrice;
+    }
 }
