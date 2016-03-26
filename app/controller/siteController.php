@@ -106,104 +106,104 @@ class SiteController {
 	public function logout() {
 				// erase the session
 		unset($_SESSION['username']);
-				session_destroy(); // for good measure
+        session_destroy(); // for good measure
 
-				// redirect to home page
-				header('Location: '.BASE_URL);
-			}
+        // redirect to home page
+        header('Location: '.BASE_URL);
+    }
 
 			//creates a new user, and then stores it
-			public function create(){
-				if($_POST['password'] == $_POST['confirmPW']){
-					$currValues = array('username' => $_POST['username'], 
-						'password'=> $_POST['password']
-						);
-					$curr = new AppUser($currValues);
-					$curr->save();
-					$_SESSION['username'] = $_POST['username'];
-					$this->createBuild();
-					$this->browseParts();
-				}
-				else{
-					include_once SYSTEM_PATH.'/view/Home.tpl';
-					echo "Your passwords don't match";
-				}
-			}
+    public function create(){
+        if($_POST['password'] == $_POST['confirmPW']){
+            $currValues = array('username' => $_POST['username'], 
+                'password'=> $_POST['password']
+                );
+            $curr = new AppUser($currValues);
+            $curr->save();
+            $_SESSION['username'] = $_POST['username'];
+            $this->createBuild();
+            $this->browseParts();
+        }
+        else{
+            include_once SYSTEM_PATH.'/view/Home.tpl';
+            echo "Your passwords don't match";
+        }
+    }
 
-			public function changeBuild(){
-				$_SESSION['buildID'] = $_GET['buildID'];
-				if($_GET['site'] == build){
-					$this->browseBuild();
-				}
-				else{
-					$this->browseParts();
-				}
+    public function changeBuild(){
+        $_SESSION['buildID'] = $_GET['buildID'];
+        if($_GET['site'] == build){
+            $this->browseBuild();
+        }
+        else{
+            $this->browseParts();
+        }
 
-			}
+    }
 
 
-			public function browseBuild(){
-				$currKey = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
-				$builds = AppBuilds::loadByUserKey($currKey);
-				$currBuild = $_SESSION['buildID']; 
-				include_once SYSTEM_PATH.'/view/browseBuilds.tpl';
+    public function browseBuild(){
+        $currKey = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
+        $builds = AppBuilds::loadByUserKey($currKey);
+        $currBuild = $_SESSION['buildID']; 
+        include_once SYSTEM_PATH.'/view/browseBuilds.tpl';
 
-			}
-    
-            public function createBuild(){
-                $currentUser = AppUser::loadByUsername($_SESSION['username']);
-                $param = array('userkey' => $currentUser->get('unique_id'));
-                $build = new AppBuilds($param);
-                $build->save();
-                $_SESSION['buildID'] = $build->get('unique_id');
-                $this->browseParts("cpu");
-            }
-    
-            public function browseParts($part){
-                $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
-                //print_r($builds);
-                $parts = AppParts::loadByPartType($part);
-                $param = "";
-                foreach ($parts as $part) {
-                    $param = $param . $part->get('unique_id') . ",";
-                }
-                $param = substr($param,0,-1);
-                $prices = getAmazonPrice($param);
-                include_once SYSTEM_PATH.'/view/BrowseParts.tpl';
-            }
-    
-            public function changepart(){
-                //print_r($_POST['part']);
-                $this->browseParts($_POST['part']);
-            }
-    
-            public function addpart(){
-                $partID = $_POST['addpart'];
-                $part = AppParts::loadByID($partID);
-                $build = AppBuilds::loadByID($_SESSION['buildID']);
-                switch ($part->get('part_type')) {
-                    case 'cpu':
-                    $build->set('cpu_id',$partID);
-                    break;
-                    case 'videocard':
-                    $build->set('videocard_id',$partID);
-                    break;
-                    case 'motherboard':
-                    $build->set('motherboard_id',$partID);
-                    break;
-                    case 'memory':
-                    $build->set('memory_id',$partID);
-                    break;
-                    case 'storage':
-                    $build->set('storage_id',$partID);
-                    break;
-                }
-                $build->save();
-                header('Location: BrowseParts');
-            }
-    
-            public function changeBuildPart(){
-                $_SESSION['buildID'] = $_POST['changeBuild'];
-                header('Location: ../BrowseParts');
-            }
-		}
+    }
+
+    public function createBuild(){
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $param = array('userkey' => $currentUser->get('unique_id'));
+        $build = new AppBuilds($param);
+        $build->save();
+        $_SESSION['buildID'] = $build->get('unique_id');
+        $this->browseParts("cpu");
+    }
+
+    public function browseParts($part){
+        $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
+        //print_r($builds);
+        $parts = AppParts::loadByPartType($part);
+        $param = "";
+        foreach ($parts as $part) {
+            $param = $param . $part->get('unique_id') . ",";
+        }
+        $param = substr($param,0,-1);
+        $prices = getAmazonPrice($param);
+        include_once SYSTEM_PATH.'/view/BrowseParts.tpl';
+    }
+
+    public function changepart(){
+        //print_r($_POST['part']);
+        $this->browseParts($_POST['part']);
+    }
+
+    public function addpart(){
+        $partID = $_POST['addpart'];
+        $part = AppParts::loadByID($partID);
+        $build = AppBuilds::loadByID($_SESSION['buildID']);
+        switch ($part->get('part_type')) {
+            case 'cpu':
+            $build->set('cpu_id',$partID);
+            break;
+            case 'videocard':
+            $build->set('videocard_id',$partID);
+            break;
+            case 'motherboard':
+            $build->set('motherboard_id',$partID);
+            break;
+            case 'memory':
+            $build->set('memory_id',$partID);
+            break;
+            case 'storage':
+            $build->set('storage_id',$partID);
+            break;
+        }
+        $build->save();
+        header('Location: BrowseParts');
+    }
+
+    public function changeBuildPart(){
+        $_SESSION['buildID'] = $_POST['changeBuild'];
+        header('Location: ../BrowseParts');
+    }
+}
