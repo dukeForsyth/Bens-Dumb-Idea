@@ -18,3 +18,4 @@ RewriteRule ^changeBuilds/(\d+)/(\w+)?$ app/controller/siteController.php?action
 
 RewriteRule ^BrowseParts/? app/controller/siteController.php?action=browseParts [QSA,L]
 RewriteRule ^addpart/? app/controller/siteController.php?action=addpart [QSA,L]
+RewriteRule ^changebuild/part? app/controller/siteController.php?action=changeBuildPart [QSA,L]
