@@ -5,7 +5,7 @@ RewriteEngine on
 # ErrorDocument 404 /app/controller/error.php
 
 # Site
-RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
+
 RewriteRule ^user/?$ app/controller/siteController.php?action=user [QSA,L]
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
@@ -17,3 +17,6 @@ RewriteRule ^BrowseBuilds/?$ app/controller/siteController.php?action=browseBuil
 RewriteRule ^BrowseParts/? app/controller/siteController.php?action=browseParts [QSA,L]
 RewriteRule ^addpart/? app/controller/siteController.php?action=addpart [QSA,L]
 RewriteRule ^changeBuild/(\w+)? app/controller/siteController.php?action=changeBuild&site=$1 [QSA,L]
+
+RewriteRule ^Home/?$ app/controller/siteController.php?action=home [QSA,L]
+RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
