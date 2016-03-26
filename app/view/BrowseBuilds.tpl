@@ -36,13 +36,13 @@
 
 <p id="headingBuilds">
     <?php
-        echo "CPU: &emsp "  . $names->cpu_id. " <br>";  
-      echo 'Video Card: &emsp'.$names->videocard_id.' <br>';  
-      echo 'Mother Board: &emsp '.$names->motherboard_id.' <br>';
-       echo 'Memory: &emsp  '.$names->memory_id.' <br>';
-       echo 'Storage: &emsp  '.$names->storage_id.' <br>'; 
-       echo 'Price: &emsp  '.$names->price.' <br>';
-       echo 'Build Id: &emsp '.$names->unique_id.' <br>'; 
+        echo "CPU: "  . $names->cpu_id. " <br>";  
+      echo 'Video Card: '.$names->videocard_id.' <br>';  
+      echo 'Mother Board: '.$names->motherboard_id.' <br>';
+       echo 'Memory: '.$names->memory_id.' <br>';
+       echo 'Storage: '.$names->storage_id.' <br>'; 
+       echo 'Price: '.$names->price.' <br>';
+       echo 'Build Id: '.$names->unique_id.' <br>'; 
       ?>
 
 

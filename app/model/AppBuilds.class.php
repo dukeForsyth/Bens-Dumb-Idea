@@ -101,11 +101,11 @@ class AppBuilds extends DbObject {
         $curr = AppBuilds::loadById($id);
         $names = (object)array();
         foreach($curr as $key=>$value){
-            if(is_null($value) || $key == "userkey"){
+            if($value == "" || $key == "userkey"){
                 $names->$key = "Nothing chosen";
             }
             else if($key == "unique_id"){
-                 $names->$key = $value;
+                $names->$key = $value;
             }
             else if($key == "price" || $key == "modified"){
                 //do nothing
