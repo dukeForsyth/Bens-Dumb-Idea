@@ -48,7 +48,7 @@ class SiteController {
                 
             case 'addpart':
             $this->addpart();
-            breal;
+            break;
 		}
 
 	}
@@ -176,25 +176,26 @@ class SiteController {
             public function addpart(){
                 $partID = $_POST['addpart'];
                 $part = AppParts::loadByID($partID);
-                $build = AppBuilds::loadByID($_SESSION['buildID']);
-                switch ($part->get('part_type')) {
-                    case 'cpu':
-                    $build->set('cpu_id',$partID);
-                    break;
-                    case 'videocard':
-                    $build->set('videocard_id',$partID);
-                    break;
-                    case 'motherboard':
-                    $build->set('motherboard_id',$partID);
-                    break;
-                    case 'memory':
-                    $build->set('memory_id',$partID);
-                    break;
-                    case 'storage':
-                    $build->set('storage_id',$partID);
-                    break;
-                }
-                $build->save();
-                header('Location: ../BrowseParts');
+                print_r($part);
+//                $build = AppBuilds::loadByID($_SESSION['buildID']);
+//                switch ($part->get('part_type')) {
+//                    case 'cpu':
+//                    $build->set('cpu_id',$partID);
+//                    break;
+//                    case 'videocard':
+//                    $build->set('videocard_id',$partID);
+//                    break;
+//                    case 'motherboard':
+//                    $build->set('motherboard_id',$partID);
+//                    break;
+//                    case 'memory':
+//                    $build->set('memory_id',$partID);
+//                    break;
+//                    case 'storage':
+//                    $build->set('storage_id',$partID);
+//                    break;
+//                }
+//                $build->save();
+//                header('Location: ../BrowseParts');
             }
 		}

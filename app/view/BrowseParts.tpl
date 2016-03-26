@@ -49,7 +49,7 @@
     <input type="submit" value="Select Build">
 </form>
 <!TODO change to php that queries the database>
-<form id="browseParts" method="POST" action="baseurl/addpart">
+<form id="browseParts" method="POST" action="<?= BASE_URL ?>/addpart">
     
     <?php
     $i = 0;
@@ -59,7 +59,7 @@
         $partID = $part->get('unique_id');
         $partPrice = $prices[$i];
         $string = sprintf("Name: %s Price: $%01.2f",$partName,$partPrice);
-        echo '<input type = "checkbox" name = "addpart" value = $partID>';
+        echo '<input type = "radio" name = "addpart" value = $partID>';
         echo $string;
         echo '<br>';
         $i++;
