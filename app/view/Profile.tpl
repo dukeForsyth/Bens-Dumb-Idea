@@ -29,9 +29,14 @@ if($edit == true){
 <div id="profile"> 
             <h4>Your User Name</h4>
             <?= $user->get('username') ?>
+            <h4>Email Address</h4>
+            <form method="POST" action="<?= BASE_URL ?>/edit/email">
+                <input type="text" value="<?= $user->get('emailAddress') ?>" name="email"> <br>
+                <input type="submit" value="Save">
+            </form>
             <h4>Password</h4>
             <form method="POST" action="<?= BASE_URL ?>/edit/pass">
-                <input type="text" value="<?= $user->get('password') ?>" name="pw"> <br>
+                <input type="password" value="<?= $user->get('password') ?>" name="pw"> <br>
                 <input type="submit" value="Save">
             </form>
             <h4>Your Gender</h4>
