@@ -53,6 +53,10 @@ class SiteController {
             case 'addpart':
             $this->addpart();
             break;
+                
+            case 'profile':
+            $this->viewUser();
+            break;
         }
 
     }
@@ -120,7 +124,7 @@ class SiteController {
     }
 
     public function create(){
-        $user = AppUser::loadByUsername($_POST['username'])
+        $user = AppUser::loadByUsername($_POST['username']);
         if($_POST['password'] == $_POST['confirmPW'] && $user == null){
             $currValues = array('username' => $_POST['username'], 
                 'password'=> $_POST['password']
@@ -196,5 +200,9 @@ class SiteController {
         }
         $build->save();
         header('Location: BrowseParts');
+    }
+    
+    public function viewUser(){
+        
     }
 }

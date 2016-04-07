@@ -20,3 +20,5 @@ RewriteRule ^changeBuild/(\w+)? app/controller/siteController.php?action=changeB
 
 RewriteRule ^Home/?$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
+
+RewriteRule ^GoToUser/(\w+)?$ app/controller/siteController.php?action=profile&viewedUser=$1 [QSA,L]
