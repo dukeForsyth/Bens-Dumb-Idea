@@ -23,7 +23,7 @@
 </ul>
      
 <?php    
-if($edit){
+if($edit == true){
 ?> 
 
 <div id="profile"> 
@@ -42,13 +42,13 @@ if($edit){
             <h4>Your First Name</h4>
 
             <form method="POST" action="<?= BASE_URL ?>/edit/first">
-                <input type="text" value="<?= $user->get('firstname') ?>" name="first"> <br>
+                <input type="text" value="<?= $user->get('firstName') ?>" name="first"> <br>
                 <input type="submit" value="Save">
             </form>
             <h4>Your Last Name</h4>
 
             <form method="POST" action="<?= BASE_URL ?>/edit/last">
-                <input type="text" value="<?= $user->get('lastname') ?>" name="last"> <br>
+                <input type="text" value="<?= $user->get('lastName') ?>" name="last"> <br>
                 <input type="submit" value="Save">
             </form>
 
