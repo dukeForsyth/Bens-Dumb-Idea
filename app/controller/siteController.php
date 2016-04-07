@@ -120,7 +120,8 @@ class SiteController {
     }
 
     public function create(){
-        if($_POST['password'] == $_POST['confirmPW']){
+        $user = AppUser::loadByUsername($_POST['username'])
+        if($_POST['password'] == $_POST['confirmPW'] && $user == null){
             $currValues = array('username' => $_POST['username'], 
                 'password'=> $_POST['password']
                 );
