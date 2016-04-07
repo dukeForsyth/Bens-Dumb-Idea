@@ -227,3 +227,20 @@ ul#browseBuilds li
     left: 20%;
 }
 
+#like
+{
+    position:fixed;
+    top: 55%;
+    left: 23%;
+   
+    
+}
+
+#comment
+{
+    position: fixed;
+    top: 63%;
+    left: 23%;
+}
+
+
