@@ -23,16 +23,41 @@
 </ul>
      
 
-    
-<p id="welcome">  Welcome Back!  </p>
-    <form action = "<?= BASE_URL ?>/BrowseParts">
-        <button id="buildPC" type="submit"> Build  A PC </button>
-    </form>
-    
-    <form action = "<?= BASE_URL ?>/BrowseBuilds">
-        <button id="resumeBuild" type="submit"> Resume A Build </button>
-    </form>
-    
+<div id="profile"> 
+            <h4>Your User Name</h4>
+            <form method="POST" action="<?= BASE_URL ?>/edit/user">
+                <input type="text" value="<?= $user->get('username') ?>" name="uname"> <br>
+                <input type="submit" value="Save">
+            </form>
+            <h4>Password</h4>
+            <form method="POST" action="<?= BASE_URL ?>/edit/pass">
+                <input type="text" value="<?= $user->get('password') ?>" name="pw"> <br>
+                <input type="submit" value="Save">
+            </form>
+            <h4>Your Gender</h4>
+            <form method="POST" action="<?= BASE_URL ?>/edit/gender">
+                <input type="text" value="<?= $user->get('gender') ?>" name="gender"> <br>
+                <input type="submit" value="Save">
+            </form>
+            <h4>Your First Name</h4>
+
+            <form method="POST" action="<?= BASE_URL ?>/edit/first">
+                <input type="text" value="<?= $user->get('firstname') ?>" name="first"> <br>
+                <input type="submit" value="Save">
+            </form>
+            <h4>Your Last Name</h4>
+
+            <form method="POST" action="<?= BASE_URL ?>/edit/last">
+                <input type="text" value="<?= $user->get('lastname') ?>" name="last"> <br>
+                <input type="submit" value="Save">
+            </form>
+
+
+           <!-- <form method="POST" action="<?= BASE_URL ?>/delete">
+                <input type="submit" value="Delete Account">
+            </form> -->
+        </div>    
+
 
     
 <! TODO add varialbe for user in the controller>

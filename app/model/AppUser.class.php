@@ -20,7 +20,8 @@ class AppUser extends DbObject {
             'password' => '',
             'firstName' => '',
             'lastName' => '',
-            'rank' => 0,
+            'gender' => '',
+            'rank' => 1,
             );
 
         $args += $defaultArgs;

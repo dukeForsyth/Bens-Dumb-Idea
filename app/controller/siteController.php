@@ -53,6 +53,10 @@ class SiteController {
             case 'addpart':
             $this->addpart();
             break;
+
+            case 'edit':
+            $this->edit();
+            break;
         }
 
     }
@@ -69,39 +73,77 @@ class SiteController {
 
     public function user() {
 
-         if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
-            $user = AppUser::loadByUsername($_SESSION['username']);
-         }
-         include_once SYSTEM_PATH.'/view/User.tpl';
+       if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        $user = AppUser::loadByUsername($_SESSION['username']);
     }
+    include_once SYSTEM_PATH.'/view/User.tpl';
+}
 
-    public function login() {
-         $username = $_POST['username'];
-         $passwd = $_POST['password'];
-         $us = AppUser::loadByUsername($username);
-         if($us == null) {
+public function login() {
+   $username = $_POST['username'];
+   $passwd = $_POST['password'];
+   $us = AppUser::loadByUsername($username);
+   if($us == null) {
                         // username not found
-             $_SESSION['error'] = "Incorrect username.";
-         } elseif ($us->get('password') != $passwd) {
+       $_SESSION['error'] = "Incorrect username.";
+   } elseif ($us->get('password') != $passwd) {
                         // passwords don't match
-             $_SESSION['error'] = "Incorrect password.";
-         } else {
+       $_SESSION['error'] = "Incorrect password.";
+   } else {
                         // password matches!
                         // log me in
-             $_SESSION['username'] = $username;
+       $_SESSION['username'] = $username;
                     //Get build and set it to latest
-             $currentUser = AppUser::loadByUsername($_SESSION['username']);
-             $builds = AppBuilds::loadByUserKey($currentUser->get('unique_id'));
-             $_SESSION['buildID'] = $builds[0]->get('unique_id');
-             $this->home();
+       $currentUser = AppUser::loadByUsername($_SESSION['username']);
+       $builds = AppBuilds::loadByUserKey($currentUser->get('unique_id'));
+       $_SESSION['buildID'] = $builds[0]->get('unique_id');
+       $this->home();
                         //$_SESSION['error'] = "You are logged in as ".$username.".";
-         }
+   }
 				// redirect to home page
-    }
+}
 
-    public function logout() {
+public function edit(){
+            //Get the current user
+    $curr = AppUser::loadByUsername($_SESSION['username']);
+            //Get the respective value that wants to be edited, change it, then save it.
+    switch ($_GET['editID']) {
+        case 'user':
+        $curr->set('username', $_POST['uname']);
+        $curr->save();
+        echo $curr->get('username') . " has been saved";
+        break;
+        case 'pass':
+        $curr->set('password', $_POST['pw']);
+        $curr->save();
+        echo $curr->get('pw') . " has been saved";
+        break;
+        case 'gender':
+        $curr->set('gender', $_POST['gender']);
+        $curr->save();
+        echo $curr->get('gender') . " has been saved";
+        break;
+        case 'first':
+        $curr->set('firstname', $_POST['first']);
+        $curr->save();
+        echo $curr->get('first_name') . " has been saved";
+        break;
+        case 'last':
+        $curr->set('lastname', $_POST['last']);
+        $curr->save();
+        echo $curr->get('last_name') . " has been saved";
+        break;
+
+        default:
+                    # code...
+        break;
+    }
+}
+
+
+public function logout() {
 				// erase the session
-        unset($_SESSION['username']);
+    unset($_SESSION['username']);
         session_destroy(); // for good measure
 
         // redirect to home page
