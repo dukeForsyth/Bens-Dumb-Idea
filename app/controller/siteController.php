@@ -161,6 +161,7 @@ public function logout() {
     public function create(){
         $user = AppUser::loadByUsername($_POST['username']);
         if($_POST['password'] == $_POST['confirmPW'] && $user == null){
+
             $currValues = array(
                 'username' => $_POST['username'], 
                 'password'=> $_POST['password'],
@@ -174,8 +175,9 @@ public function logout() {
             $this->browseParts();
         }
         else{
-            include_once SYSTEM_PATH.'/view/Home.tpl';
-            echo "Your passwords don't match";
+            echo '<script type="text/javascript">alert("Account already Exists");</script>';
+
+            $this->home();
         }
     }
 
