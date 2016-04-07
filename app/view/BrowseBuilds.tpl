@@ -8,9 +8,7 @@
 </head>
 
 <body>
-    <div>
 <h1 id="header">PC Helper</h1>  
-</div>
 <div style="float:left">
 <ul id="sideMenu">
     <li> <a href="<?= BASE_URL ?>/Home">Home</a></li>
@@ -36,39 +34,33 @@
     <input type="submit" value="Create New Build">
 </form>
 
-<p id="headingBuilds">
-    <?php
-        echo "CPU: "  . $names->cpu_id. " <br>";  
-      echo 'Video Card: '.$names->videocard_id.' <br>';  
-      echo 'Mother Board: '.$names->motherboard_id.' <br>';
-       echo 'Memory: '.$names->memory_id.' <br>';
-       echo 'Storage: '.$names->storage_id.' <br>'; 
-       echo 'Price: $'.$price.' <br>';
-       echo 'Build Id: '.$names->unique_id.' <br>'; 
-      ?>
-
-
-  </p>
+    <p id="headingBuilds">
+        <?php
+            echo "CPU: "  . $names->cpu_id. " <br>";
+            echo 'Video Card: '.$names->videocard_id.' <br>';
+            echo 'Mother Board: '.$names->motherboard_id.' <br>';
+            echo 'Memory: '.$names->memory_id.' <br>';
+            echo 'Storage: '.$names->storage_id.' <br>'; 
+            echo 'Price: $'.$price.' <br>';
+            echo 'Build Id: '.$names->unique_id.' <br>'; 
+          ?>
+    </p>
+    <form id="like" method="POST" action="">
+        <input type="submit" value="Like Build " style="background-color:orange; border-radius: 12px; height: 40px; ">
+    </form>
     
-<form id="like" method="POST" action="">
-    
-    <input type="submit" value="Like Build " style="background-color:orange; border-radius: 12px; height: 40px; ">
-    
-</form>
-    
-<form id="comment" method="POST" action="">
-    
-    
-    <input type="text" name="comment" style="width: 300px; height: 150px;"> <br> <br>
-    <input type="submit" value="Comment Build">
-    
+    <form id="comment" method="POST" action="">
+        <input type="text" name="comment" style="width: 300px; height: 150px;"> <br> <br>
+        <input type="submit" value="Comment Build">
     </form>
 
-<p id="userInfo"> 
+    <div id="userInfo">
+        Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><?= $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a><br>
+        <form id="searchUser" method="POST" action="">
+            <input type="text" name="userNameSearch" placeholder="Search Username">
+            <input type="submit" value="Search">
+        </form>
+    </div>
     
-Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><?= $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>    
-    
-</p>
-
     </body>
 </html>
