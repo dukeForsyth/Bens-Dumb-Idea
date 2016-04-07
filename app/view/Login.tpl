@@ -26,7 +26,7 @@
     
     <br> <br>
     
-    First Name <br>
+    Last Name <br>
     <input type="text" name="lName" placeholder="Last Name" >
     
     <br> <br>

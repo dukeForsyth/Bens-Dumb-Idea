@@ -11,6 +11,7 @@ class AppUser extends DbObject {
     protected $firstName;
     protected $lastName;
 	protected $rank;
+    protected $gender;
     
     // constructor
     public function __construct($args = array()) {
@@ -32,6 +33,7 @@ class AppUser extends DbObject {
         $this->firstName = $args['firstName'];
         $this->lastName = $args['lastName'];
         $this->rank = $args['rank'];
+        $this->gender = $args['gender'];
     }
 
     // save changes to object
@@ -44,7 +46,8 @@ class AppUser extends DbObject {
             'password' => $this->password,
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
-            'rank' => $this->rank
+            'rank' => $this->rank,
+            'gender' => $this->gender
 			);
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
