@@ -30,6 +30,10 @@ class SiteController {
 			$this->logout();
 			break;
 
+            case 'delete':
+            $this->delete();
+            break;
+
 			case 'create':
 			$this->create();
 			break;
@@ -128,27 +132,27 @@ class SiteController {
         case 'email':
         $curr->set('username', $_POST['email']);
         $curr->save();
-        echo $curr->get('username') . " has been saved";
+        echo '<script type="text/javascript">alert("Email change succesful");</script>';
         break;
         case 'pass':
         $curr->set('password', $_POST['pw']);
         $curr->save();
-        echo $curr->get('pw') . " has been saved";
+        echo '<script type="text/javascript">alert("Password change succesful");</script>';
         break;
         case 'gender':
         $curr->set('gender', $_POST['gender']);
         $curr->save();
-        echo $curr->get('gender') . " has been saved";
+        echo '<script type="text/javascript">alert("Gender change succesful");</script>';
         break;
         case 'first':
         $curr->set('firstname', $_POST['first']);
         $curr->save();
-        echo $curr->get('first_name') . " has been saved";
+        echo '<script type="text/javascript">alert("First Name change succesful");</script>';
         break;
         case 'last':
         $curr->set('lastname', $_POST['last']);
         $curr->save();
-        echo $curr->get('last_name') . " has been saved";
+        echo '<script type="text/javascript">alert("Last Name change succesful");</script>';
         break;
 
         default:
@@ -157,6 +161,12 @@ class SiteController {
     }
 }
 
+public function delete(){
+                //Go through with the deletion
+                AppUser::deleteUser($_GET['account']);
+                $this->logout();
+
+            }
 
 public function logout() {
 				// erase the session
@@ -283,6 +293,8 @@ public function logout() {
 		else{
 			$edit = FALSE;
 		}
+        $adm = !(AppUser::loadByUsername($_SESSION['username'])->get('rank'));
+
 		include_once SYSTEM_PATH.'/view/Profile.tpl';
     }
     
