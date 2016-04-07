@@ -73,6 +73,21 @@ class SiteController {
     public function home() {
         if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
             $users = AppUser::getAllUsers();
+            $followingIDs = AppFollower::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
+            $activities = null;
+            if ($followingIDs != null) {
+                foreach ($followingIDs as $followingID) {
+                    $activities1 = AppActivities::loadByUserkey($followingID->get('followingID'));
+                    if ($activities1 != null) {
+                        foreach ($activities1 as $activity) {
+                            $activities[] = $activity->get('content');
+                        }
+                    }
+                }
+            }
+            if ($activities == null) {
+                $activities[] = "No news";
+            }
             include_once SYSTEM_PATH.'/view/Home.tpl';
         }
         else{
