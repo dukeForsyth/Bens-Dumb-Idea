@@ -8,7 +8,7 @@
 
     <body>
         
-        <h1 id="header">  PC Helper </h1>
+        <h1 id="header">  <br> PC Helper </h1>
         
         <p id="welcome">  Who We Are?  </p>
     

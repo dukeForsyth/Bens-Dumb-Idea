@@ -61,6 +61,10 @@ class SiteController {
             case 'profile':
             $this->viewUser();
             break;
+                
+            case 'viewBuild':
+            $this->viewBuild();
+            break;
         }
 
     }
@@ -256,5 +260,12 @@ public function logout() {
 			$edit = FALSE;
 		}
 		include_once SYSTEM_PATH.'/view/Profile.tpl';
+    }
+    
+    public function viewBuild(){
+        $names = AppBuilds::loadNameByID($_GET['viewedBuildID']); 
+        //Load the names into the newly created object, by using the id
+        $price = AppBuilds::loadTotalPrice($_GET['viewedBuildID']);
+        include_once SYSTEM_PATH.'/view/ViewBuild.tpl';
     }
 }
