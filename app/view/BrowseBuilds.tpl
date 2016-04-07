@@ -19,7 +19,6 @@
     <li> Submit Benchmarks</li>
 </ul>
 </div>
-    
 <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/build">
     <select name = "buildID">
     
@@ -33,9 +32,10 @@
     </select>
     <input type="submit" value="Select Build">
 </form>
-<form action="<?= BASE_URL ?>/changeBuild/create">
+<form id="newBuild" action="<?= BASE_URL ?>/changeBuild/create">
     <input type="submit" value="Create New Build">
 </form>
+
 <p id="headingBuilds">
     <?php
         echo "CPU: "  . $names->cpu_id. " <br>";  
@@ -52,7 +52,7 @@
 
 <p id="userInfo">      
     
-Welcome <? echo $_SESSION['username'] ?>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>
+Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><? echo $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>  
 </p>
 
     </body>

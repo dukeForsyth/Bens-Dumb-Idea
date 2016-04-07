@@ -184,11 +184,16 @@ public function logout() {
     }
 
     public function changeBuild(){
-        $_SESSION['buildID'] = $_POST['buildID'];
-        if($_GET['site'] == "build"){
+        if($_GET['site'] == "create"){
+            $this->createBuild();
+            header('Location: ../BrowseParts');
+        }
+        elseif($_GET['site'] == "build"){
+            $_SESSION['buildID'] = $_POST['buildID'];
             $this->browseBuild();
         }
         else{
+            $_SESSION['buildID'] = $_POST['buildID'];
             header('Location: ../BrowseParts');
         }
     }

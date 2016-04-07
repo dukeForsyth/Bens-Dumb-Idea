@@ -36,8 +36,9 @@
 
 
 <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/part">
+    Current Build: <?= $_SESSION['buildID'] ?><br>
     <select name = "buildID">
-    
+        
         <?php
         foreach($builds as $build){
             $buildID = $build->get('unique_id');
@@ -78,7 +79,7 @@
     
     <p id="userInfo">    
     
-Welcome <? echo $_SESSION['username'] ?>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>
+Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><? echo $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>  
 </p>
     </div>
 </body>      

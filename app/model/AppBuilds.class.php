@@ -129,9 +129,12 @@ class AppBuilds extends DbObject {
                 $param = $param . $value . ",";
             }
         }
-        $param = substr($param,0,-1);
-        $prices = getAmazonPrice($param);
         $totalPrice = 0;
+        $param = substr($param,0,-1);
+        if ($param == ""){
+            return $totalPrice;
+        }
+        $prices = getAmazonPrice($param);
         foreach($prices as $price){
             $totalPrice = $totalPrice + $price;
         }

@@ -97,7 +97,7 @@ ul#sideMenu li {
 #browseParts
 {
     position: fixed;
-    top: 38%;
+    top: 36%;
     left: 20%;
     width: 50%;
     height: 55%;
@@ -220,10 +220,18 @@ ul#browseBuilds li
     z-index: 10000;
 }
 
+#newBuild
+{
+    position:fixed;
+    top: 20%;
+    left: 40%;
+    z-index: 10000;
+}
+
 #partDropDown
 {
     position: fixed;
-    top:25%;
+    top:27%;
     left: 20%;
 }
 
