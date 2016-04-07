@@ -33,7 +33,9 @@
     </select>
     <input type="submit" value="Select Build">
 </form>
-
+<form action="<?= BASE_URL ?>/changeBuild/create">
+    <input type="submit" value="Create New Build">
+</form>
 <p id="headingBuilds">
     <?php
         echo "CPU: "  . $names->cpu_id. " <br>";  
