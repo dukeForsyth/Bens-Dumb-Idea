@@ -164,8 +164,7 @@ class SiteController {
 public function delete(){
                 //Go through with the deletion
                 AppUser::deleteUser($_GET['account']);
-                $this->logout();
-
+                echo '<script type="text/javascript">alert("'. $_GET['account'] .' has been executed");</script>';
             }
 
 public function logout() {
