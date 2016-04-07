@@ -57,7 +57,7 @@ class SiteController {
             case 'edit':
             $this->edit();
             break;
-                
+
             case 'profile':
             $this->viewUser();
             break;
@@ -80,31 +80,31 @@ class SiteController {
     }
 
 
-public function login() {
-   $username = $_POST['username'];
-   $passwd = $_POST['password'];
-   $us = AppUser::loadByUsername($username);
-   if($us == null) {
+    public function login() {
+     $username = $_POST['username'];
+     $passwd = $_POST['password'];
+     $us = AppUser::loadByUsername($username);
+     if($us == null) {
                         // username not found
-       $_SESSION['error'] = "Incorrect username.";
-   } elseif ($us->get('password') != $passwd) {
+         $_SESSION['error'] = "Incorrect username.";
+     } elseif ($us->get('password') != $passwd) {
                         // passwords don't match
-       $_SESSION['error'] = "Incorrect password.";
-   } else {
+         $_SESSION['error'] = "Incorrect password.";
+     } else {
                         // password matches!
                         // log me in
-       $_SESSION['username'] = $username;
+         $_SESSION['username'] = $username;
                     //Get build and set it to latest
-       $currentUser = AppUser::loadByUsername($_SESSION['username']);
-       $builds = AppBuilds::loadByUserKey($currentUser->get('unique_id'));
-       $_SESSION['buildID'] = $builds[0]->get('unique_id');
-       $this->home();
+         $currentUser = AppUser::loadByUsername($_SESSION['username']);
+         $builds = AppBuilds::loadByUserKey($currentUser->get('unique_id'));
+         $_SESSION['buildID'] = $builds[0]->get('unique_id');
+         $this->home();
                         //$_SESSION['error'] = "You are logged in as ".$username.".";
-   }
+     }
 				// redirect to home page
-}
+ }
 
-public function edit(){
+ public function edit(){
             //Get the current user
     $curr = AppUser::loadByUsername($_SESSION['username']);
             //Get the respective value that wants to be edited, change it, then save it.
@@ -164,21 +164,28 @@ public function logout() {
 
     public function create(){
         $user = AppUser::loadByUsername($_POST['username']);
-        if($_POST['password'] == $_POST['confirmPW'] && $user == null){
+        if($user == null){
+            if($_POST['password'] == $_POST['confirmPW']){
+                $currValues = array(
+                    'username' => $_POST['username'], 
+                    'password'=> $_POST['password'],
+                    'firstName' => $_POST['fName'],
+                    'lastName' => $_POST['lName'],
+                    );
+                $curr = new AppUser($currValues);
+                $curr->save();
+                $_SESSION['username'] = $_POST['username'];
+                $this->createBuild();
+                $this->browseParts();
+            }
+            else{
+            echo '<script type="text/javascript">alert("The passwords don\'t match");</script>';
 
-            $currValues = array(
-                'username' => $_POST['username'], 
-                'password'=> $_POST['password'],
-                'firstName' => $_POST['fName'],
-                'lastName' => $_POST['lName'],
-                );
-            $curr = new AppUser($currValues);
-            $curr->save();
-            $_SESSION['username'] = $_POST['username'];
-            $this->createBuild();
-            $this->browseParts();
+            $this->home();
+            }
         }
         else{
+
             echo '<script type="text/javascript">alert("Account already Exists");</script>';
 
             $this->home();
