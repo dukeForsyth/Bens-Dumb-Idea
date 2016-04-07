@@ -50,7 +50,7 @@ class AppUser extends DbObject {
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
             'rank' => $this->rank,
-            'gender' => $this->gender
+            'gender' => $this->gender,
             'emailAddress' => $this->emailAddress
 			);
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);

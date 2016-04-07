@@ -45,14 +45,6 @@
             echo 'Build Id: '.$names->unique_id.' <br>'; 
           ?>
     </p>
-    <form id="like" method="POST" action="">
-        <input type="submit" value="Like Build " style="background-color:orange; border-radius: 12px; height: 40px; ">
-    </form>
-    
-    <form id="comment" method="POST" action="">
-        <input type="text" name="comment" style="width: 300px; height: 150px;"> <br> <br>
-        <input type="submit" value="Comment Build">
-    </form>
 
     <div id="userInfo">
         <br>
