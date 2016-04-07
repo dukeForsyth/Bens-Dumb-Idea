@@ -8,7 +8,7 @@
 
     <body>
         
-        <h1 id="header">  PC Helper </h1>
+        <h1 id="header">  <br> PC Helper </h1>
         
         <p id="welcome">  Who We Are?  </p>
     
@@ -31,8 +31,13 @@
     
     <br> <br>
     
+    Username <br>
+    <input type="text" name="username" placeholder="Username" >
+    
+    <br> <br>
+    
     Email Address <br>
-    <input type="text" name="username" placeholder="Email Address" >
+    <input type="text" name="emailAddress" placeholder="Email Address" >
     
     <br> <br>
     
@@ -54,8 +59,8 @@
 <form id="retUser" method="POST" action="<?= BASE_URL ?>/login">
      Already A User? Sign In! <br> <br> <br>
     
-    Email Address <br>
-    <input type="text" name="username" placeholder="Email Address" >
+    Username <br>
+    <input type="text" name="username" placeholder="Username" >
     
     <br> <br> <br>
     

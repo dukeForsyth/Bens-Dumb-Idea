@@ -30,8 +30,8 @@ class AppParts extends DbObject {
         // omit id and any timestamps
         $db_properties = array(
             'unique_id' => $this->unique_id,
-			'part_type' => $this->username,
-            'name' => $this->pw
+			'part_type' => $this->part_type,
+            'name' => $this->name
 			);
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }

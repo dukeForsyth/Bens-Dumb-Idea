@@ -32,7 +32,6 @@
     <form action = "<?= BASE_URL ?>/BrowseBuilds">
         <button id="resumeBuild" type="submit"> Resume A Build </button>
     </form>
-    wwwwww
     <div id="userList">
         <?php
         foreach($users as $user) {
@@ -49,9 +48,6 @@
         <input type="submit" value="Search">
     </form>
 </div>
-
-
-
 
 
 </body>    

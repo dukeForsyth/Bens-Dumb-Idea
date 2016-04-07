@@ -61,6 +61,10 @@ class SiteController {
             case 'profile':
             $this->viewUser();
             break;
+                
+            case 'viewBuild':
+            $this->viewBuild();
+            break;
         }
 
     }
@@ -257,13 +261,22 @@ public function logout() {
     }
     
     public function viewUser(){
-      $user = AppUser::loadByUsername($_GET['viewedUser']);
-      if($_SESSION['username'] == $_GET['viewedUser']){
-         $edit = TRUE;
-     }
-     else{
-         $edit = FALSE;
-     }
-     include_once SYSTEM_PATH.'/view/Profile.tpl';
- }
+		$user = AppUser::loadByUsername($_GET['viewedUser']);
+		if($_SESSION['username'] == $_GET['viewedUser']){
+			$edit = TRUE;
+		}
+		else{
+			$edit = FALSE;
+		}
+		include_once SYSTEM_PATH.'/view/Profile.tpl';
+    }
+    
+    public function viewBuild(){
+        $creatorKey = AppBuilds::loadByID($_GET['viewedBuildID'])->get('userkey');
+        $creatorName = AppUser::loadByID($creatorKey)->get('username');
+        $names = AppBuilds::loadNameByID($_GET['viewedBuildID']); 
+        //Load the names into the newly created object, by using the id
+        $price = AppBuilds::loadTotalPrice($_GET['viewedBuildID']);
+        include_once SYSTEM_PATH.'/view/ViewBuild.tpl';
+    }
 }
