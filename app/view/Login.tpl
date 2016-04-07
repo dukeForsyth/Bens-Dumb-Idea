@@ -21,6 +21,16 @@
 <form id="newUser" method="POST" action="<?= BASE_URL ?>/create">
     New User? Create an account! <br> <br>
     
+    First Name <br>
+    <input type="text" name="fName" placeholder="First Name" >
+    
+    <br> <br>
+    
+    First Name <br>
+    <input type="text" name="lName" placeholder="Last Name" >
+    
+    <br> <br>
+    
     Email Address <br>
     <input type="text" name="username" placeholder="Email Address" >
     

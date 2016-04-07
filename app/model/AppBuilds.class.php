@@ -103,7 +103,7 @@ class AppBuilds extends DbObject {
             else if($key == "unique_id"){
                 $names->$key = $value;
             }
-            else if($key == "price" || $key == "modified"){
+            else if($key == "modified"){
                 //do nothing
             }
             else{
@@ -122,7 +122,7 @@ class AppBuilds extends DbObject {
             }
             else if($key == "unique_id"){
             }
-            else if($key == "price" || $key == "modified"){
+            else if($key == "modified"){
                 //do nothing
             }
             else{
