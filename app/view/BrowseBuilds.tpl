@@ -8,15 +8,7 @@
 </head>
 
 <body>
-<h1 id="header"><br>PC Helper</h1>  
-<div style="float:left">
-<ul id="sideMenu">
-    <li> <a href="<?= BASE_URL ?>/Home">Home</a></li>
-    <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
-    <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
-    <li> Submit Benchmarks</li>
-</ul>
-</div>
+<?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
 <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/build">
     <select name = "buildID">
     
@@ -46,14 +38,9 @@
           ?>
     </p>
 
-    <div id="userInfo">
-        <br>
-        Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><?= $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a><br>
-        <form id="searchUser" method="POST" action="">
-            <input type="text" name="userNameSearch" placeholder="Search Username">
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    
+    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+    <form>
+        <input type="submit" value="Publish Build">
+    </form>
     </body>
 </html>

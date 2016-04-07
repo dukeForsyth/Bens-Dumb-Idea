@@ -11,17 +11,7 @@
 
 
 <body>
-
-    <h1 id="header">   <br> PC Helper  </h1>    
-    
-
-    <ul id="sideMenu">
-        <li> <a href="<?= BASE_URL ?>/">Home</a></li>
-        <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
-        <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
-        <li> Submit Benchmarks</li>
-    </ul>
-
+    <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
     <?php    
     if($edit == true){
     ?> 
@@ -75,15 +65,6 @@
     <?php
     }
     ?>
-    
-    <div id="userInfo">
-        Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><?= $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a><br>
-        <form id="searchUser" method="POST" action="">
-            <input type="text" name="userNameSearch" placeholder="Search Username">
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    
-    
+    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>    
 </body>    
 </html>
