@@ -270,6 +270,8 @@ public function logout() {
     }
     
     public function viewBuild(){
+        $creatorKey = AppBuilds::loadByID($_GET['viewedBuildID'])->get('userkey');
+        $creatorName = AppUser::loadByID($creatorKey)->get('username');
         $names = AppBuilds::loadNameByID($_GET['viewedBuildID']); 
         //Load the names into the newly created object, by using the id
         $price = AppBuilds::loadTotalPrice($_GET['viewedBuildID']);
