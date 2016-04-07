@@ -65,7 +65,7 @@ if($edit == true){
 <! TODO add varialbe for user in the controller>
 <p id="userInfo"> 
     
-Welcome <? echo $_SESSION['username'] ?>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>    
+ <a href="<?= BASE_URL ?>/logout"> Log Out</a>    
 </p>
 
     

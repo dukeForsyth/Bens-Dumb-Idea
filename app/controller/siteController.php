@@ -75,13 +75,6 @@ class SiteController {
         }
     }
 
-    public function user() {
-
-       if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
-        $user = AppUser::loadByUsername($_SESSION['username']);
-    }
-    include_once SYSTEM_PATH.'/view/User.tpl';
-}
 
 public function login() {
    $username = $_POST['username'];
@@ -168,8 +161,11 @@ public function logout() {
     public function create(){
         $user = AppUser::loadByUsername($_POST['username']);
         if($_POST['password'] == $_POST['confirmPW'] && $user == null){
-            $currValues = array('username' => $_POST['username'], 
-                'password'=> $_POST['password']
+            $currValues = array(
+                'username' => $_POST['username'], 
+                'password'=> $_POST['password'],
+                'firstName' => $_POST['fName'],
+                'lastName' => $_POST['lName'],
                 );
             $curr = new AppUser($currValues);
             $curr->save();

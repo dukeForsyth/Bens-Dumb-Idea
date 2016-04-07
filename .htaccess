@@ -22,4 +22,5 @@ RewriteRule ^Home/?$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 
 RewriteRule ^edit/(\w+)/?$ app/controller/siteController.php?action=edit&editID=$1 [QSA,L]
+
 RewriteRule ^GoToUser/(\w+)?$ app/controller/siteController.php?action=profile&viewedUser=$1 [QSA,L]
