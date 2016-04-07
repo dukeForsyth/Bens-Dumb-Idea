@@ -22,7 +22,7 @@ class AppUser extends DbObject {
             'password' => '',
             'firstName' => '',
             'lastName' => '',
-            'gender' => '',
+            'gender' => 'Not Specified',
             'rank' => 1,
             'emailAddress' => ''
             );
