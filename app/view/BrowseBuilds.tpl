@@ -49,10 +49,25 @@
 
 
   </p>
-
-<p id="userInfo">      
     
-Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><? echo $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>  
+<form id="like" method="POST" action="">
+    
+    <input type="submit" value="Like Build " style="background-color:orange; border-radius: 12px; height: 40px; ">
+    
+</form>
+    
+<form id="comment" method="POST" action="">
+    
+    
+    <input type="text" name="comment" style="width: 300px; height: 150px;"> <br> <br>
+    <input type="submit" value="Comment Build">
+    
+    </form>
+
+<p id="userInfo"> 
+    
+Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><?= $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>    
+    
 </p>
 
     </body>
