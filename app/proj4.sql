@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 07, 2016 at 09:43 PM
+-- Generation Time: Apr 08, 2016 at 01:04 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -28,10 +28,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activities` (
   `userID` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `dateMade` datetime NOT NULL,
   `content` varchar(200) NOT NULL,
   `postID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`userID`, `dateMade`, `content`, `postID`) VALUES
+(3, '2016-04-07 07:00:00', 'WALAWALA', 1);
 
 -- --------------------------------------------------------
 
@@ -54,7 +61,10 @@ CREATE TABLE `builds` (
 --
 
 INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
-(1, 1, '', '', '', '', '');
+(1, 1, '', '', '', '', ''),
+(2, 1, '', '', '', '', ''),
+(3, 2, '', '', '', '', ''),
+(4, 3, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -64,8 +74,16 @@ INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherb
 
 CREATE TABLE `follower` (
   `userID` int(11) NOT NULL,
-  `followingID` int(11) NOT NULL
+  `followingID` int(11) NOT NULL,
+  `unique_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `follower`
+--
+
+INSERT INTO `follower` (`userID`, `followingID`, `unique_id`) VALUES
+(1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -109,15 +127,17 @@ CREATE TABLE `users` (
   `firstName` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL,
   `gender` varchar(25) NOT NULL,
-  `rank` int(11) NOT NULL
+  `rank` int(11) NOT NULL,
+  `emailAddress` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName`, `gender`, `rank`) VALUES
-(1, 'admin', 'adminpw', 'Benny', 'Boy', 'Male', 0);
+INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName`, `gender`, `rank`, `emailAddress`) VALUES
+(1, 'admin', 'adminpw', 'Benny', 'Boy', 'Male', 0, 'fakeEmail@fake.com'),
+(3, 'c', 'e', 'a', 'b', '', 1, 'd');
 
 --
 -- Indexes for dumped tables
@@ -136,6 +156,12 @@ ALTER TABLE `builds`
   ADD PRIMARY KEY (`unique_id`);
 
 --
+-- Indexes for table `follower`
+--
+ALTER TABLE `follower`
+  ADD PRIMARY KEY (`unique_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -149,17 +175,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `follower`
+--
+ALTER TABLE `follower`
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
