@@ -80,7 +80,7 @@ class AppUser extends DbObject {
     }
     //Retrive all users
     public static function getAllUsers() {
-         $query = sprintf(" SELECT id FROM %s ",
+         $query = sprintf(" SELECT unique_id FROM %s ",
             self::DB_TABLE
             );
         $db = Db::instance();
@@ -90,7 +90,7 @@ class AppUser extends DbObject {
         else {
             $objects = array();
             while($row = mysqli_fetch_assoc($result)) {
-                $objects[] = self::loadById($row['id']);
+                $objects[] = self::loadById($row['unique_id']);
             }
             return ($objects);
         }

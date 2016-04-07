@@ -68,6 +68,7 @@ class SiteController {
 
     public function home() {
         if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+            $users = AppUser::getAllUsers();
             include_once SYSTEM_PATH.'/view/Home.tpl';
         }
         else{
@@ -105,11 +106,11 @@ class SiteController {
     $curr = AppUser::loadByUsername($_SESSION['username']);
             //Get the respective value that wants to be edited, change it, then save it.
     switch ($_GET['editID']) {
-        #case 'user':
-        #$curr->set('username', $_POST['uname']);
-        #$curr->save();
-        #echo $curr->get('username') . " has been saved";
-        #break;
+        case 'email':
+        $curr->set('username', $_POST['email']);
+        $curr->save();
+        echo $curr->get('username') . " has been saved";
+        break;
         case 'pass':
         $curr->set('password', $_POST['pw']);
         $curr->save();
@@ -167,8 +168,9 @@ public function logout() {
                     'password'=> $_POST['password'],
                     'firstName' => $_POST['fName'],
                     'lastName' => $_POST['lName'],
+                    'emailAddress'=> $_POST['emailAddress']
                     );
-                $curr = new AppUser($currValues);
+                $curr = new AppUser($currValues); 
                 $curr->save();
                 $_SESSION['username'] = $_POST['username'];
                 $this->createBuild();
