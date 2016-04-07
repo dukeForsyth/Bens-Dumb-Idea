@@ -1,0 +1,9 @@
+Title: Test our website
+Description: Use our website to create an account. 
+			 Create a build with the parts provided.
+			 Find user(dude man) and follow him.
+			 Report what was the users last activity in comments.
+			 
+			 
+Keywords:Testing,web navigation, account creation,awesomeness
+
