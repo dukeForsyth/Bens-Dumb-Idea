@@ -112,11 +112,11 @@ public function edit(){
     $curr = AppUser::loadByUsername($_SESSION['username']);
             //Get the respective value that wants to be edited, change it, then save it.
     switch ($_GET['editID']) {
-        case 'user':
-        $curr->set('username', $_POST['uname']);
-        $curr->save();
-        echo $curr->get('username') . " has been saved";
-        break;
+        #case 'user':
+        #$curr->set('username', $_POST['uname']);
+        #$curr->save();
+        #echo $curr->get('username') . " has been saved";
+        #break;
         case 'pass':
         $curr->set('password', $_POST['pw']);
         $curr->save();
@@ -245,6 +245,13 @@ public function logout() {
     }
     
     public function viewUser(){
-        
+		$user = AppUser::loadByUsername($_GET['viewedUser']);
+		if($_SESSION['username'] == $_GET['viewedUser']){
+			$edit = TRUE;
+		}
+		else{
+			$edit = FALSE;
+		}
+		include_once SYSTEM_PATH.'/view/Profile.tpl';
     }
 }

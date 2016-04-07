@@ -22,13 +22,13 @@
     <li> Submit Benchmarks</li>
 </ul>
      
+<?php    
+if($edit){
+?> 
 
 <div id="profile"> 
             <h4>Your User Name</h4>
-            <form method="POST" action="<?= BASE_URL ?>/edit/user">
-                <input type="text" value="<?= $user->get('username') ?>" name="uname"> <br>
-                <input type="submit" value="Save">
-            </form>
+            <?= $user->get('username') ?>
             <h4>Password</h4>
             <form method="POST" action="<?= BASE_URL ?>/edit/pass">
                 <input type="text" value="<?= $user->get('password') ?>" name="pw"> <br>
@@ -57,7 +57,9 @@
                 <input type="submit" value="Delete Account">
             </form> -->
         </div>    
-
+<?php 
+}
+?>
 
     
 <! TODO add varialbe for user in the controller>
