@@ -67,7 +67,7 @@ class SiteController {
             break;
                 
             case 'viewBuild':
-            $this->viewBuild();
+            $this->viewBuild($_GET['viewedBuildID']);
             break;
                 
             case 'browseUsers':
@@ -76,6 +76,18 @@ class SiteController {
                 
             case 'publishBuild':
             $this->publishBuild();
+            break;
+
+            case 'like':
+            $this->like();
+            break;
+
+            case 'dislike':
+            $this->dislike();
+            break;
+
+            case 'comment':
+            $this->comment();
             break;
         }
     }
@@ -308,13 +320,16 @@ public function logout() {
     
     public function viewUser($userd){
         $user = AppUser::loadByUsername($userd);
+        //Check if the user looking at the profile are themselves
 		if($_SESSION['username'] == $userd){
 			$edit = TRUE;
 		}
 		else{
 			$edit = FALSE;
 		}
+		//Checks for admin status
         $adm = !(AppUser::loadByUsername($_SESSION['username'])->get('rank'));
+
         $currentUser = AppUser::loadByUsername($_SESSION['username']);
         $following = AppFollower::loadOneFollower($currentUser->get('unique_id'),$user->get('unique_id'));
         $isFollowing = $following != null;
@@ -322,12 +337,17 @@ public function logout() {
 		include_once SYSTEM_PATH.'/view/Profile.tpl';
     }
     
-    public function viewBuild(){
-        $creatorKey = AppBuilds::loadByID($_GET['viewedBuildID'])->get('userkey');
+    public function viewBuild($buildID ){
+
+        $creatorKey = AppBuilds::loadByID($buildID)->get('userkey');
         $creatorName = AppUser::loadByID($creatorKey)->get('username');
-        $names = AppBuilds::loadNameByID($_GET['viewedBuildID']); 
+        $names = AppBuilds::loadNameByID($buildID); 
         //Load the names into the newly created object, by using the id
-        $price = AppBuilds::loadTotalPrice($_GET['viewedBuildID']);
+        $price = AppBuilds::loadTotalPrice($buildID);
+
+        //Checked if this build has been liked by this user
+       	$currUserId = AppUser::loadByUsername($_SESSION['username'])->getId();
+        $liked = AppActivities::checkLiked($currUserId,$buildID);
         include_once SYSTEM_PATH.'/view/ViewBuild.tpl';
     }
     
@@ -336,7 +356,34 @@ public function logout() {
         include_once SYSTEM_PATH.'/view/BrowseUsers.tpl';
     }
 
+    public function like(){
+    	//Get creator name and key
+		$creatorKey = AppBuilds::loadByID($_GET['buildID'])->get('userkey');
+        $creatorName = AppUser::loadByID($creatorKey)->get('username');
 
+    	$activityLog = array(
+        	'userID' =>  AppUser::loadByUsername($_SESSION['username'])->getId(),
+        	'content' => $_SESSION['username'] . ' has liked ' . $creatorName . '\'s build ' . $_GET['buildID'],
+        	'type' => "liked",
+        	'buildID' => $_GET['buildID'],
+        	'recieverID' => $creatorKey
+        	);
+    	//Get the new activities
+        $curr = new AppActivities($activityLog);
+        $curr->save();
+        $this->viewBuild($_GET['buildID']);
+    }
+
+    public function dislike(){
+    	$currID = AppUser::loadByUsername($_SESSION['username'])->getId();
+    	AppActivities::deleteBuild($currID,$_GET['buildID']);
+    	$this->viewBuild($_GET['buildID']);
+
+    }
+
+    public function comment(){
+
+    }
     
     public function publishBuild(){
         $currentUser = AppUser::loadByUsername($_SESSION['username']);

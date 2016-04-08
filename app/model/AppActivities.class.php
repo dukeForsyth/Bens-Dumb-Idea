@@ -77,12 +77,40 @@ class AppActivities extends DbObject {
         }
     }
 
+    public static function checkLiked($userID, $buildID) {
+        if($userID === null)
+            return null;
+
+        $query = sprintf(" SELECT unique_id FROM %s WHERE userID = '%s' AND buildID = '%s' AND type ='liked'",
+            self::DB_TABLE,
+            $userID,
+            $buildID
+            );
+        $db = Db::instance();
+        $result = $db->lookup($query);
+        return mysqli_num_rows($result);
+        
+    }
+
      public static function deleteUser($userID=null) {
         if($userID === null)
             return null;
 
 
         $query = "DELETE FROM activities WHERE userID ='$userID' ";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
+    }
+
+    public static function deleteBuild($userID,$buildID=null) {
+        if($userID === null)
+            return null;
+
+
+        $query = "DELETE FROM activities WHERE buildID ='$buildID' AND userID ='$userID' AND type = 'liked'";
         $db = Db::instance();
 
         

@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 08, 2016 at 04:28 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 08, 2016 at 11:32 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activities` (
   `userID` int(11) NOT NULL,
-  `dateMade` datetime NOT NULL,
+  `dateMade` varchar(25) NOT NULL,
   `content` varchar(200) NOT NULL,
-  `postID` int(11) NOT NULL,
-  `revieverID` int(11) NOT NULL,
+  `unique_id` int(11) NOT NULL,
+  `recieverID` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
   `buildID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,8 +40,20 @@ CREATE TABLE `activities` (
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`userID`, `dateMade`, `content`, `postID`, `revieverID`, `type`, `buildID`) VALUES
-(3, '2016-04-07 07:00:00', 'WALAWALA', 1, 0, '', 0);
+INSERT INTO `activities` (`userID`, `dateMade`, `content`, `unique_id`, `recieverID`, `type`, `buildID`) VALUES
+(3, '0000-00-00 00:00:00', 'c has added part Gigabyte AM3+ AMD DDR3 to build 4', 4, 0, 'edited', 4),
+(3, '0000-00-00 00:00:00', 'c has added part Kingston HyperX FURY 16GB to build 4', 5, 0, 'edited', 4),
+(3, '09:41:am 2016-04-08 ', 'c has added part Seagate Backup Plus Slim  to build 4', 6, 0, 'edited', 4),
+(3, '09:42:am 2016-04-08 ', 'c has added part Seagate Backup Plus Slim  to build 4', 7, 0, 'edited', 4),
+(3, '09:42:am 2016-04-08 ', 'c has added part Crucial Ballistix Sport to build 4', 8, 0, 'edited', 4),
+(1, '11:26:am 2016-04-08 ', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 11, 0, 'edited', 1),
+(1, '11:26:am 2016-04-08 ', 'admin has added part AMD FD8320FRHKBOX FX-8320 to build 1', 12, 0, 'edited', 1),
+(1, '11:27:am 2016-04-08 ', 'admin has added part Gigabyte AM3+ AMD DDR3 to build 1', 13, 0, 'edited', 1),
+(1, '11:27:am 2016-04-08 ', 'admin has added part Crucial Ballistix Sport to build 1', 14, 0, 'edited', 1),
+(1, '11:27:am 2016-04-08 ', 'admin has added part Seagate Backup Plus Slim  to build 1', 15, 0, 'edited', 1),
+(1, '11:27:am 2016-04-08 ', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 16, 0, 'edited', 1),
+(1, '11:27:am 2016-04-08 ', '', 17, 0, 'publish', 1),
+(3, '11:31:am 2016-04-08 ', 'c has liked admin''s build 1', 20, 1, 'liked', 1);
 
 -- --------------------------------------------------------
 
@@ -64,9 +76,10 @@ CREATE TABLE `builds` (
 --
 
 INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
-(1, 1, '', '', '', '', ''),
+(1, 1, 'B009O7YORK', '', 'B009FC3YJ8', 'B006WAGGUK', 'B00H4XH5GI'),
 (2, 1, '', '', '', '', ''),
-(4, 3, '', '', '', '', '');
+(4, 3, '', '', 'B009FC3YJ8', 'B006WAGGUK', 'B00H4XH5GI'),
+(5, 1, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -85,7 +98,8 @@ CREATE TABLE `follower` (
 --
 
 INSERT INTO `follower` (`userID`, `followingID`, `unique_id`) VALUES
-(1, 3, 1);
+(1, 3, 1),
+(3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -149,7 +163,7 @@ INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName
 -- Indexes for table `activities`
 --
 ALTER TABLE `activities`
-  ADD PRIMARY KEY (`postID`);
+  ADD PRIMARY KEY (`unique_id`);
 
 --
 -- Indexes for table `builds`
@@ -177,12 +191,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `follower`
 --
