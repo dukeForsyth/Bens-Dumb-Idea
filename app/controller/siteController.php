@@ -167,7 +167,11 @@ class SiteController {
 
 public function delete(){
                 //Go through with the deletion
+                $currID = AppUser::loadByUsername($_GET['account'])->get('id');
+                //Delete from account, follower, activities
                 AppUser::deleteUser($_GET['account']);
+                AppFollower::deleteUser($curr);
+                AppActivities::deleteUser($curr);               
                 echo '<script type="text/javascript">alert("'. $_GET['account'] .' has been executed");</script>';
             }
 
