@@ -97,6 +97,10 @@ class SiteController {
 			case 'unfollow':
 			$this->unfollow();
 			break;
+                
+            case 'viewComment':
+            $this->viewComment();
+            break;
 		}
 	}
 
@@ -473,5 +477,10 @@ class SiteController {
     	$followedUserID = AppUser::loadByUsername($_GET['followedUser'])->get('unique_id');
     	AppFollower::deleteFollowPair($currentUser->get('unique_id'),$followedUserID);
     	$this->viewUser($_GET['followedUser']);
+    }
+    
+    public function viewComment(){
+        $content = AppActivities::loadByID($_GET['viewedCommentID'])->get('content');
+        include_once SYSTEM_PATH.'/view/ViewComment.tpl';
     }
 }

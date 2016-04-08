@@ -12,7 +12,9 @@
 
 <body>
     <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
-    <div id="userList">
+    
+    <div id="userList" style="padding-left:5%">
+        All Users:<br>
         <?php
         foreach($users as $user) {
         echo '<a href="' . BASE_URL .  '/GoToUser/' . $user->get('username') . '">' . $user->get('username') .'</a> <br>';

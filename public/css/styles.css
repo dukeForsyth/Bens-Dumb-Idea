@@ -32,7 +32,6 @@ body
     left: 120px;
     width:calc(100% - 120px);
     height: calc(100% - 80px);
-    text-align: center;
     float: left;
     margin: 0;
 }
@@ -42,7 +41,7 @@ div#userlist
     width: 25%;
     height: 100%;
     float:left;
-    text-align: center;
+    text-align: left;
     padding: 0px;
 }
 div#activityFeed
@@ -54,20 +53,13 @@ div#activityFeed
     float: right;
 }
 
-
-div#userInfo
-{
-    text-align: left;
-    padding-left: 3%;
-    padding-top: 2%;
-}
-
 div#welcomeAndButtons
 {
     width: 40%;
     height: 100%;
     margin: 0;
     display: inline-block;
+    text-align: center;
 }
 
 #header
@@ -267,7 +259,7 @@ ul#browseBuilds li
 
 #userInfo
 {
-    width: 97%;
+    width: 27%;
     height: 65px;
     text-align: right;
     padding-right: 3%;
@@ -299,6 +291,7 @@ ul#browseBuilds li
 
 #like
 {
+    position: fixed;
     top: 55%;
     left: 23%;
 }
@@ -310,4 +303,36 @@ ul#browseBuilds li
     left: 23%;
 }
 
+div#profile{
+    width:97%;
+    padding-left: 3%;
+    margin: 0;
+    float: left;
+}
 
+div#removeuser{
+    width:97%;
+    padding-left: 3%;
+    margin: 0;
+    float: left;
+}
+
+div#userActivities{
+    display: inline-block;
+    width: 30%;
+    float: right;
+}
+
+div#unfollowUser{
+    width:97%;
+    padding-left: 3%;
+    margin: 0;
+    float: left;
+}
+
+div#followUser{
+    width:97%;
+    padding-left: 3%;
+    margin: 0;
+    float: left;
+}

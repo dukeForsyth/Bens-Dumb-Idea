@@ -20,7 +20,8 @@
         echo 'Price: $'.$price.' <br>';
         ?>
     </p>
-    <?php 
+    
+<?php 
 
         if($liked){
     ?>
@@ -37,12 +38,10 @@
     <?php
         }
     ?>
-
 <form id="comment" method="POST" action="<?= BASE_URL ?>/commentBuild/<?= $buildID ?>">
     <input type="text" name="comment" value ="" style="width: 300px; height: 150px;"> <br> <br>
     <input type="submit" value="Comment Build">
 </form>
-
 <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
 
 </body>

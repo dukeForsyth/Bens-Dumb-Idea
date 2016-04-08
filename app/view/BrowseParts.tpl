@@ -11,6 +11,7 @@
 <body>
     <div>
 <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
+<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
 <form id="partDropDown" method="POST" action="<?= BASE_URL ?>/changepart">
    <select name = "part">
         <option value="cpu"> CPU </option>
@@ -66,7 +67,7 @@
 </form>
     
     
-<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+
     </div>
 </body>      
 </html>
