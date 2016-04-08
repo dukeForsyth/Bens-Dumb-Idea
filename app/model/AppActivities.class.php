@@ -9,6 +9,9 @@ class AppActivities extends DbObject {
     protected $userID;
     protected $dateMade;
     protected $content;
+    protected $type;
+    protected $recieverID;
+    protected $buildID;
 
     // constructor
     public function __construct($args = array()) {
@@ -16,7 +19,10 @@ class AppActivities extends DbObject {
             'postID' => null,
             'userID' => null,
             'dateMade' => '',
-            'content' => ''
+            'content' => '',
+            'recieverID' => null,
+            'type' => '',
+            'buildID' => null
             );
 
         $args += $defaultArgs;
@@ -25,6 +31,9 @@ class AppActivities extends DbObject {
         $this->userID = $args['userID'];
         $this->dateMade = $args['dateMade'];
         $this->content = $args['content'];
+        $this->buildID = $args['buildID'];
+        $this->recieverID = $args['recieverID'];
+        $this->type = $args['type'];
     }
 
     // save changes to object
@@ -36,6 +45,9 @@ class AppActivities extends DbObject {
 			'userID' => $this->userID,
             'dateMade' => $this->dateMade,
             'content' => $this->content
+            'recieverID' => $this->recieverID,
+            'type' => $this->type,
+            'buildID' => $this->buildID
 			);
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
@@ -63,5 +75,18 @@ class AppActivities extends DbObject {
             }
             return ($objects);
         }
+    }
+
+     public static function deleteUser($userID=null) {
+        if($userID === null)
+            return null;
+
+
+        $query = "DELETE FROM activities WHERE userID ='$userID' ";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
     }
 }

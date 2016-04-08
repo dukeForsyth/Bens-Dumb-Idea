@@ -73,6 +73,10 @@ class SiteController {
             case 'browseUsers':
             $this->browseUsers();
             break;
+                
+            case 'publishBuild':
+            $this->publishBuild();
+            break;
         }
 
     }
@@ -167,7 +171,11 @@ class SiteController {
 
 public function delete(){
                 //Go through with the deletion
+                $currID = AppUser::loadByUsername($_GET['account'])->get('id');
+                //Delete from account, follower, activities
                 AppUser::deleteUser($_GET['account']);
+                AppFollower::deleteUser($curr);
+                AppActivities::deleteUser($curr);               
                 echo '<script type="text/javascript">alert("'. $_GET['account'] .' has been executed");</script>';
             }
 
@@ -284,6 +292,12 @@ public function logout() {
             $build->set('storage_id',$partID);
             break;
         }
+
+        $logId = AppUser::loadByUsername($_SESSION('username'))
+        $logDate = date("h:i:a Y-m-d ");
+        $logContent = 
+
+
         $build->save();
         header('Location: BrowseParts');
     }
@@ -297,7 +311,10 @@ public function logout() {
 			$edit = FALSE;
 		}
         $adm = !(AppUser::loadByUsername($_SESSION['username'])->get('rank'));
-
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $following = AppFollower::loadOneFollower($currentUser->get('unique_id'),$user->get('unique_id'));
+        $isFollowing = $following != null;
+        $activities = AppActivities::loadByUserkey($user->get('unique_id'));
 		include_once SYSTEM_PATH.'/view/Profile.tpl';
     }
     
@@ -313,5 +330,20 @@ public function logout() {
     public function browseUsers(){
         $users = AppUser::getAllUsers();
         include_once SYSTEM_PATH.'/view/BrowseUsers.tpl';
+    }
+
+    public function log($activity, $values){
+
+    }
+    
+    public function publishBuild(){
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $currValues = array(
+            'userID' => $currentUser->get('unique_id'), 
+            'type'=> 'publish',
+            'buildID' => $_SESSION['buildID'],
+            );
+        $curr = new AppActivities($currValues); 
+        $curr->save();
     }
 }

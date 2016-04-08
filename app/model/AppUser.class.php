@@ -100,12 +100,12 @@ class AppUser extends DbObject {
         }
     }
     //Delete the user with a query by unique_id
-    public static function deleteUser($unique_id=null) {
-        if($unique_id === null)
+    public static function deleteUser($username=null) {
+        if($username === null)
             return null;
 
 
-        $query = "DELETE FROM users WHERE unique_id='$unique_id' ";
+        $query = "DELETE FROM users WHERE username ='$username'";
         $db = Db::instance();
 
         
