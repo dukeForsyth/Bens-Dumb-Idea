@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2016 at 01:04 AM
+-- Generation Time: Apr 08, 2016 at 04:28 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -30,15 +30,18 @@ CREATE TABLE `activities` (
   `userID` int(11) NOT NULL,
   `dateMade` datetime NOT NULL,
   `content` varchar(200) NOT NULL,
-  `postID` int(11) NOT NULL
+  `postID` int(11) NOT NULL,
+  `revieverID` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `buildID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`userID`, `dateMade`, `content`, `postID`) VALUES
-(3, '2016-04-07 07:00:00', 'WALAWALA', 1);
+INSERT INTO `activities` (`userID`, `dateMade`, `content`, `postID`, `revieverID`, `type`, `buildID`) VALUES
+(3, '2016-04-07 07:00:00', 'WALAWALA', 1, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -63,7 +66,6 @@ CREATE TABLE `builds` (
 INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
 (1, 1, '', '', '', '', ''),
 (2, 1, '', '', '', '', ''),
-(3, 2, '', '', '', '', ''),
 (4, 3, '', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -185,7 +187,7 @@ ALTER TABLE `builds`
 -- AUTO_INCREMENT for table `follower`
 --
 ALTER TABLE `follower`
-  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
