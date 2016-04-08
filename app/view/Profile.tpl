@@ -98,25 +98,27 @@
                     switch($activity->get('type')) {
                         case 'published':
                         $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
-                        echo $publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
+                        echo '<li>' .$publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> </li>';
                         break;
 
                         case 'edited':
-                        echo $activity->get('content') .'<br>';
+                        echo '<li>' .$activity->get('content') .'</li>';
                         break;
 
                         case 'followed':
-                        echo $activity->get('content') .'<br>';
+                        echo '<li>' .$activity->get('content') .'</li>';
                         break;
 
                         case 'liked':
-                        echo $activity->get('content') .'<br>';
+                        echo '<li>' .$activity->get('content') .'</li>';
                         break;
 
                         case 'commented':
                         $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
                         $reciever = AppUser::loadByID($activity->get('recieverID'))->get('username');
-                        echo $publisher. ' commented on '. $reciever. 's build, check out the comment <a href="' . BASE_URL .  '/ViewComment/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
+                        ?>
+                        <li><?= $publisher ?> commented on <?= $reciever ?> build, check out the comment <a href="<?= BASE_URL ?>/ViewComment/<?=  $activity->getID() ?>">here!</a></li>
+                        <?php
                         break;
                     }
                 }
