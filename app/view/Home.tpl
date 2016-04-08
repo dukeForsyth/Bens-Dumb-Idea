@@ -62,7 +62,8 @@
                 foreach($activities as $activity) {
                     switch($activity->get('type')) {
                         case 'published':
-                        echo '<li>' . $activity->get('content') .'</li>';
+                        $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
+                        echo '<li>' .$publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> </li>';
                         break;
 
                         case 'edited':
@@ -81,7 +82,7 @@
                         $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
                         $reciever = AppUser::loadByID($activity->get('recieverID'))->get('username');
                         ?>
-                        <?= $publisher ?> commented on <?= $reciever ?> build, check out the comment <a href="<?= BASE_URL ?>/ViewComment/<?=  $activity->getID() ?>">here!</a><br>
+                        <li><?= $publisher ?> commented on <?= $reciever ?> build, check out the comment <a href="<?= BASE_URL ?>/ViewComment/<?=  $activity->getID() ?>">here!</a></li>
                         <?php
                         break;
                     }
