@@ -234,7 +234,6 @@ ul#browseParts li
 
 #headingBuilds
 {
-    position: fixed;
     top: 30%;
     left: 23%;
 }
@@ -335,4 +334,9 @@ div#followUser{
     padding-left: 3%;
     margin: 0;
     float: left;
+}
+
+div#buildInfo{
+    width:66%;
+    padding:4%;
 }

@@ -9,8 +9,9 @@
 
 <body>
     <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
-    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
     <div id="div_middle">
+    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+    <div id="buildInfo">
     <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/build">
         <select name = "buildID">
 
@@ -39,6 +40,7 @@
     echo 'Build Id: '.$names->unique_id.' <br>'; 
     ?>
 </p>
+</div>
 <?php
 if(!$published){
 ?>
