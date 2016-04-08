@@ -103,7 +103,7 @@ class AppBuilds extends DbObject {
             else if($key == "unique_id"){
                 $names->$key = $value;
             }
-            else if($key == "price" || $key == "modified"){
+            else if($key == "modified"){
                 //do nothing
             }
             else{
@@ -122,19 +122,35 @@ class AppBuilds extends DbObject {
             }
             else if($key == "unique_id"){
             }
-            else if($key == "price" || $key == "modified"){
+            else if($key == "modified"){
                 //do nothing
             }
             else{
                 $param = $param . $value . ",";
             }
         }
-        $param = substr($param,0,-1);
-        $prices = getAmazonPrice($param);
         $totalPrice = 0;
+        $param = substr($param,0,-1);
+        if ($param == ""){
+            return $totalPrice;
+        }
+        $prices = getAmazonPrice($param);
         foreach($prices as $price){
             $totalPrice = $totalPrice + $price;
         }
         return $totalPrice;
+    }
+
+    public static function deleteUser($id=null) {
+        if($id === null)
+            return null;
+
+
+        $query = "DELETE FROM builds WHERE userkey ='$id'";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
     }
 }

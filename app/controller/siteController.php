@@ -30,6 +30,10 @@ class SiteController {
 			$this->logout();
 			break;
 
+            case 'delete':
+            $this->delete();
+            break;
+
 			case 'create':
 			$this->create();
 			break;
@@ -53,13 +57,45 @@ class SiteController {
             case 'addpart':
             $this->addpart();
             break;
-        }
 
+            case 'edit':
+            $this->edit();
+            break;
+
+            case 'profile':
+            $this->viewUser($_GET['viewedUser']);
+            break;
+                
+            case 'viewBuild':
+            $this->viewBuild();
+            break;
+                
+            case 'browseUsers':
+            $this->browseUsers();
+            break;
+                
+            case 'publishBuild':
+            $this->publishBuild();
+            break;
+        }
     }
 
 
     public function home() {
         if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+            $followingIDs = AppFollower::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
+            $activities = null;
+            if ($followingIDs != null) {
+                foreach ($followingIDs as $followingID) {
+                    $activities1 = AppActivities::loadByUserkey($followingID->get('followingID'));
+                    $followings[] = AppUser::loadByID($followingID->get('followingID'));
+                    if ($activities1 != null) {
+                        foreach ($activities1 as $activity) {
+                            $activities[] = $activity;
+                        }
+                    }
+                }
+            }
             include_once SYSTEM_PATH.'/view/Home.tpl';
         }
         else{
@@ -67,41 +103,82 @@ class SiteController {
         }
     }
 
-    public function user() {
-
-         if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
-            $user = AppUser::loadByUsername($_SESSION['username']);
-         }
-         include_once SYSTEM_PATH.'/view/User.tpl';
-    }
 
     public function login() {
-         $username = $_POST['username'];
-         $passwd = $_POST['password'];
-         $us = AppUser::loadByUsername($username);
-         if($us == null) {
+        $username = $_POST['username'];
+        $passwd = $_POST['password'];
+        $us = AppUser::loadByUsername($username);
+        if($us == null) {
                         // username not found
-             $_SESSION['error'] = "Incorrect username.";
-         } elseif ($us->get('password') != $passwd) {
+         $_SESSION['error'] = "Incorrect username.";
+        } elseif ($us->get('password') != $passwd) {
                         // passwords don't match
-             $_SESSION['error'] = "Incorrect password.";
-         } else {
+         $_SESSION['error'] = "Incorrect password.";
+        } else {
                         // password matches!
                         // log me in
-             $_SESSION['username'] = $username;
+         $_SESSION['username'] = $username;
                     //Get build and set it to latest
-             $currentUser = AppUser::loadByUsername($_SESSION['username']);
-             $builds = AppBuilds::loadByUserKey($currentUser->get('unique_id'));
-             $_SESSION['buildID'] = $builds[0]->get('unique_id');
-             $this->home();
+         $currentUser = AppUser::loadByUsername($_SESSION['username']);
+         $builds = AppBuilds::loadByUserKey($currentUser->get('unique_id'));
+         $_SESSION['buildID'] = $builds[0]->get('unique_id');
+         $this->home();
                         //$_SESSION['error'] = "You are logged in as ".$username.".";
-         }
-				// redirect to home page
+        }
+            // redirect to home page
     }
 
-    public function logout() {
+ public function edit(){
+            //Get the current user
+    $curr = AppUser::loadByUsername($_SESSION['username']);
+            //Get the respective value that wants to be edited, change it, then save it.
+    switch ($_GET['editID']) {
+        case 'email':
+        $curr->set('username', $_POST['email']);
+        $curr->save();
+        echo '<script type="text/javascript">alert("Email change succesful");</script>';
+        break;
+        case 'pass':
+        $curr->set('password', $_POST['pw']);
+        $curr->save();
+        echo '<script type="text/javascript">alert("Password change succesful");</script>';
+        break;
+        case 'gender':
+        $curr->set('gender', $_POST['gender']);
+        $curr->save();
+        echo '<script type="text/javascript">alert("Gender change succesful");</script>';
+        break;
+        case 'first':
+        $curr->set('firstname', $_POST['first']);
+        $curr->save();
+        echo '<script type="text/javascript">alert("First Name change succesful");</script>';
+        break;
+        case 'last':
+        $curr->set('lastname', $_POST['last']);
+        $curr->save();
+        echo '<script type="text/javascript">alert("Last Name change succesful");</script>';
+        break;
+
+        default:
+                    # code...
+        break;
+    }
+    $this->viewUser($_SESSION['username']);
+}
+
+public function delete(){
+                //Go through with the deletion
+                $currID = AppUser::loadByUsername($_GET['account'])->get('id');
+                //Delete from account, follower, activities
+                AppUser::deleteUser($_GET['account']);
+                AppFollower::deleteUser($curr);
+                AppActivities::deleteUser($curr);               
+                echo '<script type="text/javascript">alert("'. $_GET['account'] .' has been executed");</script>';
+            }
+
+public function logout() {
 				// erase the session
-        unset($_SESSION['username']);
+    unset($_SESSION['username']);
         session_destroy(); // for good measure
 
         // redirect to home page
@@ -120,28 +197,47 @@ class SiteController {
     }
 
     public function create(){
-        if($_POST['password'] == $_POST['confirmPW']){
-            $currValues = array('username' => $_POST['username'], 
-                'password'=> $_POST['password']
-                );
-            $curr = new AppUser($currValues);
-            $curr->save();
-            $_SESSION['username'] = $_POST['username'];
-            $this->createBuild();
-            $this->browseParts();
+        $user = AppUser::loadByUsername($_POST['username']);
+        if($user == null){
+            if($_POST['password'] == $_POST['confirmPW']){
+                $currValues = array(
+                    'username' => $_POST['username'], 
+                    'password'=> $_POST['password'],
+                    'firstName' => $_POST['fName'],
+                    'lastName' => $_POST['lName'],
+                    'emailAddress'=> $_POST['emailAddress']
+                    );
+                $curr = new AppUser($currValues); 
+                $curr->save();
+                $_SESSION['username'] = $_POST['username'];
+                $this->createBuild();
+                $this->browseParts();
+            }
+            else{
+            echo '<script type="text/javascript">alert("The passwords don\'t match");</script>';
+
+            $this->home();
+            }
         }
         else{
-            include_once SYSTEM_PATH.'/view/Home.tpl';
-            echo "Your passwords don't match";
+
+            echo '<script type="text/javascript">alert("Account already Exists");</script>';
+
+            $this->home();
         }
     }
 
     public function changeBuild(){
-        $_SESSION['buildID'] = $_POST['buildID'];
-        if($_GET['site'] == "build"){
+        if($_GET['site'] == "create"){
+            $this->createBuild();
+            header('Location: ../BrowseParts');
+        }
+        elseif($_GET['site'] == "build"){
+            $_SESSION['buildID'] = $_POST['buildID'];
             $this->browseBuild();
         }
         else{
+            $_SESSION['buildID'] = $_POST['buildID'];
             header('Location: ../BrowseParts');
         }
     }
@@ -193,7 +289,64 @@ class SiteController {
             $build->set('storage_id',$partID);
             break;
         }
+
+        $activityLog = array(
+        	'userID' =>  AppUser::loadByUsername($_SESSION['username'])->getId(),
+        	'content' => $_SESSION['username'] . ' has added part ' . $part->get('name') . ' to build ' . $_SESSION['buildID'],
+        	'type' => "edited",
+        	'buildID' => $_SESSION['buildID']
+        	);
+
+        $curr = new AppActivities($activityLog);
+        //Save the log
+        $curr->save();
+
+
         $build->save();
         header('Location: BrowseParts');
+    }
+    
+    public function viewUser($userd){
+        $user = AppUser::loadByUsername($userd);
+		if($_SESSION['username'] == $userd){
+			$edit = TRUE;
+		}
+		else{
+			$edit = FALSE;
+		}
+        $adm = !(AppUser::loadByUsername($_SESSION['username'])->get('rank'));
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $following = AppFollower::loadOneFollower($currentUser->get('unique_id'),$user->get('unique_id'));
+        $isFollowing = $following != null;
+        $activities = AppActivities::loadByUserkey($user->get('unique_id'));
+		include_once SYSTEM_PATH.'/view/Profile.tpl';
+    }
+    
+    public function viewBuild(){
+        $creatorKey = AppBuilds::loadByID($_GET['viewedBuildID'])->get('userkey');
+        $creatorName = AppUser::loadByID($creatorKey)->get('username');
+        $names = AppBuilds::loadNameByID($_GET['viewedBuildID']); 
+        //Load the names into the newly created object, by using the id
+        $price = AppBuilds::loadTotalPrice($_GET['viewedBuildID']);
+        include_once SYSTEM_PATH.'/view/ViewBuild.tpl';
+    }
+    
+    public function browseUsers(){
+        $users = AppUser::getAllUsers();
+        include_once SYSTEM_PATH.'/view/BrowseUsers.tpl';
+    }
+
+
+    
+    public function publishBuild(){
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $currValues = array(
+            'userID' => $currentUser->get('unique_id'), 
+            'type'=> 'publish',
+            'buildID' => $_SESSION['buildID'],
+            );
+        $curr = new AppActivities($currValues); 
+        $curr->save();
+        $this->browseBuild();
     }
 }

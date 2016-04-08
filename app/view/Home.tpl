@@ -2,46 +2,70 @@
 
 
 <head>
-    
-<title>   PC Helper  </title>    
 
-<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
+    <title>   PC Helper  </title>    
+
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
     
 </head>
 
 
 <body>
+    <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
+    <div id="div_middle">
     
-<h1 id="header">   <br> PC Helper  </h1>    
-    
+    <div id="userList">
+        <?php
+        if (empty($followings)) {
+            echo 'You are not following anybody';
+        }
+        else {
+            foreach($followings as $user) {
+                echo '<a href="' . BASE_URL .  '/GoToUser/' . $user->get('username') . '">' . $user->get('username') .'</a> <br>';
+            }
+        }
+    ?>
+    <br>
+</div>
+    <div id="activityFeed">
+        <?php
+            if ($activities == null) {
+                echo 'No activities';
+            }
+            else {
+                foreach($activities as $activity) {
+                    switch($activity->get('type')) {
+                        case 'publish':
+                        $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
+                        echo $publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
+                        break;
 
-<ul id="sideMenu">
-    <li> <a href="<?= BASE_URL ?>/">Home</a></li>
-    <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
-    <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
-    <li> Submit Benchmarks</li>
-</ul>
-     
+                        case 'edited':
+                        echo $activity->get('content');
+                        break;
 
-    
-<p id="welcome">  Welcome Back!  </p>
+                        case 'edited':
+                        echo $activity->get('content');
+                        break;
+                    }
+                }
+            }
+        ?>
+    </div>
+<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+    <p id="welcome">  Welcome Back!  </p>
+
     <form action = "<?= BASE_URL ?>/BrowseParts">
         <button id="buildPC" type="submit"> Build  A PC </button>
     </form>
+    <br>
     
     <form action = "<?= BASE_URL ?>/BrowseBuilds">
         <button id="resumeBuild" type="submit"> Resume A Build </button>
     </form>
     
-
-    
-<! TODO add varialbe for user in the controller>
-<p id="userInfo"> 
-    
-Welcome <? echo $_SESSION['username'] ?>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>    
-</p>
-
     
     
+    </div>
 </body>    
 </html>

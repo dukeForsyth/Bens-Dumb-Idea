@@ -10,18 +10,7 @@
     
 <body>
     <div>
-<h1 id="header">PC Helper</h1>  
-</div>
-<div style="float:left">
-<ul id="sideMenu">
-    <li> <a href="<?= BASE_URL ?>/Home">Home</a></li>
-    <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
-    <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
-    <li> Submit Benchmarks</li>
-</ul>
-</div>
-<! TODO Action?>
-    <div>
+<?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
 <form id="partDropDown" method="POST" action="<?= BASE_URL ?>/changepart">
    <select name = "part">
         <option value="cpu"> CPU </option>
@@ -36,8 +25,9 @@
 
 
 <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/part">
+    Current Build: <?= $_SESSION['buildID'] ?><br>
     <select name = "buildID">
-    
+        
         <?php
         foreach($builds as $build){
             $buildID = $build->get('unique_id');
@@ -76,10 +66,7 @@
 </form>
     
     
-    <p id="userInfo">    
-    
-Welcome <? echo $_SESSION['username'] ?>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a>
-</p>
+<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
     </div>
 </body>      
 </html>

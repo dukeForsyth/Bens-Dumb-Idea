@@ -3,36 +3,127 @@ body
     background-color: gainsboro;
 }
 
-div.h1
+#div_header
 {
-    
+    width: 100%;
+    height: 30%;
+    background-color: black;
+    text-align: center;
+
+}
+
+#div_sideMenu
+{
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    float:left;
+    top:20%;
+    width:15%;
+}
+
+#div_middle
+{
+    top:25%;
+    width:85%;
+    left:15%;
+    float:left;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#userlist
+{
+    padding-left: 20px;   
+    float:left;
+}
+#activityFeed
+{
+    float:right;
 }
 
 #header
 {
-    position: fixed;
-    width: 100%;
-    height: 15%;
-    top:-3.5%;
-    left: 0px;
-    padding: 0px;
+    height: 100%;
     color: orange;
-    background-color: black;
-    text-align: center;
-    z-index: 10;
 }
+
+
+#div_welcome
+{
+    top:20%;
+    width: 33%;
+    float:left;
+    padding-right:5px;
+}
+
+#welcome
+{
+    font-size: 50;
+}
+
+
+#whoWeAre
+{
+    top:10%;
+}
+
+#div_newUser
+{
+    float:left;
+    top:20%;
+    width:33%;
+    padding-top: 25px;
+    
+}
+
+#newUser
+{
+    line-height: 1.9;
+    top:10%;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right:auto;
+    width:50%;
+    text-align: center;
+    background-color:lightsalmon;
+    border-radius: 10px;
+}
+
+#div_retUser
+{
+    float:left;
+    top:25%;
+    width: 33%; 
+    padding-top: 50px;
+}
+
+#retUser
+{
+    line-height: 1.7;
+    top:10%;
+    margin-left: auto;
+    margin-right:auto;
+    padding-bottom: 10px;
+    width:50%;
+    text-align: center;
+    background-color:lightsalmon;
+    border-radius: 10px;
+}
+
+
+
 
 ul#sideMenu
 {
     
-    width: 15%;
+    width: 100%;
     height: 100%;
-    position: fixed;
-    overflow: auto;
-    top: 13%;
-    left: 0px;
     
-    margin: 0;
+    overflow: auto;
+    top: 20.5%;
+    left: 0px;
     padding: 0;
     border-right-style: solid;
     background-color:orange;
@@ -49,17 +140,9 @@ ul#sideMenu li {
     font-size: 18px; 
 }
 
-#welcome
-{
-    position:fixed;
-    top: 10%;   
-    left: 35%;
-    font-size: 50;
-}
-
 #news
 {
-    position:fixed;
+    
     top: 35%;
     left: 65%;
     font-size: 15;
@@ -68,14 +151,14 @@ ul#sideMenu li {
 
 #homePic
 {
-    position:fixed;
+    
     top: 35%;
     left: 35%;
 }
 
 #buildPC
 {
-    position:fixed;
+    
     top: 55%;
     left: 25%;
     width: 15%;
@@ -85,7 +168,7 @@ ul#sideMenu li {
 
 #resumeBuild
 {
-    position:fixed;
+    
     top: 55%;
     left: 45%;
     width: 15%;
@@ -97,7 +180,7 @@ ul#sideMenu li {
 #browseParts
 {
     position: fixed;
-    top: 38%;
+    top: 36%;
     left: 20%;
     width: 50%;
     height: 55%;
@@ -138,7 +221,7 @@ ul#browseParts li
 
 #build
 {
-    position:fixed;
+    
     top: 16%;
     left: 25%;
     
@@ -149,34 +232,6 @@ ul#browseParts li
     position: fixed;
     top: 35%;
     left: 23%;
-}
-
-#whoWeAre
-{
-    position: fixed;
-    top: 28%;
-    left: 25%;
-    width: 40%;
-}
-
-#newUser
-{
-    position: fixed;
-    top: 28%;
-    left: 5%;
-    padding: 10px;
-    background-color:lightsalmon;
-    border-radius: 25px;
-}
-
-#retUser
-{
-    position:fixed;
-    top: 28%;
-    left: 70%;
-    padding: 10px;
-    background-color:lightsalmon;
-    border-radius: 25px;
 }
 
 #headingBuilds
@@ -206,24 +261,49 @@ ul#browseBuilds li
 
 #userInfo
 {
-    position: fixed;
-    top: 15%;
-    right:5%;
+    float:right;
+    top:20%;
+    
     
 }
 
 #buildDropDown
 {
-    position:fixed;
+    
     top: 20%;
     left: 20%;
-    z-index: 10000;
+
+}
+
+#newBuild
+{
+    
+    top: 20%;
+    left: 40%;
+
 }
 
 #partDropDown
 {
     position: fixed;
-    top:25%;
+    top:27%;
     left: 20%;
 }
+
+#like
+{
+    
+    top: 55%;
+    left: 23%;
+   
+    
+}
+
+#comment
+{
+    position: fixed;
+    top: 63%;
+    left: 23%;
+}
+
 

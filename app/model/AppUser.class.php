@@ -8,13 +8,23 @@ class AppUser extends DbObject {
     protected $unique_id;
     protected $username;
     protected $password;
-	
+    protected $firstName;
+    protected $lastName;
+	protected $rank;
+    protected $gender;
+    protected $emailAddress;
+    
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
             'unique_id' => null,
             'username' => '',
-            'password' => ''
+            'password' => '',
+            'firstName' => '',
+            'lastName' => '',
+            'gender' => 'Not Specified',
+            'rank' => 1,
+            'emailAddress' => ''
             );
 
         $args += $defaultArgs;
@@ -22,6 +32,11 @@ class AppUser extends DbObject {
         $this->unique_id = $args['unique_id'];
         $this->username = $args['username'];
         $this->password = $args['password'];
+        $this->firstName = $args['firstName'];
+        $this->lastName = $args['lastName'];
+        $this->rank = $args['rank'];
+        $this->gender = $args['gender'];
+        $this->emailAddress = $args['emailAddress'];
     }
 
     // save changes to object
@@ -31,7 +46,12 @@ class AppUser extends DbObject {
         $db_properties = array(
             'unique_id' => $this->unique_id,
 			'username' => $this->username,
-            'password' => $this->password
+            'password' => $this->password,
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'rank' => $this->rank,
+            'gender' => $this->gender,
+            'emailAddress' => $this->emailAddress
 			);
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
@@ -64,7 +84,7 @@ class AppUser extends DbObject {
     }
     //Retrive all users
     public static function getAllUsers() {
-         $query = sprintf(" SELECT id FROM %s ",
+         $query = sprintf(" SELECT unique_id FROM %s ",
             self::DB_TABLE
             );
         $db = Db::instance();
@@ -74,18 +94,18 @@ class AppUser extends DbObject {
         else {
             $objects = array();
             while($row = mysqli_fetch_assoc($result)) {
-                $objects[] = self::loadById($row['id']);
+                $objects[] = self::loadById($row['unique_id']);
             }
             return ($objects);
         }
     }
     //Delete the user with a query by unique_id
-    public static function deleteUser($unique_id=null) {
-        if($unique_id === null)
+    public static function deleteUser($username=null) {
+        if($username === null)
             return null;
 
 
-        $query = "DELETE FROM users WHERE unique_id='$unique_id' ";
+        $query = "DELETE FROM users WHERE username ='$username'";
         $db = Db::instance();
 
         

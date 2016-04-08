@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2016 at 02:36 PM
+-- Generation Time: Apr 08, 2016 at 04:28 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `proj4`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activities`
+--
+
+CREATE TABLE `activities` (
+  `userID` int(11) NOT NULL,
+  `dateMade` datetime NOT NULL,
+  `content` varchar(200) NOT NULL,
+  `postID` int(11) NOT NULL,
+  `revieverID` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `buildID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`userID`, `dateMade`, `content`, `postID`, `revieverID`, `type`, `buildID`) VALUES
+(3, '2016-04-07 07:00:00', 'WALAWALA', 1, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -41,16 +64,28 @@ CREATE TABLE `builds` (
 --
 
 INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
-(1, 8, 'B009O7YU56', '', 'B009FC3YJ8', '', ''),
-(2, 8, '', '', '', '', ''),
-(3, 8, 'B009O7YORK', '', '', '', ''),
-(4, 8, '', '', '', '', ''),
-(5, 8, '', '', '', '', ''),
-(6, 8, '', '', '', '', ''),
-(7, 8, '', '', '', '', ''),
-(8, 16, '', '', '', '', ''),
-(9, 17, 'B009O7YORK', 'B00847TPH0', 'B009FC3YJ8', 'B00J8E8Y5C', 'B00H4XH5GI'),
-(10, 16, 'B009O7YORK', '', '', '', '');
+(1, 1, '', '', '', '', ''),
+(2, 1, '', '', '', '', ''),
+(4, 3, '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `follower`
+--
+
+CREATE TABLE `follower` (
+  `userID` int(11) NOT NULL,
+  `followingID` int(11) NOT NULL,
+  `unique_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `follower`
+--
+
+INSERT INTO `follower` (`userID`, `followingID`, `unique_id`) VALUES
+(1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -90,34 +125,42 @@ INSERT INTO `parts` (`unique_id`, `part_type`, `name`) VALUES
 CREATE TABLE `users` (
   `unique_id` int(25) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL
+  `password` varchar(25) NOT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `lastName` varchar(50) NOT NULL,
+  `gender` varchar(25) NOT NULL,
+  `rank` int(11) NOT NULL,
+  `emailAddress` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`unique_id`, `username`, `password`) VALUES
-(8, 'e', 'd'),
-(9, 'e', 'd'),
-(10, 'e', 'd'),
-(11, 'e', 'd'),
-(12, 'e', 'd'),
-(13, 'e', 'd'),
-(14, 'e', 'd'),
-(15, 'e', 'd'),
-(16, 'a', 's'),
-(17, 'c', 'v'),
-(18, 'a', 'z');
+INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName`, `gender`, `rank`, `emailAddress`) VALUES
+(1, 'admin', 'adminpw', 'Benny', 'Boy', 'Male', 0, 'fakeEmail@fake.com'),
+(3, 'c', 'e', 'a', 'b', '', 1, 'd');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`postID`);
+
+--
 -- Indexes for table `builds`
 --
 ALTER TABLE `builds`
+  ADD PRIMARY KEY (`unique_id`);
+
+--
+-- Indexes for table `follower`
+--
+ALTER TABLE `follower`
   ADD PRIMARY KEY (`unique_id`);
 
 --
@@ -131,15 +174,25 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `activities`
+--
+ALTER TABLE `activities`
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `follower`
+--
+ALTER TABLE `follower`
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
