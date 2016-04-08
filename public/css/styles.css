@@ -29,7 +29,7 @@ body
 {
     padding: 0;
     margin: 0;
-    top:25%;
+    top:35%;
     width:85%;
     left:15%;
     height: 85%;
@@ -41,10 +41,12 @@ body
 
 div#userlist
 {
+    padding-top: 3%;
+    
     top: 15%;
-    width: 15%;
+    width: 18%;
     height: 100%;
-    padding-left: 20px;   
+    padding-left: 3%;
     float:left;
     text-align: left;
 }
@@ -159,17 +161,21 @@ ul#sideMenu li {
 {
     top: 55%;
     left: 25%;
-    width: 15%;
+    width: 85%;
     height: 10%;
 }
+
+
 
 #resumeBuild
 {
     top: 55%;
     left: 45%;
-    width: 15%;
+    width: 85%;
     height: 10%;
 }
+
+
 
 #browseParts
 {

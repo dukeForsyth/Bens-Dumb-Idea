@@ -15,14 +15,20 @@
     <div id="div_middle">
         <div id="welcomeAndButtons">
             <p id="welcome">  Welcome Back!  </p>
-            <form action = "<?= BASE_URL ?>/BrowseParts">
+            
+            <br> <br>
+            
+            <form id="buildform" action = "<?= BASE_URL ?>/BrowseParts">
                 <button id="buildPC" type="submit"> Build  A PC </button>
+                
+            <br>
             </form>    
-            <form action = "<?= BASE_URL ?>/BrowseBuilds">
+            <form id="resumeForm" action = "<?= BASE_URL ?>/BrowseBuilds">
                 <button id="resumeBuild" type="submit"> Resume A Build </button>
             </form>
         </div>
     <div id="userList">
+        
         People you are following: <br>
         <?php
         if (empty($followings)) {
