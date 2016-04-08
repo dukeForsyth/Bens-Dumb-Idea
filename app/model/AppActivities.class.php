@@ -27,7 +27,7 @@ class AppActivities extends DbObject {
 
         $args += $defaultArgs;
 
-        $this->postID = $args['unique_id'];
+        $this->unique_id = $args['unique_id'];
         $this->userID = $args['userID'];
         $this->dateMade = $args['dateMade'];
         $this->content = $args['content'];

@@ -42,9 +42,14 @@
         ?>
         </p>
     </div>
-        
-    <div style="height: 100%; width: 30%; float:right;">
-    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+    <div style="width:30%; float:right;">
+    <div id="userInfo" style="width:97%">
+        Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><?= $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a><br>
+        <form id="searchUser" method="POST" action="">
+            <input type="text" name="userNameSearch" placeholder="Search Username">
+            <input type="submit" value="Search">
+        </form>
+    </div>
     <div id="activityFeed">
         <p style="padding-left:20px; padding-top:21px; margin:0;">
         Activity Feed:<br>
@@ -73,7 +78,11 @@
                         break;
 
                         case 'commented':
-                        echo '<li>' .$activity->get('content') .'</li>';
+                        $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
+                        $reciever = AppUser::loadByID($activity->get('recieverID'))->get('username');
+                        ?>
+                        <?= $publisher ?> commented on <?= $reciever ?> build, check out the comment <a href="<?= BASE_URL ?>/ViewComment/<?=  $activity->getID() ?>">here!</a><br>
+                        <?php
                         break;
                     }
                 }
@@ -82,8 +91,7 @@
         </ul>
         </p>
     </div>
-    </div>  
-    
+    </div>
     </div>
 </body>    
 </html>

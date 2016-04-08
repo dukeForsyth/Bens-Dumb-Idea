@@ -1,7 +1,7 @@
 <html>
 <head>
 
-    <title>   Browse Parts  </title>    
+    <title>   Browse Builds  </title>    
 
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
     
@@ -9,6 +9,8 @@
 
 <body>
     <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
+    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+    <div id="div_middle">
     <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/build">
         <select name = "buildID">
 
@@ -37,8 +39,7 @@
     echo 'Build Id: '.$names->unique_id.' <br>'; 
     ?>
 </p>
-
-<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; 
+<?php
 if(!$published){
 ?>
 <form id="publishBuild" action="<?= BASE_URL ?>/publishBuild">
@@ -47,6 +48,6 @@ if(!$published){
 <?php 
 }
 ?>
-
+</div>
 </body>
 </html>

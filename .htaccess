@@ -36,3 +36,5 @@ RewriteRule ^dislikeBuild/(\w+)?$ app/controller/siteController.php?action=disli
 RewriteRule ^commentBuild/(\w+)?$ app/controller/siteController.php?action=comment&buildID=$1 [QSA,L]
 
 RewriteRule ^SearchUser/?$ app/controller/siteController.php?action=searchUser [QSA,L]
+
+RewriteRule ^ViewComment/(\d+)?$ app/controller/siteController.php?action=viewComment&viewedCommentID=$1 [QSA,L]

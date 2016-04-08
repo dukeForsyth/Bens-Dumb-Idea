@@ -100,6 +100,9 @@ class SiteController {
 
             case 'searchUser':
             $this->search();
+                
+            case 'viewComment':
+            $this->viewComment();
             break;
 		}
 	}
@@ -498,5 +501,10 @@ class SiteController {
 
 
 
+    }
+    
+    public function viewComment(){
+        $comment = AppActivities::loadByID($_GET['viewedCommentID'])->get('content');
+        include_once SYSTEM_PATH.'/view/ViewComment.tpl';
     }
 }
