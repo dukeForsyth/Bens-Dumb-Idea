@@ -39,7 +39,7 @@
     </p>
 
     <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
-    <form>
+    <form id="publishBuild" action="<?= BASE_URL ?>/publishBuild">
         <input type="submit" value="Publish Build">
     </form>
     </body>

@@ -73,8 +73,11 @@ class SiteController {
             case 'browseUsers':
             $this->browseUsers();
             break;
+                
+            case 'publishBuild':
+            $this->publishBuild();
+            break;
         }
-
     }
 
 
@@ -88,7 +91,7 @@ class SiteController {
                     $followings[] = AppUser::loadByID($followingID->get('followingID'));
                     if ($activities1 != null) {
                         foreach ($activities1 as $activity) {
-                            $activities[] = $activity->get('content');
+                            $activities[] = $activity;
                         }
                     }
                 }
@@ -301,6 +304,7 @@ public function logout() {
         //Save the log
         $curr->save();
 
+
         $build->save();
         header('Location: BrowseParts');
     }
@@ -335,4 +339,17 @@ public function logout() {
         include_once SYSTEM_PATH.'/view/BrowseUsers.tpl';
     }
 
+
+    
+    public function publishBuild(){
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $currValues = array(
+            'userID' => $currentUser->get('unique_id'), 
+            'type'=> 'publish',
+            'buildID' => $_SESSION['buildID'],
+            );
+        $curr = new AppActivities($currValues); 
+        $curr->save();
+        $this->browseBuild();
+    }
 }
