@@ -24,9 +24,11 @@
                 echo '<a href="' . BASE_URL .  '/GoToUser/' . $user->get('username') . '">' . $user->get('username') .'</a> <br>';
             }
         }
-    ?>
-    <br>
-</div>
+        ?>
+    </div>
+        
+    <div style="height: 100%; width: 30%; float:right;">
+    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
     <div id="activityFeed">
         <?php
             if ($activities == null) {
@@ -60,7 +62,8 @@
             }
         ?>
     </div>
-<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+    </div>
+    <div id="welcomeAndButtons">
     <p id="welcome">  Welcome Back!  </p>
 
     <form action = "<?= BASE_URL ?>/BrowseParts">
@@ -71,7 +74,7 @@
     <form action = "<?= BASE_URL ?>/BrowseBuilds">
         <button id="resumeBuild" type="submit"> Resume A Build </button>
     </form>
-    
+    </div>
     
     
     </div>
