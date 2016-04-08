@@ -154,29 +154,49 @@ class SiteController {
             //Get the respective value that wants to be edited, change it, then save it.
     switch ($_GET['editID']) {
         case 'email':
-        $curr->set('username', $_POST['email']);
-        $curr->save();
-        echo '<script type="text/javascript">alert("Email change succesful");</script>';
+            if ($_POST['email'] != null) {
+                $curr->set('username', $_POST['email']);
+                $curr->save();
+                echo '<script type="text/javascript">alert("Email change succesful");</script>';
+            }
+            else {
+                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+            }
         break;
         case 'pass':
-        $curr->set('password', $_POST['pw']);
-        $curr->save();
-        echo '<script type="text/javascript">alert("Password change succesful");</script>';
+            if ($_POST['pw'] != null) {
+                $curr->set('password', $_POST['pw']);
+                $curr->save();
+                echo '<script type="text/javascript">alert("Password change succesful");</script>';
+            }
+            else {
+                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+            }
         break;
         case 'gender':
-        $curr->set('gender', $_POST['gender']);
-        $curr->save();
-        echo '<script type="text/javascript">alert("Gender change succesful");</script>';
+            $curr->set('gender', $_POST['gender']);
+            $curr->save();
+            echo '<script type="text/javascript">alert("Gender change succesful");</script>';
         break;
         case 'first':
-        $curr->set('firstname', $_POST['first']);
-        $curr->save();
-        echo '<script type="text/javascript">alert("First Name change succesful");</script>';
+            if ($_POST['first'] != null) {
+                $curr->set('firstname', $_POST['first']);
+                $curr->save();
+                echo '<script type="text/javascript">alert("First Name change succesful");</script>';
+            }
+            else {
+                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+            }
         break;
         case 'last':
-        $curr->set('lastname', $_POST['last']);
-        $curr->save();
-        echo '<script type="text/javascript">alert("Last Name change succesful");</script>';
+            if ($_POST['last'] != null) {
+                $curr->set('lastname', $_POST['last']);
+                $curr->save();
+                echo '<script type="text/javascript">alert("Last Name change succesful");</script>';
+            }
+            else {
+                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+            }
         break;
 
         default:
@@ -218,32 +238,35 @@ public function logout() {
 
     public function create(){
         $user = AppUser::loadByUsername($_POST['username']);
-        if($user == null){
-            if($_POST['password'] == $_POST['confirmPW']){
-                $currValues = array(
-                    'username' => $_POST['username'], 
-                    'password'=> $_POST['password'],
-                    'firstName' => $_POST['fName'],
-                    'lastName' => $_POST['lName'],
-                    'emailAddress'=> $_POST['emailAddress']
-                    );
-                $curr = new AppUser($currValues); 
-                $curr->save();
-                $_SESSION['username'] = $_POST['username'];
-                $this->createBuild();
-                $this->browseParts();
+        if ($_POST['username'] == '' || $_POST['password'] == '' || $_POST['fName'] == '' || $_POST['lName'] == '' || $_POST['emailAddress'] == '') {
+            echo '<script type="text/javascript">alert("Invalid Information");</script>';
+            $this->home();
+        }
+        else {
+            if($user == null){
+                if($_POST['password'] == $_POST['confirmPW']){
+                    $currValues = array(
+                        'username' => $_POST['username'], 
+                        'password'=> $_POST['password'],
+                        'firstName' => $_POST['fName'],
+                        'lastName' => $_POST['lName'],
+                        'emailAddress'=> $_POST['emailAddress']
+                        );
+                    $curr = new AppUser($currValues); 
+                    $curr->save();
+                    $_SESSION['username'] = $_POST['username'];
+                    $this->createBuild();
+                    $this->browseParts();
+                }
+                else{
+                echo '<script type="text/javascript">alert("The passwords don\'t match");</script>';
+                $this->home();
+                }
             }
             else{
-            echo '<script type="text/javascript">alert("The passwords don\'t match");</script>';
-
-            $this->home();
+                echo '<script type="text/javascript">alert("Account already Exists");</script>';
+                $this->home();
             }
-        }
-        else{
-
-            echo '<script type="text/javascript">alert("Account already Exists");</script>';
-
-            $this->home();
         }
     }
 
