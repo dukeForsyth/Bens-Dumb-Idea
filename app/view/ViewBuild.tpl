@@ -38,7 +38,7 @@
         }
     ?>
 
-<form id="comment" method="POST" action="<?= BASE_URL ?>/commentBuild/<?= $_GET['viewedBuildID'] ?>">
+<form id="comment" method="POST" action="<?= BASE_URL ?>/commentBuild/<?= $buildID ?>">
     <input type="text" name="comment" value ="" style="width: 300px; height: 150px;"> <br> <br>
     <input type="submit" value="Comment Build">
 </form>
