@@ -18,8 +18,8 @@ class DbObject {
         return ($this->$field);
     }
     
-    public function getId() {
-        return ($this->unique_id);   
+    public function getId($unique = "unique_id") {
+        return ($this->$unique);   
     }
     
     public function set($field=null, $val=null) {

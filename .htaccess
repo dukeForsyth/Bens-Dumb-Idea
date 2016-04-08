@@ -28,3 +28,4 @@ RewriteRule ^edit/(\w+)/?$ app/controller/siteController.php?action=edit&editID=
 RewriteRule ^GoToUser/(\w+)?$ app/controller/siteController.php?action=profile&viewedUser=$1 [QSA,L]
 RewriteRule ^ViewBuild/(\d+)?$ app/controller/siteController.php?action=viewBuild&viewedBuildID=$1 [QSA,L]
 RewriteRule ^BrowseUsers/?$ app/controller/siteController.php?action=browseUsers [QSA,L]
+RewriteRule ^publishBuild/?$ app/controller/siteController.php?action=publishBuild [QSA,L]

@@ -36,7 +36,12 @@
     <div id="activityFeed">
         <?php
             foreach($activities as $activity) {
-                echo $activity;
+                switch($activity->get('type')) {
+                    case 'publish':
+                    $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
+                    echo $publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
+                    break;
+                }
             }
         ?>
     </div>

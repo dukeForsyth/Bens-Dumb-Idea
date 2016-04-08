@@ -78,7 +78,6 @@ class SiteController {
             $this->publishBuild();
             break;
         }
-
     }
 
 
@@ -92,7 +91,7 @@ class SiteController {
                     $followings[] = AppUser::loadByID($followingID->get('followingID'));
                     if ($activities1 != null) {
                         foreach ($activities1 as $activity) {
-                            $activities[] = $activity->get('content');
+                            $activities[] = $activity;
                         }
                     }
                 }
@@ -293,9 +292,8 @@ public function logout() {
             break;
         }
 
-        $logId = AppUser::loadByUsername($_SESSION('username'))
+        $logId = AppUser::loadByUsername($_SESSION('username'));
         $logDate = date("h:i:a Y-m-d ");
-        $logContent = 
 
 
         $build->save();
@@ -345,5 +343,6 @@ public function logout() {
             );
         $curr = new AppActivities($currValues); 
         $curr->save();
+        $this->browseBuild();
     }
 }

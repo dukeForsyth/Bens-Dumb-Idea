@@ -5,7 +5,7 @@ class AppActivities extends DbObject {
     const DB_TABLE = 'activities';
 
     // database fields
-    protected $postID;
+    protected $unique_id;
     protected $userID;
     protected $dateMade;
     protected $content;
@@ -16,7 +16,7 @@ class AppActivities extends DbObject {
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
-            'postID' => null,
+            'unique_id' => null,
             'userID' => null,
             'dateMade' => '',
             'content' => '',
@@ -27,7 +27,7 @@ class AppActivities extends DbObject {
 
         $args += $defaultArgs;
 
-        $this->postID = $args['postID'];
+        $this->postID = $args['unique_id'];
         $this->userID = $args['userID'];
         $this->dateMade = $args['dateMade'];
         $this->content = $args['content'];
@@ -41,10 +41,10 @@ class AppActivities extends DbObject {
         $db = Db::instance();
         // omit id and any timestamps
         $db_properties = array(
-            'postID' => $this->postID,
+            'unique_id' => $this->unique_id,
 			'userID' => $this->userID,
             'dateMade' => $this->dateMade,
-            'content' => $this->content
+            'content' => $this->content,
             'recieverID' => $this->recieverID,
             'type' => $this->type,
             'buildID' => $this->buildID
@@ -55,12 +55,12 @@ class AppActivities extends DbObject {
     // load object by ID, use unique_id
     public static function loadById($id) {
         $db = Db::instance();
-        $obj = $db->fetchById($id,"postID", __CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById($id,"unique_id", __CLASS__, self::DB_TABLE);
         return $obj;
     }
     
     public static function loadByUserkey($userID) {
-        $query = sprintf(" SELECT postID FROM %s WHERE userID = '%s'",
+        $query = sprintf(" SELECT unique_id FROM %s WHERE userID = '%s'",
             self::DB_TABLE,
             $userID                  
             );
@@ -71,7 +71,7 @@ class AppActivities extends DbObject {
         else {
             $objects = array();
             while($row = mysqli_fetch_assoc($result)) {
-                $objects[] = self::loadById($row['postID']);
+                $objects[] = self::loadById($row['unique_id']);
             }
             return ($objects);
         }

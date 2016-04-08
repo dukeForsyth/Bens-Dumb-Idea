@@ -7,18 +7,20 @@ class AppFollower extends DbObject {
     // database fields
     protected $followingID;
     protected $userID;
-
+    protected $unique_id;
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
             'followingID' => null,
-            'userID' => null
+            'userID' => null,
+            'unique_id' => null
             );
 
         $args += $defaultArgs;
 
         $this->followingID = $args['followingID'];
         $this->userID = $args['userID'];
+        $this->unique_id = $args['unique_id'];
     }
 
     // save changes to object
@@ -27,7 +29,8 @@ class AppFollower extends DbObject {
         // omit id and any timestamps
         $db_properties = array(
             'followingID' => $this->unique_id,
-			'userID' => $this->userID
+			'userID' => $this->userID,
+            'unique_id' => $this->unique_id
 			);
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
