@@ -22,9 +22,14 @@
     </form>
     <div id="userList">
         <?php
-        foreach($users as $user) {
-        echo '<a href="' . BASE_URL .  '/GoToUser/' . $user->get('username') . '">' . $user->get('username') .'</a> <br>';
-    }
+        if (empty($followings)) {
+            echo 'You are not following anybody';
+        }
+        else {
+            foreach($followings as $user) {
+                echo '<a href="' . BASE_URL .  '/GoToUser/' . $user->get('username') . '">' . $user->get('username') .'</a> <br>';
+            }
+        }
     ?>
 </div>
     <div id="activityFeed">
