@@ -17,7 +17,9 @@
             <p id="welcome">  Welcome Back!  </p>
             <form action = "<?= BASE_URL ?>/BrowseParts" style="display:inline-block">
                 <button id="buildPC" type="submit"> Build  A PC </button>
-            </form>    
+                
+            <br>
+            </form>
             <form action = "<?= BASE_URL ?>/BrowseBuilds" style="display:inline-block">
                 <button id="resumeBuild" type="submit"> Resume A Build </button>
             </form>
