@@ -289,10 +289,17 @@ public function logout() {
             break;
         }
 
-        $logId = AppUser::loadByUsername($_SESSION('username'))
-        $logDate = date("h:i:a Y-m-d ");
-        $logContent = 
+        $activityLog = array(
+        	'userID' =>  AppUser::loadByUsername($_SESSION['username'])->getId(),
+        	'dateMade' =>  date("h:i:a Y-m-d "),
+        	'content' => $_SESSION['username'] . ' has added part ' . $part->get('name') . ' to build ' . $_SESSION['buildID'],
+        	'type' => "edited",
+        	'buildID' => $_SESSION['buildID']
+        	)
 
+        $curr = new AppActivities($currValues); 
+        //Save the log
+        $curr->save();
 
         $build->save();
         header('Location: BrowseParts');
@@ -328,7 +335,4 @@ public function logout() {
         include_once SYSTEM_PATH.'/view/BrowseUsers.tpl';
     }
 
-    public function log($activity, $values){
-
-    }
 }
