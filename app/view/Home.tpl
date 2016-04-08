@@ -47,37 +47,38 @@
     <div id="activityFeed">
         <p style="padding-left:20px; padding-top:21px; margin:0;">
         Activity Feed:<br>
+        <ul>
         <?php
             if ($activities == null) {
-                echo 'No activities';
+                echo 'Nobody that you are following has done anything';
             }
             else {
                 foreach($activities as $activity) {
                     switch($activity->get('type')) {
                         case 'published':
-                        $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
-                        echo $publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
+                        echo '<li>' . $activity->get('content') .'</li>';
                         break;
 
                         case 'edited':
-                        echo $activity->get('content') .'<br>';
+                        echo '<li>' .$activity->get('content') .'</li>';
                         break;
 
                         case 'followed':
-                        echo $activity->get('content') .'<br>';
+                        echo '<li>' .$activity->get('content') .'</li>';
                         break;
 
                         case 'liked':
-                        echo $activity->get('content') .'<br>';
+                        echo '<li>' .$activity->get('content') .'</li>';
                         break;
 
                         case 'commented':
-                        echo $activity->get('content') .'<br>';
+                        echo '<li>' .$activity->get('content') .'</li>';
                         break;
                     }
                 }
             }
         ?>
+        </ul>
         </p>
     </div>
     </div>  

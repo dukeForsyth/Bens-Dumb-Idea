@@ -16,10 +16,10 @@ RewriteRule ^edit/(\w+)/?$ app/controller/siteController.php?action=edit&editID=
 RewriteRule ^BrowseBuilds/?$ app/controller/siteController.php?action=browseBuild [QSA,L]
 RewriteRule ^publishBuild/?$ app/controller/siteController.php?action=publishBuild [QSA,L]
 
-RewriteRule ^BrowseParts/? app/controller/siteController.php?action=browseParts [QSA,L]
-RewriteRule ^changepart/? app/controller/siteController.php?action=changepart [QSA,L]
-RewriteRule ^addpart/? app/controller/siteController.php?action=addpart [QSA,L]
-RewriteRule ^changeBuild/(\w+)? app/controller/siteController.php?action=changeBuild&site=$1 [QSA,L]
+RewriteRule ^BrowseParts/?$ app/controller/siteController.php?action=browseParts [QSA,L]
+RewriteRule ^changepart/?$ app/controller/siteController.php?action=changepart [QSA,L]
+RewriteRule ^addpart/?$ app/controller/siteController.php?action=addpart [QSA,L]
+RewriteRule ^changeBuild/(\w+)?$ app/controller/siteController.php?action=changeBuild&site=$1 [QSA,L]
 
 RewriteRule ^Home/?$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
@@ -30,6 +30,7 @@ RewriteRule ^follow/(\w+)?$ app/controller/siteController.php?action=follow&foll
 RewriteRule ^unfollow/(\w+)?$ app/controller/siteController.php?action=unfollow&followedUser=$1 [QSA,L]
 
 RewriteRule ^ViewBuild/(\d+)?$ app/controller/siteController.php?action=viewBuild&viewedBuildID=$1 [QSA,L]
+
 RewriteRule ^likeBuild/(\w+)?$ app/controller/siteController.php?action=like&buildID=$1 [QSA,L]
 RewriteRule ^dislikeBuild/(\w+)?$ app/controller/siteController.php?action=dislike&buildID=$1 [QSA,L]
 RewriteRule ^commentBuild/(\w+)?$ app/controller/siteController.php?action=comment&buildID=$1 [QSA,L]

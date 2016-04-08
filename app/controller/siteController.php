@@ -420,7 +420,7 @@ class SiteController {
 
     	$activityLog = array(
     		'userID' =>  AppUser::loadByUsername($_SESSION['username'])->getId(),
-    		'content' => $_POST['comment'],
+    		'content' => $_SESSION['username'] . ' said "' . $_POST['comment'] . '" on build ' . $_GET['buildID'],
     		'type' => "commented",
     		'buildID' => $_GET['buildID'],
     		'recieverID' => $creatorKey
@@ -437,10 +437,14 @@ class SiteController {
     
     public function publishBuild(){
     	$currentUser = AppUser::loadByUsername($_SESSION['username']);
+        
+        $content = $_SESSION['username'] .' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $_SESSION['buildID'] . '"> here! </a>';
+
     	$currValues = array(
     		'userID' => $currentUser->get('unique_id'), 
     		'type'=> 'published',
     		'buildID' => $_SESSION['buildID'],
+            'content' => $content
     		);
     	$curr = new AppActivities($currValues); 
     	$curr->save();
@@ -469,9 +473,10 @@ class SiteController {
     }
     
     public function unfollow(){
-    	$currentUser = AppUser::loadByUsername($_SESSION['username']);
+    	$currentUserID = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
     	$followedUserID = AppUser::loadByUsername($_GET['followedUser'])->get('unique_id');
-    	AppFollower::deleteFollowPair($currentUser->get('unique_id'),$followedUserID);
+    	AppFollower::deleteFollowPair($currentUserID,$followedUserID);
+        AppActivities::deleteFollow($currentUserID, $followedUserID);
     	$this->viewUser($_GET['followedUser']);
     }
 }

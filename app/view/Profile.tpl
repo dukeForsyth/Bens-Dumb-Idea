@@ -75,9 +75,11 @@
                 echo 'No activity';
             }
             else {
+                echo '<ul>';
                 foreach($activities as $activity) {
-                    echo $activity->get('content');
+                    echo '<li>' . $activity->get('content') . '</li>';
                 }
+                echo '</ul>';
             }
         ?>
     </div>
