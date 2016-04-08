@@ -51,6 +51,14 @@ div#activityFeed
     text-align: left;
 }
 
+
+div#userInfo
+{
+    text-align: left;
+    padding-left: 3%;
+    padding-top: 2%;
+}
+
 div#welcomeAndButtons
 {
     width: 40%;
