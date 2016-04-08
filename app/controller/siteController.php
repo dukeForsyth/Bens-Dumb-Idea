@@ -97,6 +97,10 @@ class SiteController {
 			case 'unfollow':
 			$this->unfollow();
 			break;
+
+            case 'searchUser':
+            $this->search();
+            break;
 		}
 	}
 
@@ -404,13 +408,14 @@ class SiteController {
     	//Get the new activities
     	$curr = new AppActivities($activityLog);
     	$curr->save();
-    	$this->viewBuild($_GET['buildID']);
+        header('Location:' .BASE_URL . '/'. 'ViewBuild/' . $_GET['buildID']);
+
     }
 
     public function dislike(){
     	$currID = AppUser::loadByUsername($_SESSION['username'])->getId();
     	AppActivities::deleteBuild($currID,$_GET['buildID']);
-    	$this->viewBuild($_GET['buildID']);
+        header('Location:' .BASE_URL . '/'. 'ViewBuild/' . $_GET['buildID']);
 
     }
 
@@ -429,8 +434,7 @@ class SiteController {
     	$curr = new AppActivities($activityLog);
     	$curr->save();
     	echo '<script type="text/javascript">alert("Comment saved");</script>';
-
-    	$this->viewBuild($_GET['buildID']);
+        header('Location:' .BASE_URL . '/'. 'ViewBuild/' . $_GET['buildID']);
 
 
     }
@@ -448,7 +452,8 @@ class SiteController {
     		);
     	$curr = new AppActivities($currValues); 
     	$curr->save();
-    	$this->browseBuild();
+    	header('Location: BrowseBuilds');
+        #$this->browseBuild();
     }
     
     public function follow(){
@@ -469,7 +474,8 @@ class SiteController {
     		);
     	$curr = new AppActivities($currValues); 
     	$curr->save();
-    	$this->viewUser($_GET['followedUser']);
+        header('Location:' .BASE_URL . '/'. 'GoToUser/' . $_GET['followedUser']);
+
     }
     
     public function unfollow(){
@@ -477,6 +483,20 @@ class SiteController {
     	$followedUserID = AppUser::loadByUsername($_GET['followedUser'])->get('unique_id');
     	AppFollower::deleteFollowPair($currentUserID,$followedUserID);
         AppActivities::deleteFollow($currentUserID, $followedUserID);
-    	$this->viewUser($_GET['followedUser']);
+    	header('Location:' .BASE_URL . '/'. 'GoToUser/' . $_GET['followedUser']);
+    }
+
+    public function search(){
+        $userFound = AppUser::loadByUsername($_POST['userNameSearch']);
+        if($userFound == null){
+            echo '<script type="text/javascript">alert("'.$_POST['userNameSearch'].' does not exist");</script>';
+            $this->browseUsers();
+
+        }else{
+            header('Location:' .BASE_URL . '/'. 'GoToUser/' . $_POST['userNameSearch']);
+        }
+
+
+
     }
 }
