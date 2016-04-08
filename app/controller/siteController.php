@@ -288,6 +288,12 @@ public function logout() {
             $build->set('storage_id',$partID);
             break;
         }
+
+        $logId = AppUser::loadByUsername($_SESSION('username'))
+        $logDate = date("h:i:a Y-m-d ");
+        $logContent = 
+
+
         $build->save();
         header('Location: BrowseParts');
     }
@@ -320,5 +326,9 @@ public function logout() {
     public function browseUsers(){
         $users = AppUser::getAllUsers();
         include_once SYSTEM_PATH.'/view/BrowseUsers.tpl';
+    }
+
+    public function log($activity, $values){
+
     }
 }
