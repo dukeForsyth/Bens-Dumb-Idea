@@ -132,4 +132,17 @@ class AppActivities extends DbObject {
         $db->execute($query);
 
     }
+
+    public static function deleteFollow($userID,$followID=null) {
+        if($userID === null)
+            return null;
+
+
+        $query = "DELETE FROM activities WHERE recieverID ='$followID' AND userID ='$userID' AND type = 'followed'";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
+    }
 }
