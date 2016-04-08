@@ -73,6 +73,10 @@ class SiteController {
             case 'browseUsers':
             $this->browseUsers();
             break;
+                
+            case 'publishBuild':
+            $this->publishBuild();
+            break;
         }
 
     }
@@ -330,5 +334,16 @@ public function logout() {
 
     public function log($activity, $values){
 
+    }
+    
+    public function publishBuild(){
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $currValues = array(
+            'userID' => $currentUser->get('unique_id'), 
+            'type'=> 'publish',
+            'buildID' => $_SESSION['buildID'],
+            );
+        $curr = new AppActivities($currValues); 
+        $curr->save();
     }
 }
