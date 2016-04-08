@@ -63,7 +63,7 @@ class SiteController {
             break;
 
             case 'profile':
-            $this->viewUser();
+            $this->viewUser($_GET['viewedUser']);
             break;
                 
             case 'viewBuild':
@@ -166,6 +166,7 @@ class SiteController {
                     # code...
         break;
     }
+    $this->viewUser($_SESSION['username']);
 }
 
 public function delete(){
@@ -300,9 +301,9 @@ public function logout() {
         header('Location: BrowseParts');
     }
     
-    public function viewUser(){
-		$user = AppUser::loadByUsername($_GET['viewedUser']);
-		if($_SESSION['username'] == $_GET['viewedUser']){
+    public function viewUser($userd){
+        $user = AppUser::loadByUsername($userd);
+		if($_SESSION['username'] == $userd){
 			$edit = TRUE;
 		}
 		else{

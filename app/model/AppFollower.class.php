@@ -69,7 +69,6 @@ class AppFollower extends DbObject {
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysqli_num_rows($result)) {
-            echo 'hi'. $userID1. $followingID1;
             return null;
         }
         else {
