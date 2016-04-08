@@ -15,6 +15,8 @@
     <div id="div_middle">
         <div id="welcomeAndButtons">
             <p id="welcome">  Welcome Back!  </p>
+            
+            <br> <br>
             <form action = "<?= BASE_URL ?>/BrowseParts" style="display:inline-block">
                 <button id="buildPC" type="submit"> Build  A PC </button>
                 
