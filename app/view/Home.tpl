@@ -15,14 +15,15 @@
     <div id="div_middle">
         <div id="welcomeAndButtons">
             <p id="welcome">  Welcome Back!  </p>
-            <form action = "<?= BASE_URL ?>/BrowseParts">
+            <form action = "<?= BASE_URL ?>/BrowseParts" style="display:inline-block">
                 <button id="buildPC" type="submit"> Build  A PC </button>
             </form>    
-            <form action = "<?= BASE_URL ?>/BrowseBuilds">
+            <form action = "<?= BASE_URL ?>/BrowseBuilds" style="display:inline-block">
                 <button id="resumeBuild" type="submit"> Resume A Build </button>
             </form>
         </div>
     <div id="userList">
+        <p style="padding-left:20px; padding-top:85px; margin:0;">
         People you are following: <br>
         <?php
         if (empty($followings)) {
@@ -34,11 +35,13 @@
             }
         }
         ?>
+        </p>
     </div>
         
     <div style="height: 100%; width: 30%; float:right;">
     <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
     <div id="activityFeed">
+        <p style="padding-left:20px; padding-top:21px; margin:0;">
         Activity Feed:<br>
         <?php
             if ($activities == null) {
@@ -71,6 +74,7 @@
                 }
             }
         ?>
+        </p>
     </div>
     </div>  
     
