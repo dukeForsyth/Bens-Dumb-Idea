@@ -77,6 +77,25 @@
             }
         ?>
     </div>
+    <?php    
+    if($edit != true){
+        if($isFollowing){
+    ?>
+    <div id="unfollowUser">
+        <form method="POST" action="<?= BASE_URL ?>/unfollow/<?= $user->get('username') ?>">
+            <input type="submit" value="Unfollow User">
+        </form>
+    </div>
+    <?php
+    }
+    else {
+    ?>
+    <div id="followUser">
+        <form method="POST" action="<?= BASE_URL ?>/follow/<?= $user->get('username') ?>">
+            <input type="submit" value="Follow User">
+        </form>
+    </div>
+    <?php }} ?>
     <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>    
-</body>    
+</body>
 </html>

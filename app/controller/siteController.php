@@ -301,7 +301,10 @@ public function logout() {
 			$edit = FALSE;
 		}
         $adm = !(AppUser::loadByUsername($_SESSION['username'])->get('rank'));
-        $activities = AppActivities::loadByUserkey(AppUser::loadByUsername($_GET['viewedUser'])->get('unique_id'));
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $following = AppFollower::loadOneFollower($currentUser->get('unique_id'),$user->get('unique_id'));
+        $isFollowing = $following != null;
+        $activities = AppActivities::loadByUserkey($user->get('unique_id'));
 		include_once SYSTEM_PATH.'/view/Profile.tpl';
     }
     

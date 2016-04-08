@@ -56,8 +56,27 @@ class AppFollower extends DbObject {
             return ($objects);
         }
     }
+    
+    public static function loadOneFollower($userID1, $followingID1) {
+        $query = sprintf(" SELECT unique_id FROM %s WHERE userID = '%s' AND followingID = '%s'",
+            self::DB_TABLE,
+            $userID1,
+            $followingID1
+            );
+        $db = Db::instance();
+        $result = $db->lookup($query);
+        if(!mysqli_num_rows($result)) {
+            echo 'hi'. $userID1. $followingID1;
+            return null;
+        }
+        else {
+            $row = mysqli_fetch_assoc($result);
+            $obj = self::loadById($row['unique_id']);
+            return ($obj);
+        }
+    }
 
-     public static function deleteUser($id=null) {
+    public static function deleteUser($id=null) {
         if($id === null)
             return null;
 
