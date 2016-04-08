@@ -81,7 +81,7 @@
                         $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
                         $reciever = AppUser::loadByID($activity->get('recieverID'))->get('username');
                         ?>
-                        <?= $publisher ?> commented on <?= $reciever ?> build, check out the comment <a href="<?= BASE_URL ?>/ViewComment/<?=  $activity->get('unique_id') ?>">here!</a> <br>'
+                        <?= $publisher ?> commented on <?= $reciever ?> build, check out the comment <a href="<?= BASE_URL ?>/ViewComment/<?=  $activity->getID() ?>">here!</a><br>
                         <?php
                         break;
                     }

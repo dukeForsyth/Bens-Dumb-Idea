@@ -485,7 +485,7 @@ class SiteController {
     }
     
     public function viewComment(){
-        $content = AppActivities::loadByID($_GET['viewedCommentID'])->get('content');
+        $comment = AppActivities::loadByID($_GET['viewedCommentID'])->get('content');
         include_once SYSTEM_PATH.'/view/ViewComment.tpl';
     }
 }
