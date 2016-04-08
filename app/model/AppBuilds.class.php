@@ -140,4 +140,17 @@ class AppBuilds extends DbObject {
         }
         return $totalPrice;
     }
+
+    public static function deleteUser($id=null) {
+        if($id === null)
+            return null;
+
+
+        $query = "DELETE FROM builds WHERE userkey ='$id'";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
+    }
 }

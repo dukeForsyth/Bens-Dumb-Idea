@@ -56,4 +56,17 @@ class AppFollower extends DbObject {
             return ($objects);
         }
     }
+
+     public static function deleteUser($id=null) {
+        if($id === null)
+            return null;
+
+
+        $query = "DELETE FROM follower WHERE userID ='$id' OR followingID = '$id'";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
+    }
 }

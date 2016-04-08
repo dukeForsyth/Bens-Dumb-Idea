@@ -64,4 +64,17 @@ class AppActivities extends DbObject {
             return ($objects);
         }
     }
+
+     public static function deleteUser($userID=null) {
+        if($userID === null)
+            return null;
+
+
+        $query = "DELETE FROM activities WHERE userID ='$userID' ";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
+    }
 }
