@@ -39,10 +39,11 @@ body
 
 div#userlist
 {
-    width: 15%;
+    width: 25%;
     height: 100%;
     float:left;
-    text-align: left;
+    text-align: center;
+    padding: 0px;
 }
 div#activityFeed
 {
@@ -51,6 +52,14 @@ div#activityFeed
     height: calc(100% - 65px);
     text-align: left;
     float: right;
+}
+
+
+div#userInfo
+{
+    text-align: left;
+    padding-left: 3%;
+    padding-top: 2%;
 }
 
 div#welcomeAndButtons

@@ -15,11 +15,14 @@
     <div id="div_middle">
         <div id="welcomeAndButtons">
             <p id="welcome">  Welcome Back!  </p>
+            
+            <br> <br>
             <form action = "<?= BASE_URL ?>/BrowseParts" style="display:inline-block">
                 <button id="buildPC" type="submit"> Build  A PC </button>
                 
-            <br>
+            
             </form>
+            <br>
             <form action = "<?= BASE_URL ?>/BrowseBuilds" style="display:inline-block">
                 <button id="resumeBuild" type="submit"> Resume A Build </button>
             </form>
@@ -51,7 +54,7 @@
             else {
                 foreach($activities as $activity) {
                     switch($activity->get('type')) {
-                        case 'publish':
+                        case 'published':
                         $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
                         echo $publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
                         break;

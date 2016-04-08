@@ -92,6 +92,21 @@ class AppActivities extends DbObject {
         
     }
 
+    public static function checkPublished($userID, $buildID) {
+        if($userID === null)
+            return null;
+
+        $query = sprintf(" SELECT unique_id FROM %s WHERE userID = '%s' AND buildID = '%s' AND type ='published'",
+            self::DB_TABLE,
+            $userID,
+            $buildID
+            );
+        $db = Db::instance();
+        $result = $db->lookup($query);
+        return mysqli_num_rows($result);
+        
+    }
+
      public static function deleteUser($userID=null) {
         if($userID === null)
             return null;
