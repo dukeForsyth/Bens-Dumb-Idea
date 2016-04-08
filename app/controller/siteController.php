@@ -100,7 +100,6 @@ class SiteController {
         }
     }
 
-
     public function home() {
         if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
             $followingIDs = AppFollower::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
@@ -122,7 +121,6 @@ class SiteController {
             include_once SYSTEM_PATH.'/view/Login.tpl';
         }
     }
-
 
     public function login() {
         $username = $_POST['username'];
@@ -148,65 +146,65 @@ class SiteController {
             // redirect to home page
     }
 
- public function edit(){
-            //Get the current user
-    $curr = AppUser::loadByUsername($_SESSION['username']);
-            //Get the respective value that wants to be edited, change it, then save it.
-    switch ($_GET['editID']) {
-        case 'email':
-            if ($_POST['email'] != null) {
-                $curr->set('username', $_POST['email']);
+    public function edit(){
+                //Get the current user
+        $curr = AppUser::loadByUsername($_SESSION['username']);
+                //Get the respective value that wants to be edited, change it, then save it.
+        switch ($_GET['editID']) {
+            case 'email':
+                if ($_POST['email'] != null) {
+                    $curr->set('username', $_POST['email']);
+                    $curr->save();
+                    echo '<script type="text/javascript">alert("Email change succesful");</script>';
+                }
+                else {
+                    echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+                }
+            break;
+            case 'pass':
+                if ($_POST['pw'] != null) {
+                    $curr->set('password', $_POST['pw']);
+                    $curr->save();
+                    echo '<script type="text/javascript">alert("Password change succesful");</script>';
+                }
+                else {
+                    echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+                }
+            break;
+            case 'gender':
+                $curr->set('gender', $_POST['gender']);
                 $curr->save();
-                echo '<script type="text/javascript">alert("Email change succesful");</script>';
-            }
-            else {
-                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
-            }
-        break;
-        case 'pass':
-            if ($_POST['pw'] != null) {
-                $curr->set('password', $_POST['pw']);
-                $curr->save();
-                echo '<script type="text/javascript">alert("Password change succesful");</script>';
-            }
-            else {
-                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
-            }
-        break;
-        case 'gender':
-            $curr->set('gender', $_POST['gender']);
-            $curr->save();
-            echo '<script type="text/javascript">alert("Gender change succesful");</script>';
-        break;
-        case 'first':
-            if ($_POST['first'] != null) {
-                $curr->set('firstname', $_POST['first']);
-                $curr->save();
-                echo '<script type="text/javascript">alert("First Name change succesful");</script>';
-            }
-            else {
-                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
-            }
-        break;
-        case 'last':
-            if ($_POST['last'] != null) {
-                $curr->set('lastname', $_POST['last']);
-                $curr->save();
-                echo '<script type="text/javascript">alert("Last Name change succesful");</script>';
-            }
-            else {
-                echo '<script type="text/javascript">alert("Invalid Entry");</script>';
-            }
-        break;
+                echo '<script type="text/javascript">alert("Gender change succesful");</script>';
+            break;
+            case 'first':
+                if ($_POST['first'] != null) {
+                    $curr->set('firstname', $_POST['first']);
+                    $curr->save();
+                    echo '<script type="text/javascript">alert("First Name change succesful");</script>';
+                }
+                else {
+                    echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+                }
+            break;
+            case 'last':
+                if ($_POST['last'] != null) {
+                    $curr->set('lastname', $_POST['last']);
+                    $curr->save();
+                    echo '<script type="text/javascript">alert("Last Name change succesful");</script>';
+                }
+                else {
+                    echo '<script type="text/javascript">alert("Invalid Entry");</script>';
+                }
+            break;
 
-        default:
-                    # code...
-        break;
+            default:
+                        # code...
+            break;
+        }
+        $this->viewUser($_SESSION['username']);
     }
-    $this->viewUser($_SESSION['username']);
-}
 
-public function delete(){
+    public function delete(){
                 //Go through with the deletion
                 $currID = AppUser::loadByUsername($_GET['account'])->get('id');
                 //Delete from account, follower, activities
@@ -214,18 +212,16 @@ public function delete(){
                 AppFollower::deleteUser($curr);
                 AppActivities::deleteUser($curr);               
                 echo '<script type="text/javascript">alert("'. $_GET['account'] .' has been executed");</script>';
-            }
+    }
 
-public function logout() {
+    public function logout() {
 				// erase the session
-    unset($_SESSION['username']);
+        unset($_SESSION['username']);
         session_destroy(); // for good measure
 
         // redirect to home page
         header('Location: '.BASE_URL);
     }
-
-			//creates a new user, and then stores it
 
     public function browseBuild(){
         $builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
