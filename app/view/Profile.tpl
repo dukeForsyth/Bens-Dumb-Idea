@@ -65,6 +65,18 @@
     <?php
     }
     ?>
+    <div id="userActivities">
+        <?php
+            if ($activities == null) {
+                echo 'No activity';
+            }
+            else {
+                foreach($activities as $activity) {
+                    echo $activity->get('content');
+                }
+            }
+        ?>
+    </div>
     <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>    
 </body>    
 </html>

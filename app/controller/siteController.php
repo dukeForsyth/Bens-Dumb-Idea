@@ -297,7 +297,7 @@ public function logout() {
 			$edit = FALSE;
 		}
         $adm = !(AppUser::loadByUsername($_SESSION['username'])->get('rank'));
-
+        $activities = AppActivities::loadByUserkey(AppUser::loadByUsername($_GET['viewedUser'])->get('unique_id'));
 		include_once SYSTEM_PATH.'/view/Profile.tpl';
     }
     
