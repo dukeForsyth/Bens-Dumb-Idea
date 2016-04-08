@@ -29,20 +29,25 @@
 </div>
     <div id="activityFeed">
         <?php
-            foreach($activities as $activity) {
-                switch($activity->get('type')) {
-                    case 'publish':
-                    $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
-                    echo $publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
-                    break;
+            if ($activities == null) {
+                echo 'No activities';
+            }
+            else {
+                foreach($activities as $activity) {
+                    switch($activity->get('type')) {
+                        case 'publish':
+                        $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
+                        echo $publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> <br>';
+                        break;
 
-                    case 'edited':
-                    echo $activity->get('content');
-                    break;
+                        case 'edited':
+                        echo $activity->get('content');
+                        break;
 
-                    case 'edited':
-                    echo $activity->get('content');
-                    break;
+                        case 'edited':
+                        echo $activity->get('content');
+                        break;
+                    }
                 }
             }
         ?>

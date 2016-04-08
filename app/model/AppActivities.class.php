@@ -18,7 +18,7 @@ class AppActivities extends DbObject {
         $defaultArgs = array(
             'unique_id' => null,
             'userID' => null,
-            'dateMade' => '',
+            'dateMade' => date("h:i:a Y-m-d "),
             'content' => '',
             'recieverID' => null,
             'type' => '',

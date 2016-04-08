@@ -96,9 +96,6 @@ class SiteController {
                     }
                 }
             }
-            if ($activities == null) {
-                $activities[] = "No news";
-            }
             include_once SYSTEM_PATH.'/view/Home.tpl';
         }
         else{
@@ -295,13 +292,12 @@ public function logout() {
 
         $activityLog = array(
         	'userID' =>  AppUser::loadByUsername($_SESSION['username'])->getId(),
-        	'dateMade' =>  date("h:i:a Y-m-d "),
         	'content' => $_SESSION['username'] . ' has added part ' . $part->get('name') . ' to build ' . $_SESSION['buildID'],
         	'type' => "edited",
         	'buildID' => $_SESSION['buildID']
-        	)
+        	);
 
-        $curr = new AppActivities($currValues); 
+        $curr = new AppActivities($activityLog);
         //Save the log
         $curr->save();
 
