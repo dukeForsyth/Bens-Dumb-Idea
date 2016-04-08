@@ -492,8 +492,8 @@ class SiteController {
     public function search(){
         $userFound = AppUser::loadByUsername($_POST['userNameSearch']);
         if($userFound == null){
-            echo '<script type="text/javascript">alert("'.$_POST['userNameSearch'].' does not exist");</script>';
-            $this->browseUsers();
+            echo '<script type="text/javascript">window.alert("'.$_POST['userNameSearch'].' does not exist");</script>';
+            header('Location:' .BASE_URL);
 
         }else{
             header('Location:' .BASE_URL . '/'. 'GoToUser/' . $_POST['userNameSearch']);
