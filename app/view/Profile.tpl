@@ -29,9 +29,13 @@
             <input type="password" value="<?= $user->get('password') ?>" name="pw"> <br>
             <input type="submit" value="Save">
         </form>
-        <h4>Your Gender</h4>
+        <h4>Your Gender: <?= $user->get('gender') ?></h4>
         <form method="POST" action="<?= BASE_URL ?>/edit/gender">
-            <input type="text" value="<?= $user->get('gender') ?>" name="gender"> <br>
+            <select  name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Not Specified">Not Specified</option>
+            </select>
             <input type="submit" value="Save">
         </form>
         <h4>Your First Name</h4>

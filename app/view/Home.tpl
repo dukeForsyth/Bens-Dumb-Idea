@@ -41,11 +41,19 @@
                         break;
 
                         case 'edited':
-                        echo $activity->get('content');
+                        echo $activity->get('content') .'<br>';
                         break;
 
-                        case 'edited':
-                        echo $activity->get('content');
+                        case 'followed':
+                        echo $activity->get('content') .'<br>';
+                        break;
+
+                        case 'liked':
+                        echo $activity->get('content') .'<br>';
+                        break;
+
+                        case 'commented':
+                        echo $activity->get('content') .'<br>';
                         break;
                     }
                 }

@@ -36,3 +36,5 @@ RewriteRule ^commentBuild/(\w+)?$ app/controller/siteController.php?action=comme
 
 RewriteRule ^BrowseUsers/?$ app/controller/siteController.php?action=browseUsers [QSA,L]
 RewriteRule ^publishBuild/?$ app/controller/siteController.php?action=publishBuild [QSA,L]
+RewriteRule ^follow/(\w+)?$ app/controller/siteController.php?action=follow&followedUser=$1 [QSA,L]
+RewriteRule ^unfollow/(\w+)?$ app/controller/siteController.php?action=unfollow&followedUser=$1 [QSA,L]

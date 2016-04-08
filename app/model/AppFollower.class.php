@@ -28,7 +28,7 @@ class AppFollower extends DbObject {
         $db = Db::instance();
         // omit id and any timestamps
         $db_properties = array(
-            'followingID' => $this->unique_id,
+            'followingID' => $this->followingID,
 			'userID' => $this->userID,
             'unique_id' => $this->unique_id
 			);
@@ -89,5 +89,14 @@ class AppFollower extends DbObject {
         
         $db->execute($query);
 
+    }
+    
+    public static function deleteFollowPair($id=null,$fid=null) {
+        if($id === null || $fid === null)
+            return null;
+
+        $query = "DELETE FROM follower WHERE userID ='$id' AND followingID = '$fid'";
+        $db = Db::instance();        
+        $db->execute($query);
     }
 }

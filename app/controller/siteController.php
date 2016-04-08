@@ -89,6 +89,14 @@ class SiteController {
             case 'comment':
             $this->comment();
             break;
+                
+            case 'follow':
+            $this->follow();
+            break;
+                
+            case 'unfollow':
+            $this->unfollow();
+            break;
         }
     }
 
@@ -395,5 +403,33 @@ public function logout() {
         $curr = new AppActivities($currValues); 
         $curr->save();
         $this->browseBuild();
+    }
+    
+    public function follow(){
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $followedUserID = AppUser::loadByUsername($_GET['followedUser'])->get('unique_id');
+        $params = array(
+            'followingID'=>$followedUserID,
+            'userID'=>$currentUser->get('unique_id'),
+            );
+        $newFollowPair = new AppFollower($params);
+        $newFollowPair->save();
+        $content = sprintf('%s followed %s!',$_SESSION['username'],$_GET['followedUser']);
+        $currValues = array(
+            'userID' => $currentUser->get('unique_id'), 
+            'type'=> 'followed',
+            'recieverID' => $followedUserID,
+            'content' => $content
+            );
+        $curr = new AppActivities($currValues); 
+        $curr->save();
+        $this->viewUser($_GET['followedUser']);
+    }
+    
+    public function unfollow(){
+        $currentUser = AppUser::loadByUsername($_SESSION['username']);
+        $followedUserID = AppUser::loadByUsername($_GET['followedUser'])->get('unique_id');
+        AppFollower::deleteFollowPair($currentUser->get('unique_id'),$followedUserID);
+        $this->viewUser($_GET['followedUser']);
     }
 }
