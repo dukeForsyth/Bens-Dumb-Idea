@@ -177,10 +177,9 @@ ul#sideMenu li {
 
 #browseParts
 {
-    position: fixed;
     top: 36%;
     left: 20%;
-    width: 50%;
+    width: 90%;
     height: 55%;
     overflow: auto;
     
@@ -283,7 +282,6 @@ ul#browseBuilds li
 
 #partDropDown
 {
-    position: fixed;
     top:27%;
     left: 20%;
 }
