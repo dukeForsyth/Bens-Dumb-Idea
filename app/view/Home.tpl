@@ -39,8 +39,7 @@
         ?>
         </p>
     </div>
-        
-    <div style="height: 100%; width: 30%; float:right;">
+    <div style="width:30%; float:right;">
     <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
     <div id="activityFeed">
         <p style="padding-left:20px; padding-top:21px; margin:0;">
@@ -78,8 +77,7 @@
         ?>
         </p>
     </div>
-    </div>  
-    
+    </div>
     </div>
 </body>    
 </html>
