@@ -1,12 +1,15 @@
 body
 {
     background-color: gainsboro;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 #div_header
 {
     width: 100%;
-    height: 30%;
+    height: 15%;
     background-color: black;
     text-align: center;
 
@@ -14,20 +17,21 @@ body
 
 #div_sideMenu
 {
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0;
+    margin: 0;
     float:left;
-    top:20%;
     width:15%;
+    height: 85%;
 }
 
 #div_middle
 {
+    padding: 0;
+    margin: 0;
     top:25%;
     width:85%;
     left:15%;
-    height: 75%;
+    height: 85%;
     float:left;
     text-align: center;
     margin-left: auto;
@@ -36,6 +40,7 @@ body
 
 div#userlist
 {
+    top: 15%;
     width: 15%;
     height: 100%;
     padding-left: 20px;   
@@ -51,8 +56,10 @@ div#activityFeed
 
 div#welcomeAndButtons
 {
-    width: 55%;
+    width: 40%;
     height: 100%;
+    margin: 0;
+    display: inline-block;
 }
 
 #header
@@ -67,12 +74,12 @@ div#welcomeAndButtons
     top:20%;
     width: 33%;
     float:left;
-    padding-right:5px;
 }
 
 #welcome
 {
     font-size: 50;
+    margin: 0;
 }
 
 
@@ -129,21 +136,17 @@ div#welcomeAndButtons
 
 ul#sideMenu
 {
-    
     width: 100%;
     height: 100%;
     
     overflow: auto;
-    top: 20.5%;
     left: 0px;
     padding: 0;
     border-right-style: solid;
     background-color:orange;
-    
 }
 
 ul#sideMenu li {
-    
     text-align: center;
     list-style-type:none;
     display: block;
@@ -152,42 +155,21 @@ ul#sideMenu li {
     font-size: 18px; 
 }
 
-#news
-{
-    
-    top: 35%;
-    left: 65%;
-    font-size: 15;
-    width: 25%;
-}
-
-#homePic
-{
-    
-    top: 35%;
-    left: 35%;
-}
-
 #buildPC
 {
-    
     top: 55%;
     left: 25%;
     width: 15%;
     height: 10%;
-    
 }
 
 #resumeBuild
 {
-    
     top: 55%;
     left: 45%;
     width: 15%;
     height: 10%;
 }
-
-
 
 #browseParts
 {
@@ -304,11 +286,8 @@ ul#browseBuilds li
 
 #like
 {
-    
     top: 55%;
     left: 23%;
-   
-    
 }
 
 #comment
