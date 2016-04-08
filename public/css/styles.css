@@ -39,10 +39,11 @@ body
 
 div#userlist
 {
-    width: 15%;
+    width: 25%;
     height: 100%;
     float:left;
-    text-align: left;
+    text-align: center;
+    padding: 0px;
 }
 div#activityFeed
 {
