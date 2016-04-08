@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 08, 2016 at 11:32 AM
+-- Host: localhost
+-- Generation Time: Apr 08, 2016 at 06:56 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activities` (
   `userID` int(11) NOT NULL,
-  `dateMade` varchar(25) NOT NULL,
+  `dateMade` datetime NOT NULL,
   `content` varchar(200) NOT NULL,
   `unique_id` int(11) NOT NULL,
   `recieverID` int(11) NOT NULL,
@@ -41,19 +41,11 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`userID`, `dateMade`, `content`, `unique_id`, `recieverID`, `type`, `buildID`) VALUES
-(3, '0000-00-00 00:00:00', 'c has added part Gigabyte AM3+ AMD DDR3 to build 4', 4, 0, 'edited', 4),
-(3, '0000-00-00 00:00:00', 'c has added part Kingston HyperX FURY 16GB to build 4', 5, 0, 'edited', 4),
-(3, '09:41:am 2016-04-08 ', 'c has added part Seagate Backup Plus Slim  to build 4', 6, 0, 'edited', 4),
-(3, '09:42:am 2016-04-08 ', 'c has added part Seagate Backup Plus Slim  to build 4', 7, 0, 'edited', 4),
-(3, '09:42:am 2016-04-08 ', 'c has added part Crucial Ballistix Sport to build 4', 8, 0, 'edited', 4),
-(1, '11:26:am 2016-04-08 ', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 11, 0, 'edited', 1),
-(1, '11:26:am 2016-04-08 ', 'admin has added part AMD FD8320FRHKBOX FX-8320 to build 1', 12, 0, 'edited', 1),
-(1, '11:27:am 2016-04-08 ', 'admin has added part Gigabyte AM3+ AMD DDR3 to build 1', 13, 0, 'edited', 1),
-(1, '11:27:am 2016-04-08 ', 'admin has added part Crucial Ballistix Sport to build 1', 14, 0, 'edited', 1),
-(1, '11:27:am 2016-04-08 ', 'admin has added part Seagate Backup Plus Slim  to build 1', 15, 0, 'edited', 1),
-(1, '11:27:am 2016-04-08 ', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 16, 0, 'edited', 1),
-(1, '11:27:am 2016-04-08 ', '', 17, 0, 'publish', 1),
-(3, '11:31:am 2016-04-08 ', 'c has liked admin''s build 1', 20, 1, 'liked', 1);
+(1, '0000-00-00 00:00:00', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 6, 0, 'edited', 1),
+(1, '0000-00-00 00:00:00', 'admin followed c!', 15, 3, 'followed', 0),
+(1, '0000-00-00 00:00:00', 'admin followed c!', 16, 3, 'followed', 0),
+(3, '0000-00-00 00:00:00', '', 17, 0, 'publish', 4),
+(1, '0000-00-00 00:00:00', 'admin has liked c''s build 4', 18, 3, 'liked', 4);
 
 -- --------------------------------------------------------
 
@@ -76,10 +68,9 @@ CREATE TABLE `builds` (
 --
 
 INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
-(1, 1, 'B009O7YORK', '', 'B009FC3YJ8', 'B006WAGGUK', 'B00H4XH5GI'),
+(1, 1, 'B009O7YORK', '', '', '', ''),
 (2, 1, '', '', '', '', ''),
-(4, 3, '', '', 'B009FC3YJ8', 'B006WAGGUK', 'B00H4XH5GI'),
-(5, 1, '', '', '', '', '');
+(4, 3, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -98,8 +89,8 @@ CREATE TABLE `follower` (
 --
 
 INSERT INTO `follower` (`userID`, `followingID`, `unique_id`) VALUES
-(1, 3, 1),
-(3, 1, 2);
+(3, 1, 8),
+(1, 3, 10);
 
 -- --------------------------------------------------------
 
@@ -153,7 +144,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName`, `gender`, `rank`, `emailAddress`) VALUES
 (1, 'admin', 'adminpw', 'Benny', 'Boy', 'Male', 0, 'fakeEmail@fake.com'),
-(3, 'c', 'e', 'a', 'b', '', 1, 'd');
+(3, 'c', 'e', 'a', 'b', 'Male', 1, 'd');
 
 --
 -- Indexes for dumped tables
@@ -191,17 +182,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `follower`
 --
 ALTER TABLE `follower`
-  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `users`
 --
