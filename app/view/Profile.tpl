@@ -14,7 +14,7 @@
     <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
     <div id="div_middle">
     <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>  
-    <div style="width:35%;float:left;">
+    <div style="width:30%;float:left;">
     <?php    
     if($edit == true){
     ?> 

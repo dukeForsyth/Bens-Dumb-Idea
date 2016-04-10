@@ -45,7 +45,7 @@
 if(!$published){
 ?>
 <form id="publishBuild" action="<?= BASE_URL ?>/publishBuild">
-    <input type="submit" value="Publish Build">
+    <input type="submit" value="Publish Build" id="publishButton">
 </form>
 <?php 
 }

@@ -12,8 +12,9 @@
 
 <body>
     <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
+    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
     
-    <div id="userList" style="padding-left:5%">
+    <div id="userList" style="padding-left:2%; padding-top: 2%;">
         All Users:<br>
         <?php
         foreach($users as $user) {
@@ -21,6 +22,6 @@
     }
     ?>
     </div>
-    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+    
 </body>    
 </html>

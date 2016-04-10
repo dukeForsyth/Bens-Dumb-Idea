@@ -12,7 +12,7 @@
 <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
     <div id="div_middle">
 <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
-<div style="width:66%;padding:4%;">
+<div style="width:66%;padding-top:2%; padding-left:2%;">
 <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/part">
     Current Build: <?= $_SESSION['buildID'] ?><br>
     <select name = "buildID">

@@ -17,18 +17,19 @@
             <p id="welcome">  Welcome Back!  </p>
             
             <br> <br>
-            <form action = "<?= BASE_URL ?>/BrowseParts" style="display:inline-block">
+            <form action = "<?= BASE_URL ?>/BrowseParts">
                 <button id="buildPC" type="submit"> Build  A PC </button>
                 
             
             </form>
+            
             <br>
-            <form action = "<?= BASE_URL ?>/BrowseBuilds" style="display:inline-block">
+            <form action = "<?= BASE_URL ?>/BrowseBuilds">
                 <button id="resumeBuild" type="submit"> Resume A Build </button>
             </form>
         </div>
     <div id="userList">
-        <p style="padding-left:20px; padding-top:85px; margin:0;">
+        <p style="padding-left:20px; padding-top:105px; margin:0;">
         People you are following: <br>
         <?php
         if (empty($followings)) {
@@ -42,7 +43,7 @@
         ?>
         </p>
     </div>
-    <div style="width:30%; float:right;">
+    <div style="width:35%; float:right;">
     <div id="userInfo" style="width:97%">
         Welcome <a href="<?= BASE_URL ?>/GoToUser/<?= $_SESSION['username'] ?>"><?= $_SESSION['username'] ?></a>,  <a href="<?= BASE_URL ?>/logout"> Log Out</a><br>
         <form id="searchUser" method="POST" action="">
@@ -51,7 +52,7 @@
         </form>
     </div>
     <div id="activityFeed">
-        <p style="padding-left:20px; padding-top:21px; margin:0;">
+        <p style="padding-left:35px; padding-top:21px; margin:0;">
         Activity Feed:<br>
         <ul>
         <?php
@@ -90,9 +91,8 @@
             }
         ?>
         </ul>
-        </p>
+        </div>
+        </div>
     </div>
-    </div>
-    </div>
-</body>    
+    </body>
 </html>
