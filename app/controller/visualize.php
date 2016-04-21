@@ -30,6 +30,8 @@ class visualize {
     private function update() {
         $names = AppBuilds::loadNameByID($_SESSION['buildID']);
 
+        $names->price = AppBuilds::loadTotalPrice($_SESSION['buildID']);
+
         echo json_encode($names);
 
     }
