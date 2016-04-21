@@ -29,3 +29,6 @@ RewriteRule ^GoToUser/(\w+)?$ app/controller/siteController.php?action=profile&v
 RewriteRule ^ViewBuild/(\d+)?$ app/controller/siteController.php?action=viewBuild&viewedBuildID=$1 [QSA,L]
 RewriteRule ^BrowseUsers/?$ app/controller/siteController.php?action=browseUsers [QSA,L]
 RewriteRule ^publishBuild/?$ app/controller/siteController.php?action=publishBuild [QSA,L]
+
+RewriteRule ^remove/(\w+)?$ app/controller/visualize.php?action=remove&type=$1 [QSA,L]
+RewriteRule ^addRandom/(\w+)?$ app/controller/visualize.php?action=random&type=$1 [QSA,L]
