@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2016 at 04:28 AM
+-- Generation Time: Apr 08, 2016 at 06:56 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -30,8 +30,8 @@ CREATE TABLE `activities` (
   `userID` int(11) NOT NULL,
   `dateMade` datetime NOT NULL,
   `content` varchar(200) NOT NULL,
-  `postID` int(11) NOT NULL,
-  `revieverID` int(11) NOT NULL,
+  `unique_id` int(11) NOT NULL,
+  `recieverID` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
   `buildID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,8 +40,12 @@ CREATE TABLE `activities` (
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`userID`, `dateMade`, `content`, `postID`, `revieverID`, `type`, `buildID`) VALUES
-(3, '2016-04-07 07:00:00', 'WALAWALA', 1, 0, '', 0);
+INSERT INTO `activities` (`userID`, `dateMade`, `content`, `unique_id`, `recieverID`, `type`, `buildID`) VALUES
+(1, '0000-00-00 00:00:00', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 6, 0, 'edited', 1),
+(1, '0000-00-00 00:00:00', 'admin followed c!', 15, 3, 'followed', 0),
+(1, '0000-00-00 00:00:00', 'admin followed c!', 16, 3, 'followed', 0),
+(3, '0000-00-00 00:00:00', '', 17, 0, 'publish', 4),
+(1, '0000-00-00 00:00:00', 'admin has liked c''s build 4', 18, 3, 'liked', 4);
 
 -- --------------------------------------------------------
 
@@ -64,7 +68,7 @@ CREATE TABLE `builds` (
 --
 
 INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
-(1, 1, '', '', '', '', ''),
+(1, 1, 'B009O7YORK', '', '', '', ''),
 (2, 1, '', '', '', '', ''),
 (4, 3, '', '', '', '', '');
 
@@ -85,7 +89,8 @@ CREATE TABLE `follower` (
 --
 
 INSERT INTO `follower` (`userID`, `followingID`, `unique_id`) VALUES
-(1, 3, 1);
+(3, 1, 8),
+(1, 3, 10);
 
 -- --------------------------------------------------------
 
@@ -139,7 +144,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName`, `gender`, `rank`, `emailAddress`) VALUES
 (1, 'admin', 'adminpw', 'Benny', 'Boy', 'Male', 0, 'fakeEmail@fake.com'),
-(3, 'c', 'e', 'a', 'b', '', 1, 'd');
+(3, 'c', 'e', 'a', 'b', 'Male', 1, 'd');
 
 --
 -- Indexes for dumped tables
@@ -149,7 +154,7 @@ INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName
 -- Indexes for table `activities`
 --
 ALTER TABLE `activities`
-  ADD PRIMARY KEY (`postID`);
+  ADD PRIMARY KEY (`unique_id`);
 
 --
 -- Indexes for table `builds`
@@ -177,7 +182,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `builds`
 --
@@ -187,7 +192,7 @@ ALTER TABLE `builds`
 -- AUTO_INCREMENT for table `follower`
 --
 ALTER TABLE `follower`
-  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `users`
 --

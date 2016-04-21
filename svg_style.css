@@ -1,0 +1,62 @@
+#case_image
+{
+    position:fixed; 
+    top: 80px;
+    left: 0px;
+    border: solid;
+    z-index: -100;
+    fill: white;
+    width: 500px;
+    height: 300px;
+}
+
+#motherboard_image
+{
+    position: fixed;
+    left: 30px;
+    top: 100px;
+    fill: orange;    
+    width: 300px;
+    height:200px;
+}
+
+#ram_image
+{
+    position:fixed;
+    fill: green;
+    width: 15px;
+    height: 100px;
+    top: 105px;
+    left: 250px;
+}
+
+#cpu_image
+{
+    position: fixed;
+    fill: pink;
+    top: 115px;
+    left: 35px;
+    width: 130px;
+    height: 80px;
+}
+
+#gpu_image
+{
+    position: fixed;
+    fill: yellow;
+    top: 265px;
+    left: 55px;
+    width: 200px;
+    height: 30px;
+}
+
+
+#memory_image
+{
+    position: fixed;
+    fill: purple;
+    top: 325px;
+    left: 355px;
+    width: 100px;
+    height: 30px;
+}

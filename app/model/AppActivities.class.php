@@ -27,7 +27,7 @@ class AppActivities extends DbObject {
 
         $args += $defaultArgs;
 
-        $this->postID = $args['unique_id'];
+        $this->unique_id = $args['unique_id'];
         $this->userID = $args['userID'];
         $this->dateMade = $args['dateMade'];
         $this->content = $args['content'];
@@ -77,12 +77,68 @@ class AppActivities extends DbObject {
         }
     }
 
+    public static function checkLiked($userID, $buildID) {
+        if($userID === null)
+            return null;
+
+        $query = sprintf(" SELECT unique_id FROM %s WHERE userID = '%s' AND buildID = '%s' AND type ='liked'",
+            self::DB_TABLE,
+            $userID,
+            $buildID
+            );
+        $db = Db::instance();
+        $result = $db->lookup($query);
+        return mysqli_num_rows($result);
+        
+    }
+
+    public static function checkPublished($userID, $buildID) {
+        if($userID === null)
+            return null;
+
+        $query = sprintf(" SELECT unique_id FROM %s WHERE userID = '%s' AND buildID = '%s' AND type ='published'",
+            self::DB_TABLE,
+            $userID,
+            $buildID
+            );
+        $db = Db::instance();
+        $result = $db->lookup($query);
+        return mysqli_num_rows($result);
+        
+    }
+
      public static function deleteUser($userID=null) {
         if($userID === null)
             return null;
 
 
         $query = "DELETE FROM activities WHERE userID ='$userID' ";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
+    }
+
+    public static function deleteBuild($userID,$buildID=null) {
+        if($userID === null)
+            return null;
+
+
+        $query = "DELETE FROM activities WHERE buildID ='$buildID' AND userID ='$userID' AND type = 'liked'";
+        $db = Db::instance();
+
+        
+        $db->execute($query);
+
+    }
+
+    public static function deleteFollow($userID,$followID=null) {
+        if($userID === null)
+            return null;
+
+
+        $query = "DELETE FROM activities WHERE recieverID ='$followID' AND userID ='$userID' AND type = 'followed'";
         $db = Db::instance();
 
         

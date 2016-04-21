@@ -12,46 +12,48 @@
 
 <body>
     <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
+    <div id="div_middle">
+    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>  
+    <div style="width:30%;float:left;">
     <?php    
     if($edit == true){
     ?> 
-
     <div id="profile"> 
-        <h4>Your User Name</h4>
-        <?= $user->get('username') ?>
-        <h4>Email Address</h4>
+        Your User Name<br>
+        <?= $user->get('username') ?><br><br>
+        Email Address<br>
         <form method="POST" action="<?= BASE_URL ?>/edit/email">
             <input type="text" value="<?= $user->get('emailAddress') ?>" name="email"> <br>
             <input type="submit" value="Save">
         </form>
-        <h4>Password</h4>
+        Password<br>
         <form method="POST" action="<?= BASE_URL ?>/edit/pass">
             <input type="password" value="<?= $user->get('password') ?>" name="pw"> <br>
             <input type="submit" value="Save">
         </form>
-        <h4>Your Gender</h4>
+        Your Gender: <?= $user->get('gender') ?><br>
         <form method="POST" action="<?= BASE_URL ?>/edit/gender">
-            <input type="text" value="<?= $user->get('gender') ?>" name="gender"> <br>
+            <select  name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Not Specified">Not Specified</option>
+            </select>
             <input type="submit" value="Save">
         </form>
-        <h4>Your First Name</h4>
-
+        Your First Name<br>
         <form method="POST" action="<?= BASE_URL ?>/edit/first">
             <input type="text" value="<?= $user->get('firstName') ?>" name="first"> <br>
             <input type="submit" value="Save">
         </form>
-        <h4>Your Last Name</h4>
-
+        Your Last Name<br>
         <form method="POST" action="<?= BASE_URL ?>/edit/last">
             <input type="text" value="<?= $user->get('lastName') ?>" name="last"> <br>
             <input type="submit" value="Save">
         </form>
-
-
            <!-- <form method="POST" action="<?= BASE_URL ?>/delete">
                 <input type="submit" value="Delete Account">
-            </form> -->
-        </div>    
+            </form> --> 
+        </div>
         <?php 
     }
     if($adm){
@@ -61,23 +63,11 @@
             <input type="submit" value="Delete Account">
         </form>
     </div>
-
+    
     <?php
     }
     ?>
-    <div id="userActivities">
-        <?php
-            if ($activities == null) {
-                echo 'No activity';
-            }
-            else {
-                foreach($activities as $activity) {
-                    echo $activity->get('content');
-                }
-            }
-        ?>
-    </div>
-    <?php    
+        <?php    
     if($edit != true){
         if($isFollowing){
     ?>
@@ -96,6 +86,46 @@
         </form>
     </div>
     <?php }} ?>
-    <?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>    
+    </div>
+    <div id="userActivities">
+        Activity Feed:<br>
+        <?php
+            if ($activities == null) {
+                echo 'No activities';
+            }
+            else {
+                foreach($activities as $activity) {
+                    switch($activity->get('type')) {
+                        case 'published':
+                        $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
+                        echo '<li>' .$publisher. ' published their build, check it out <a href="' . BASE_URL .  '/ViewBuild/' . $activity->get('buildID') . '">' . 'here!' .'</a> </li>';
+                        break;
+
+                        case 'edited':
+                        echo '<li>' .$activity->get('content') .'</li>';
+                        break;
+
+                        case 'followed':
+                        echo '<li>' .$activity->get('content') .'</li>';
+                        break;
+
+                        case 'liked':
+                        echo '<li>' .$activity->get('content') .'</li>';
+                        break;
+
+                        case 'commented':
+                        $publisher = AppUser::loadByID($activity->get('userID'))->get('username');
+                        $reciever = AppUser::loadByID($activity->get('recieverID'))->get('username');
+                        ?>
+                        <li><?= $publisher ?> commented on <?= $reciever ?> build, check out the comment <a href="<?= BASE_URL ?>/ViewComment/<?=  $activity->getID() ?>">here!</a></li>
+                        <?php
+                        break;
+                    }
+                }
+            }
+        ?>
+    </div>
+    
+    </div>  
 </body>
 </html>

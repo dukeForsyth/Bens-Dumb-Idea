@@ -9,21 +9,10 @@
 </head>
     
 <body>
-    <div>
 <?php include_once SYSTEM_PATH.'/view/Header.tpl'; ?>
-<form id="partDropDown" method="POST" action="<?= BASE_URL ?>/changepart">
-   <select name = "part">
-        <option value="cpu"> CPU </option>
-        <option value="videocard">  Video Card </option>
-        <option value="motherboard">  Motherboard</option>
-        <option value="memory"> Memory </option>
-        <option value="storage"> Storage </option>        
-    </select>
-    <input type="submit" value="Select Part Type">
-</form>
-
-
-
+    <div id="div_middle">
+<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+<div style="width:66%;padding-top:2%; padding-left:2%;">
 <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/part">
     Current Build: <?= $_SESSION['buildID'] ?><br>
     <select name = "buildID">
@@ -38,6 +27,17 @@
     </select>
     <input type="submit" value="Select Build">
 </form>
+<form id="partDropDown" method="POST" action="<?= BASE_URL ?>/changepart">
+   <select name = "part">
+        <option value="cpu"> CPU </option>
+        <option value="videocard">  Video Card </option>
+        <option value="motherboard">  Motherboard</option>
+        <option value="memory"> Memory </option>
+        <option value="storage"> Storage </option>        
+    </select>
+    <input type="submit" value="Select Part Type">
+</form>
+
 <!TODO change to php that queries the database>
 <form id="browseParts" method="POST" action="<?= BASE_URL ?>/addpart">
     
@@ -64,9 +64,9 @@
 <input type="submit" value="Add Part">   
 
 </form>
+    </div>
     
-    
-<?php include_once SYSTEM_PATH.'/view/Header2.tpl'; ?>
+
     </div>
 </body>      
 </html>

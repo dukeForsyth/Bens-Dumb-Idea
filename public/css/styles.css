@@ -1,46 +1,78 @@
 body
 {
     background-color: gainsboro;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 #div_header
 {
     width: 100%;
-    height: 30%;
+    height: 80px;
     background-color: black;
     text-align: center;
-
 }
 
 #div_sideMenu
 {
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0;
+    margin: 0;
     float:left;
-    top:20%;
-    width:15%;
+    width:120px;
+    height: calc(100% - 80px);
+    background-color: orange;
 }
 
 #div_middle
 {
-    top:25%;
-    width:85%;
-    left:15%;
-    float:left;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0;
+    margin: 0;
+    top:80px;
+    left: 120px;
+    width:calc(100% - 130px);
+    height: calc(100% - 100px);
+    float: left;
+    margin: 0;
 }
 
-#userlist
+div#userlist
 {
-    padding-left: 20px;   
+    width: 25%;
+    height: 80%;
     float:left;
+    text-align: left;
+    
 }
-#activityFeed
+div#activityFeed
 {
-    float:right;
+    top:65px;
+    width: 100%;
+    height: calc(100% - 65px);
+    text-align: left;
+    float: left;
+    padding-left: 2%;
+}
+
+div#welcomeAndButtons
+{
+    padding-top: 15px;
+    width: 35%;
+    height: 100%;
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+}
+
+#userInfo
+{
+    position: relative;
+    width: 27%;
+    height: 65px;
+    text-align: right;
+    padding-right: 8px;
+    padding-top: 8px;
+    float: right;
 }
 
 #header
@@ -55,12 +87,12 @@ body
     top:20%;
     width: 33%;
     float:left;
-    padding-right:5px;
 }
 
 #welcome
 {
     font-size: 50;
+    margin: 0;
 }
 
 
@@ -117,21 +149,17 @@ body
 
 ul#sideMenu
 {
-    
     width: 100%;
     height: 100%;
-    
     overflow: auto;
-    top: 20.5%;
     left: 0px;
     padding: 0;
+    margin: 0;
     border-right-style: solid;
     background-color:orange;
-    
 }
 
 ul#sideMenu li {
-    
     text-align: center;
     list-style-type:none;
     display: block;
@@ -140,38 +168,15 @@ ul#sideMenu li {
     font-size: 18px; 
 }
 
-#news
-{
-    
-    top: 35%;
-    left: 65%;
-    font-size: 15;
-    width: 25%;
-}
-
-#homePic
-{
-    
-    top: 35%;
-    left: 35%;
-}
-
 #buildPC
 {
-    
-    top: 55%;
-    left: 25%;
-    width: 15%;
+    width: 50%;
     height: 10%;
-    
 }
 
 #resumeBuild
 {
-    
-    top: 55%;
-    left: 45%;
-    width: 15%;
+    width: 50%;
     height: 10%;
 }
 
@@ -179,10 +184,9 @@ ul#sideMenu li {
 
 #browseParts
 {
-    position: fixed;
     top: 36%;
     left: 20%;
-    width: 50%;
+    width: 90%;
     height: 55%;
     overflow: auto;
     
@@ -236,9 +240,9 @@ ul#browseParts li
 
 #headingBuilds
 {
-    position: fixed;
     top: 30%;
     left: 23%;
+   
 }
 
 ul#browseBuilds
@@ -259,13 +263,7 @@ ul#browseBuilds li
     list-style-type: none;
 }
 
-#userInfo
-{
-    float:right;
-    top:20%;
-    
-    
-}
+
 
 #buildDropDown
 {
@@ -285,18 +283,15 @@ ul#browseBuilds li
 
 #partDropDown
 {
-    position: fixed;
     top:27%;
     left: 20%;
 }
 
 #like
 {
-    
+    position: fixed;
     top: 55%;
     left: 23%;
-   
-    
 }
 
 #comment
@@ -304,6 +299,55 @@ ul#browseBuilds li
     position: fixed;
     top: 63%;
     left: 23%;
+}
+
+div#profile{
+    width:97%;
+    padding-left: 7%;
+    padding-top: 7%;
+    margin: 0;
+    float: left;
+}
+
+div#removeuser{
+    width:97%;
+    padding-left: 3%;
+    margin: 0;
+    float: left;
+}
+
+div#userActivities{
+    display: inline-block;
+    width: 30%;
+    float: left;
+    padding-top: 3%;
+}
+
+div#unfollowUser{
+    width:97%;
+    padding-left: 10%;
+    padding-top: 10%;
+    margin: 0;
+    float: left;
+}
+
+div#followUser{
+    width:97%;
+    padding-left: 10%;
+    padding-top: 10%;
+    margin: 0;
+    float: left;
+}
+
+div#buildInfo{
+    width:40%;
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+#publishButton
+{
+    left: 25px;
 }
 
 
