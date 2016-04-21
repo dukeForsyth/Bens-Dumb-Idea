@@ -68,7 +68,7 @@ function remove(partType) {
             update(parts);
         }
     };
-    xhttp.open("GET", "remove", true);
+    xhttp.open("GET", "remove/" + partType, true);
     xhttp.send();
 }
 
@@ -79,6 +79,6 @@ function addRandom(partType) {
             update(parts);
         }
     };
-    xhttp.open("GET", "addRandom", true);
+    xhttp.open("GET", "addRandom/" + partType, true);
     xhttp.send();
 }
