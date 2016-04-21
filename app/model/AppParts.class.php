@@ -69,7 +69,7 @@ public static function random($type = null) {
 
         $query = sprintf("SELECT unique_id FROM %s WHERE part_type ='$type' ORDER BY RAND() LIMIT 1",
             self::DB_TABLE
-            )
+            );
         $db = Db::instance();
 
         $result = $db->lookup($query);
@@ -80,5 +80,5 @@ public static function random($type = null) {
             $obj = self::loadById($row['unique_id']);
             return ($obj);
         }
-
+    }
 }
