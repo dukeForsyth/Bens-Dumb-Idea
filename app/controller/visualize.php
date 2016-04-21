@@ -30,12 +30,19 @@ class visualize {
     private function update() {
         $names = AppBuilds::loadNameByID($_SESSION['buildID']);
 
-        return json_encode($names);
+        echo json_encode($names);
 
     }
 
     public function rand(){
-    	
+    	$type = $_GET['type'];
+        $currBuild = AppBuilds::loadById($_SESSION['buildID']);
+        
+        $currBuild->set($type . "_id", AppParts::random($type));
+        $currBuild->save();
+
+        $this->update();
+
 
     }
 
