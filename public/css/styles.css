@@ -351,3 +351,109 @@ div#buildInfo{
 }
 
 
+
+div#visual
+{
+    position: relative;
+    width:450px;
+    height: calc(100% - 65px);
+    float: right;
+}
+
+
+#case_image
+{
+    border: solid;
+    z-index: -100;
+    fill: white;
+    width: 450px;
+    height: 300px;
+}
+
+#case_div
+{
+    position: absolute;  
+    width: 450px;
+    height: 300px;
+    
+}
+
+#motherboard_image
+{
+    fill: orange;
+    height: 200px;
+    width: 300px;
+}
+
+
+#mb_div
+{
+    
+    position: absolute;
+    left: 20px;
+    top: 20px;        
+    width: 300px;
+    height:200px;
+}
+
+
+#ram_div
+{
+    position: absolute;
+    width: 15px;
+    height: 100px;
+    top: 55px;
+    left: 250px;
+}
+
+
+#ram_image
+{
+    fill: green;
+    width: 15px;
+    height: 100px;
+}
+
+#cpu_image
+{
+    position: absolute;
+    fill: pink;
+    top: 65px;
+    left: 35px;
+    width: 130px;
+    height: 80px;
+}
+
+#gpu_div
+{
+    position: absolute;
+    top: 180px; 
+    left: 50px;
+    width: 200px; 
+    height: 30px;
+}
+
+
+#gpu_image
+{
+    position: absolute;
+    fill: yellow;
+}
+
+#mem_div
+{
+    position: absolute;
+    top: 250px;
+    left: 320px;
+    
+    width: 100px;
+    height: 50px;
+}
+
+
+#memory_image
+{
+    fill: purple;
+}
+
+

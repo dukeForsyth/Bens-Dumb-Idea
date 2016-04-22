@@ -18,6 +18,70 @@
                     <input type="submit" value="Search">
                 </form>
             </div>
+            <div id="visual">
+        
+    
+    <div id="case_div"> 
+    
+        <svg id="case_image">
+    
+            <rect width="500px" height="300px" />    
+    
+        </svg>    
+    
+    </div>
+    
+    <div id="mb_div">
+    
+        <svg id="motherboard_image">
+    
+            <rect width="300px" height="200px" />
+    
+        </svg>
+    
+    </div>
+    
+    <div id="cpu_div">
+    
+         <svg id="cpu_image">
+    
+                <rect width="130px" height="80px" />    
+    
+        </svg>
+    
+    </div>
+    
+    
+    <div id="mem_div">
+        <svg id="memory_image">
+    
+            <rect width="100px" height="30px" />    
+    
+        </svg>
+    
+    </div>
+    
+    <div id="ram_div">   
+
+        <svg id="ram_image">
+    
+            <rect width="15px" height="100px" />    
+    
+        </svg>
+    
+    </div> 
+    
+    <div id="gpu_div">    
+    
+        <svg id="gpu_image">
+    
+            <rect width="200px" height="30px" />    
+    
+        </svg>
+    
+    </div>
+        
+</div>
         </div>
     <div id="buildInfo">
     <form id="buildDropDown" method="POST" action="<?= BASE_URL ?>/changeBuild/build">
@@ -57,7 +121,10 @@
         <?php 
         }
         ?>
-</div>
+        </div>     
+        
+        
+        
 </div>
 </body>
 </html>
