@@ -383,6 +383,8 @@ div#visual
     fill: orange;
     height: 200px;
     width: 300px;
+    stroke-width:3;
+    stroke: black;
 }
 
 
@@ -412,6 +414,8 @@ div#visual
     fill: green;
     width: 15px;
     height: 100px;
+    stroke-width:3;
+    stroke: black;
 }
 
 #cpu_image
@@ -422,6 +426,8 @@ div#visual
     left: 35px;
     width: 130px;
     height: 80px;
+    stroke-width:3;
+    stroke: black;
 }
 
 #gpu_div
@@ -438,6 +444,8 @@ div#visual
 {
     position: absolute;
     fill: yellow;
+    stroke-width:3;
+    stroke: black;
 }
 
 #mem_div
@@ -454,6 +462,8 @@ div#visual
 #memory_image
 {
     fill: purple;
+    stroke-width:3;
+    stroke: black;
 }
 
 

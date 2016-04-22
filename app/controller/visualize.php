@@ -23,6 +23,9 @@ class visualize {
 			$this->remove();
 			break;
 			
+            case 'update':
+            $this->update();
+            break;
         }
     }
 
