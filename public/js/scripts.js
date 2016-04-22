@@ -76,7 +76,3 @@ function addRandom(partType) {
     xhttp.open("GET", "addRandom/" + partType, true);
     xhttp.send();
 }
-
-function test(){
-    remove("cpu");
-}

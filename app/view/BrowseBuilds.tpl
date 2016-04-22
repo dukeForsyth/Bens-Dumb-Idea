@@ -5,7 +5,9 @@
 
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
     <script type="text/javascript" src="<?= BASE_URL ?>/public/js/scripts.js"></script>
-    
+    <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery.contextMenu.js"></script>
+    <script type="text/javascript"></script>
 </head>
 
 <body>
@@ -64,7 +66,7 @@
     
     <div id="ram_div">   
 
-        <svg id="ram_image">
+        <svg id="ram_image" >
     
             <rect width="15px" height="100px" />    
     
