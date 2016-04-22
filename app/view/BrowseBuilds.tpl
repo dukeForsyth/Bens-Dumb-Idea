@@ -4,6 +4,7 @@
     <title>   Browse Builds  </title>    
 
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
+    <script type="text/javascript" src="<?= BASE_URL ?>/public/js/scripts.js"></script>
     
 </head>
 
@@ -122,9 +123,7 @@
         }
         ?>
         </div>     
-        
-        
-        
+        <button id="testButton" onclick="test()">value</button>
 </div>
 </body>
 </html>
