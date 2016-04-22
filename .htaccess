@@ -31,6 +31,7 @@ RewriteRule ^unfollow/(\w+)?$ app/controller/siteController.php?action=unfollow&
 
 RewriteRule ^ViewBuild/(\d+)?$ app/controller/siteController.php?action=viewBuild&viewedBuildID=$1 [QSA,L]
 
+RewriteRule ^update/?$ app/controller/visualize.php?action=update [QSA,L]
 RewriteRule ^remove/(\w+)?$ app/controller/visualize.php?action=remove&type=$1 [QSA,L]
 RewriteRule ^addRandom/(\w+)?$ app/controller/visualize.php?action=random&type=$1 [QSA,L]
 

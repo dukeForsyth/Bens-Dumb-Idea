@@ -234,7 +234,7 @@ class SiteController {
     	$builds = AppBuilds::loadByUserkey(AppUser::loadByUsername($_SESSION['username'])->get('unique_id'));
     	$names = AppBuilds::loadNameByID($_SESSION['buildID']); 
         //Load the names into the newly created object, by using the id
-    	$price = AppBuilds::loadTotalPrice($_SESSION['buildID']);
+    	$names->price = AppBuilds::loadTotalPrice($_SESSION['buildID']);
 
     	$currID = AppUser::loadByUsername($_SESSION['username'])->get('unique_id');
 

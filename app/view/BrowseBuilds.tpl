@@ -4,10 +4,8 @@
     <title>   Browse Builds  </title>    
 
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
+    <script src="<?= BASE_URL ?>/public/js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/public/js/scripts.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery.contextMenu.js"></script>
-    <script type="text/javascript"></script>
 </head>
 
 <body>
@@ -111,7 +109,7 @@
     echo 'Mother Board: '.$names->motherboard_id.' <br>';
     echo 'Memory: '.$names->memory_id.' <br>';
     echo 'Storage: '.$names->storage_id.' <br>'; 
-    echo 'Price: $'.$price.' <br>';
+    echo 'Price: $'.$names->price.' <br>';
     echo 'Build Id: '.$names->unique_id.' <br>'; 
     ?>
 </p>
@@ -125,7 +123,6 @@
         }
         ?>
         </div>     
-        <button id="testButton" onclick="test()">value</button>
 </div>
 </body>
 </html>
