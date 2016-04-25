@@ -4,8 +4,13 @@
     <title>   Browse Builds  </title>    
 
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/js/.css">
     <script src="<?= BASE_URL ?>/public/js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery.contextMenu.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery.ui.position.js"></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/public/js/scripts.js"></script>
+    
+    <script type="text/javascript"></script>
 </head>
 
 <body>
@@ -19,6 +24,9 @@
                     <input type="submit" value="Search">
                 </form>
             </div>
+
+
+
             <div id="visual">
         
     
@@ -26,17 +34,17 @@
     
         <svg id="case_image">
     
-            <rect width="500px" height="300px" />    
+            <rect width="500px" height="300px" onclick="myTest()"/>    
     
         </svg>    
     
     </div>
     
-    <div id="mb_div">
+   <div id="mb_div"> 
     
-        <svg id="motherboard_image">
+        <svg id="motherboard_image" >
     
-            <rect width="300px" height="200px" />
+            <rect id="motherb_image" width="300px" height="200px" onclick="myTest()"/>
     
         </svg>
     
@@ -46,7 +54,7 @@
     
          <svg id="cpu_image">
     
-                <rect width="130px" height="80px" />    
+                <rect id="cpu_image2" width="130px" height="80px" onclick="myTest()"/>    
     
         </svg>
     
@@ -56,7 +64,7 @@
     <div id="mem_div">
         <svg id="memory_image">
     
-            <rect width="100px" height="30px" />    
+            <rect id="memory_image2" width="100px" height="30px" onclick="myTest()"/>    
     
         </svg>
     
@@ -66,7 +74,7 @@
 
         <svg id="ram_image" >
     
-            <rect width="15px" height="100px" />    
+            <rect id="ram_image2" width="15px" height="100px" onclick="myTest()"/>    
     
         </svg>
     
@@ -76,7 +84,7 @@
     
         <svg id="gpu_image">
     
-            <rect width="200px" height="30px" />    
+            <rect id="gpu_image2" width="200px" height="30px" onclick="myTest()"/>    
     
         </svg>
     
@@ -101,6 +109,15 @@
 <form id="newBuild" action="<?= BASE_URL ?>/changeBuild/create">
     <input type="submit" value="Create New Build">
 </form>
+<ul id="myMenu" class="contextMenu">
+            <li class="edit"><a href="#edit">Edit</a></li>
+            <li class="cut separator"><a href="#cut">Cut</a></li>
+            <li class="copy"><a href="#copy">Copy</a></li>
+            <li class="paste"><a href="#paste">Paste</a></li>
+            <li class="delete"><a href="#delete">Delete</a></li>
+            <li class="quit separator"><a href="#quit">Quit</a></li>
+        </ul>
+
 
 <p id="headingBuilds">
     <?php

@@ -103,3 +103,121 @@ function addRandom(partType) {
     xhttp.send();
 
 }
+
+
+
+// *** Attempts at left click menu for motherboard image works but buttons are not clickable.... ***
+// Another annoying bit is I have to make one per each element....
+
+
+// Below is code for the motherboard image
+//--------------------------------------------------------------------------------------------------------
+$( function ( windowLoadE ) {
+    $( "#motherb_image" ).on( "click", function( clickE ) {
+        $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
+    } );
+
+
+$.contextMenu( {
+        selector: "#motherb_image", 
+        callback: function( key, options ) {
+            var m = "clicked: " + key;
+            window.console && console.log( m ) || alert( m ); 
+        },
+        items: {
+            "Add random part": { name: "Add random part", icon: "Add random part" },
+            "Remove Part": { name: "Remove Part", icon: "Remove Part" },
+            
+        }
+    } );
+} );
+
+
+//Below is code for the cpu_image2
+//--------------------------------------------------------------------------------------------------------
+$( function ( windowLoadE ) {
+    $( "#cpu_image2" ).on( "click", function( clickE ) {
+        $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
+    } );
+
+
+$.contextMenu( {
+        selector: "#cpu_image2", 
+        callback: function( key, options ) {
+            var m = "clicked: " + key;
+            window.console && console.log( m ) || alert( m ); 
+        },
+        items: {
+            "Add random part": { name: "Add random part", icon: "Add random part" },
+            "Remove Part": { name: "Remove Part", icon: "Remove Part" },
+            
+        }
+    } );
+} );
+
+
+//Below is code for the mem_image2
+//--------------------------------------------------------------------------------------------------------
+$( function ( windowLoadE ) {
+    $( "#mem_image2" ).on( "click", function( clickE ) {
+        $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
+    } );
+
+
+$.contextMenu( {
+        selector: "#mem_image2", 
+        callback: function( key, options ) {
+            var m = "clicked: " + key;
+            window.console && console.log( m ) || alert( m ); 
+        },
+        items: {
+            "Add random part": { name: "Add random part", icon: "Add random part" },
+            "Remove Part": { name: "Remove Part", icon: "Remove Part" },
+            
+        }
+    } );
+} );
+
+//Below is code for the ram_image2
+//--------------------------------------------------------------------------------------------------------
+$( function ( windowLoadE ) {
+    $( "#ram_image2" ).on( "click", function( clickE ) {
+        $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
+    } );
+
+
+$.contextMenu( {
+        selector: "#ram_image2", 
+        callback: function( key, options ) {
+            var m = "clicked: " + key;
+            window.console && console.log( m ) || alert( m ); 
+        },
+        items: {
+            "Add random part": { name: "Add random part", icon: "Add random part" },
+            "Remove Part": { name: "Remove Part", icon: "Remove Part" },
+            
+        }
+    } );
+} );
+
+//Below is code for the gpu_image2
+//--------------------------------------------------------------------------------------------------------
+$( function ( windowLoadE ) {
+    $( "#gpu_image2" ).on( "click", function( clickE ) {
+        $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
+    } );
+
+
+$.contextMenu( {
+        selector: "#gpu_image2", 
+        callback: function( key, options ) {
+            var m = "clicked: " + key;
+            window.console && console.log( m ) || alert( m ); 
+        },
+        items: {
+            "Add random part": { name: "Add random part", icon: "Add random part" },
+            "Remove Part": { name: "Remove Part", icon: "Remove Part" },
+            
+        }
+    } );
+} );
