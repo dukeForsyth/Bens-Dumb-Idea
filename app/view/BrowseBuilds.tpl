@@ -4,7 +4,7 @@
     <title>   Browse Builds  </title>    
 
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/js/.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/js/jquery.contextMenu.css">
     <script src="<?= BASE_URL ?>/public/js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery.contextMenu.js"></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery.ui.position.js"></script>
