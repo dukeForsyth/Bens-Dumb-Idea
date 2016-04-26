@@ -153,7 +153,7 @@ $( function ( windowLoadE ) {
 $.contextMenu( {
         selector: "#cpu_image2", 
         items: {
-            "Add random part": { name: "Add random part", icon: "Add random part", , callback: function(){ alert("Foo!");}},
+            "Add random part": { name: "Add random part", icon: "Add random part" },
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
             
         }
@@ -172,7 +172,7 @@ $( function ( windowLoadE ) {
 $.contextMenu({
         selector: "#mem_image2", 
         items: {
-            "Add random part": { name: "Add random part", icon: "Add random part", callback: function(){ alert("Foo!"); }},
+            "Add random part": { name: "Add random part", icon: "Add random part"},
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
             
         }
@@ -190,7 +190,7 @@ $( function ( windowLoadE ) {
 $.contextMenu( {
         selector: "#ram_image2", 
         items: {
-            "Add random part": { name: "Add random part", icon: "Add random part", callback: function(){ alert("Foo!"); }},
+            "Add random part": { name: "Add random part", icon: "Add random part"},
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
             
         }
@@ -208,7 +208,7 @@ $( function ( windowLoadE ) {
 $.contextMenu( {
         selector: "#gpu_image2", 
         items: {
-            "Add random part": { name: "Add random part", icon: "Add random part" , callback: function(){ alert("Foo!");}},
+            "Add random part": { name: "Add random part", icon: "Add random part" },
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
             
         }
