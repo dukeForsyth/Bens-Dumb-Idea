@@ -15,6 +15,8 @@ class AppActivities extends DbObject {
 
     // constructor
     public function __construct($args = array()) {
+        // date timezone
+        date_default_timezone_set('UTC');
         $defaultArgs = array(
             'unique_id' => null,
             'userID' => null,
