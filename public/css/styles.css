@@ -418,14 +418,19 @@ div#visual
     stroke: black;
 }
 
-#cpu_image
+#cpu_div
 {
     position: absolute;
-    fill: pink;
     top: 65px;
     left: 35px;
     width: 130px;
     height: 80px;
+}
+
+#cpu_image
+{
+    width: inherit;
+    height: inherit;
     stroke-width:3;
     stroke: black;
 }
@@ -457,7 +462,7 @@ div#visual
     left: 320px;
     
     width: 100px;
-    height: 50px;
+    height: 30px;
 }
 
 
@@ -466,6 +471,8 @@ div#visual
     fill: purple;
     stroke-width:3;
     stroke: black;
+    width: inherit;
+    height: inherit;
 }
 
 
