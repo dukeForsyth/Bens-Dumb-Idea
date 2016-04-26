@@ -120,6 +120,7 @@ $( function ( windowLoadE ) {
 
 $.contextMenu( {
         selector: "#motherb_image", 
+        trigger: "left",
         callback: function( key, options ) {
             var test = key;
             if( key == "Add random part")
@@ -145,13 +146,14 @@ $.contextMenu( {
 //Below is code for the cpu_image2
 //--------------------------------------------------------------------------------------------------------
 $( function ( windowLoadE ) {
-    $( "#cpu_image2" ).on( "click", function( clickE ) {
+    $( "#cpu_image2" ).on( "contextMenuz", function( clickE ) {
         $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
     } );
 
 
 $.contextMenu( {
         selector: "#cpu_image2",
+        trigger: "left",
         callback: function( key, options ) {
             var test = key;
             if( key == "Add random part")
