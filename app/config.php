@@ -13,3 +13,6 @@ define('DB_DATABASE','proj4');
 // admin credentials, not used
 define('ADMIN_USERNAME', 'admin');
 define('ADMIN_PASSWORD', 'mypass');
+
+// date timezone
+date_default_timezone_set('UTC');
