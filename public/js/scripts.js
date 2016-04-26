@@ -124,11 +124,11 @@ $.contextMenu( {
             var test = key;
             if( key == "Add random part")
             {
-                alert("Yo");
+                addRandom("motherboard");
             }
-            else if( key == " Remove Part")
+            else if( key == "Remove Part")
             {
-                alert("No");
+                remove("motherboard");
             }
           //  var m = "clicked: " + key;
            // window.console && console.log( m ) || alert( m ); 
