@@ -113,7 +113,7 @@ function addRandom(partType) {
 // Below is code for the motherboard image
 //--------------------------------------------------------------------------------------------------------
 $( function ( windowLoadE ) {
-    $( "#motherb_image" ).on( "click", function( clickE ) {
+    $( "#motherb_image" ).on( function( clickE ) {
         $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
     } );
 
@@ -146,7 +146,7 @@ $.contextMenu( {
 //Below is code for the cpu_image2
 //--------------------------------------------------------------------------------------------------------
 $( function ( windowLoadE ) {
-    $( "#cpu_image2" ).on( "contextMenuz", function( clickE ) {
+    $( "#cpu_image2" ).on(function( clickE ) {
         $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
     } );
 
@@ -180,13 +180,14 @@ $.contextMenu( {
 //Below is code for the mem_image2
 //--------------------------------------------------------------------------------------------------------
 $( function ( windowLoadE ) {
-    $( "#mem_image2" ).on( "click", function( clickE ) {
+    $( "#mem_image2" ).on(  function( clickE ) {
         $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
     } );
 
 
 $.contextMenu({
-        selector: "#mem_image2", 
+        selector: "#mem_image2",
+        trigger: "left", 
         callback: function( key, options ) {
             var test = key;
             if( key == "Add random part")
@@ -211,13 +212,14 @@ $.contextMenu({
 //Below is code for the ram_image2
 //--------------------------------------------------------------------------------------------------------
 $( function ( windowLoadE ) {
-    $( "#ram_image2" ).on( "click", function( clickE ) {
+    $( "#ram_image2" ).on( function( clickE ) {
         $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
     } );
 
 
 $.contextMenu( {
-        selector: "#ram_image2", 
+        selector: "#ram_image2",
+        trigger: "left", 
         callback: function( key, options ) {
             var test = key;
             if( key == "Add random part")
@@ -242,13 +244,14 @@ $.contextMenu( {
 //Below is code for the gpu_image2
 //--------------------------------------------------------------------------------------------------------
 $( function ( windowLoadE ) {
-    $( "#gpu_image2" ).on( "click", function( clickE ) {
+    $( "#gpu_image2" ).on( function( clickE ) {
         $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
     } );
 
 
 $.contextMenu( {
-        selector: "#gpu_image2", 
+        selector: "#gpu_image2",
+        trigger: "left", 
         callback: function( key, options ) {
             var test = key;
             if( key == "Add random part")
