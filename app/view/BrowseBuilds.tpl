@@ -109,14 +109,7 @@
 <form id="newBuild" action="<?= BASE_URL ?>/changeBuild/create">
     <input type="submit" value="Create New Build">
 </form>
-<ul id="myMenu" class="contextMenu">
-            <li class="edit"><a href="#edit">Edit</a></li>
-            <li class="cut separator"><a href="#cut">Cut</a></li>
-            <li class="copy"><a href="#copy">Copy</a></li>
-            <li class="paste"><a href="#paste">Paste</a></li>
-            <li class="delete"><a href="#delete">Delete</a></li>
-            <li class="quit separator"><a href="#quit">Quit</a></li>
-        </ul>
+
 
 
 <p id="headingBuilds">

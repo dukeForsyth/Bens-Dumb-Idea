@@ -121,11 +121,20 @@ $( function ( windowLoadE ) {
 $.contextMenu( {
         selector: "#motherb_image", 
         callback: function( key, options ) {
-            var m = "clicked: " + key;
-            window.console && console.log( m ) || alert( m ); 
+            var test = key;
+            if( key == "Add random part")
+            {
+                alert("Yo");
+            }
+            else if( key == " Remove Part")
+            {
+                alert("No");
+            }
+          //  var m = "clicked: " + key;
+           // window.console && console.log( m ) || alert( m ); 
         },
         items: {
-            "Add random part": { name: "Add random part", icon: "Add random part", callback: function(){ alert("Foo!"); }},
+            "Add random part": { name: "Add random part", icon: "Add random part" },
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
             
         }
