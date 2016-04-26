@@ -151,7 +151,21 @@ $( function ( windowLoadE ) {
 
 
 $.contextMenu( {
-        selector: "#cpu_image2", 
+        selector: "#cpu_image2",
+        callback: function( key, options ) {
+            var test = key;
+            if( key == "Add random part")
+            {
+                addRandom("cpu");
+            }
+            else if( key == "Remove Part")
+            {
+                remove("cpu");
+            }
+          //  var m = "clicked: " + key;
+           // window.console && console.log( m ) || alert( m ); 
+        },
+
         items: {
             "Add random part": { name: "Add random part", icon: "Add random part" },
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
@@ -171,6 +185,19 @@ $( function ( windowLoadE ) {
 
 $.contextMenu({
         selector: "#mem_image2", 
+        callback: function( key, options ) {
+            var test = key;
+            if( key == "Add random part")
+            {
+                addRandom("storage");
+            }
+            else if( key == "Remove Part")
+            {
+                remove("storage");
+            }
+          //  var m = "clicked: " + key;
+           // window.console && console.log( m ) || alert( m ); 
+        },
         items: {
             "Add random part": { name: "Add random part", icon: "Add random part"},
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
@@ -189,6 +216,19 @@ $( function ( windowLoadE ) {
 
 $.contextMenu( {
         selector: "#ram_image2", 
+        callback: function( key, options ) {
+            var test = key;
+            if( key == "Add random part")
+            {
+                addRandom("memory");
+            }
+            else if( key == "Remove Part")
+            {
+                remove("memory");
+            }
+          //  var m = "clicked: " + key;
+           // window.console && console.log( m ) || alert( m ); 
+        },
         items: {
             "Add random part": { name: "Add random part", icon: "Add random part"},
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
@@ -207,6 +247,19 @@ $( function ( windowLoadE ) {
 
 $.contextMenu( {
         selector: "#gpu_image2", 
+        callback: function( key, options ) {
+            var test = key;
+            if( key == "Add random part")
+            {
+                addRandom("videocard");
+            }
+            else if( key == "Remove Part")
+            {
+                remove("videocard");
+            }
+          //  var m = "clicked: " + key;
+           // window.console && console.log( m ) || alert( m ); 
+        },
         items: {
             "Add random part": { name: "Add random part", icon: "Add random part" },
             "Remove Part": { name: "Remove Part", icon: "Remove Part" },
