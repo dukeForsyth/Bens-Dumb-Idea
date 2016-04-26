@@ -180,13 +180,13 @@ $.contextMenu( {
 //Below is code for the mem_image2
 //--------------------------------------------------------------------------------------------------------
 $( function ( windowLoadE ) {
-    $( "#mem_image2" ).on(  function( clickE ) {
+    $( "#memory_image2" ).on(  function( clickE ) {
         $( this ).contextMenu( { x: clickE.offsetX, y: clickE.offsetY } );
     } );
 
 
 $.contextMenu({
-        selector: "#mem_image2",
+        selector: "#memory_image2",
         trigger: "left", 
         callback: function( key, options ) {
             var test = key;
