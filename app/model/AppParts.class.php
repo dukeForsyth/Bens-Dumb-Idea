@@ -77,9 +77,7 @@ class AppParts extends DbObject {
 			return null;
 		else {
 			$row = mysqli_fetch_assoc($result);
-			$obj = self::loadById($row['unique_id']);
-			return ($obj);
+			return ($row['unique_id']);
 		}
-
 	}
 }
