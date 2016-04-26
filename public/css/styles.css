@@ -446,6 +446,8 @@ div#visual
     fill: yellow;
     stroke-width:3;
     stroke: black;
+    height: inherit;
+    width: inherit;
 }
 
 #mem_div
