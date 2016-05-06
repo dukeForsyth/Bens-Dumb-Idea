@@ -1,56 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: May 06, 2016 at 08:24 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.6.19
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `proj4`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activities`
---
-
-CREATE TABLE `activities` (
-  `userID` int(11) NOT NULL,
-  `dateMade` datetime NOT NULL,
-  `content` varchar(200) NOT NULL,
-  `unique_id` int(11) NOT NULL,
-  `recieverID` int(11) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `buildID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `activities`
---
-
-INSERT INTO `activities` (`userID`, `dateMade`, `content`, `unique_id`, `recieverID`, `type`, `buildID`) VALUES
-(1, '0000-00-00 00:00:00', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 6, 0, 'edited', 1),
-(1, '0000-00-00 00:00:00', 'admin followed c!', 15, 3, 'followed', 0),
-(1, '0000-00-00 00:00:00', 'admin followed c!', 16, 3, 'followed', 0),
-(3, '0000-00-00 00:00:00', '', 17, 0, 'publish', 4),
-(1, '0000-00-00 00:00:00', 'admin has liked c''s build 4', 18, 3, 'liked', 4),
-(1, '0000-00-00 00:00:00', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 19, 0, 'edited', 1),
-(1, '0000-00-00 00:00:00', 'admin has added part Gigabyte AM3+ AMD DDR3 to build 1', 20, 0, 'edited', 1),
-(1, '0000-00-00 00:00:00', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 21, 0, 'edited', 1),
-(1, '0000-00-00 00:00:00', 'admin has added part AMD FD6300WMHKBOX FX-6300 to build 1', 22, 0, 'edited', 1),
-(1, '0000-00-00 00:00:00', 'admin has added part Gigabyte AM3+ AMD DDR3 to build 1', 23, 0, 'edited', 1);
 
 -- --------------------------------------------------------
 
@@ -75,27 +25,8 @@ CREATE TABLE `builds` (
 INSERT INTO `builds` (`unique_id`, `userkey`, `cpu_id`, `videocard_id`, `motherboard_id`, `memory_id`, `storage_id`) VALUES
 (1, 1, 'B009O7YU56', 'B00847TPH0', '', 'B006YG8X9Y', 'B00W8XXRPM'),
 (2, 1, '', '', '', '', ''),
-(4, 3, '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `follower`
---
-
-CREATE TABLE `follower` (
-  `userID` int(11) NOT NULL,
-  `followingID` int(11) NOT NULL,
-  `unique_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `follower`
---
-
-INSERT INTO `follower` (`userID`, `followingID`, `unique_id`) VALUES
-(3, 1, 8),
-(1, 3, 10);
+(4, 3, '', '', '', '', ''),
+(5, 112, 'B009O7YORK', 'B00NVODXR4', 'B00TOBQQTK', '', '');
 
 -- --------------------------------------------------------
 
@@ -133,7 +64,18 @@ INSERT INTO `parts` (`unique_id`, `part_type`, `name`) VALUES
 ('B0131GA4WI', 'motherboard', 'MSI Z170A GAMING M5 ATX LGA1151 Motherboard'),
 ('B00TOBQQTK', 'motherboard', 'ASRock 970M PRO3 Micro ATX AM3+/AM3 Motherboard'),
 ('B0134EW7G8', 'memory', 'Corsair Vengeance LPX 16GB (2 x 8GB) DDR4-3000 Memory'),
-('B00J8E9334', 'memory', 'Kingston HyperX Fury Black 8GB (1 x 8GB) DDR3-1600 Memory');
+('B00J8E9334', 'memory', 'Kingston HyperX Fury Black 8GB (1 x 8GB) DDR3-1600 Memory'),
+('B00MU00IOQ', 'cpu', 'AMD Athlon X4 860K'),
+('B0033S95FC', 'cpu', 'Intel Core i5-520M'),
+('B00JIJUBAS', 'cpu', 'Intel Core i5-4460'),
+('B00MU00HGK', 'cpu', 'AMD A4-7300 APU'),
+('B012M8M7TY', 'cpu', 'Intel i5-6600k'),
+('B004KABG1I', 'videocard', 'EVGA GeForce 210 Passive 1024 MB'),
+('B012ZDI8ZS', 'videocard', 'Gigabyte GT 420 2GB 128-Bit'),
+('B00847TPH0', 'videocard', 'EVGA GeForce GT 610 2048 MB'),
+('B0049MPQA4', 'videocard', 'EVGA GeForce 8400GS 1GB'),
+('B014YN6732', 'motherboard', 'MSI Gaming Intel Skylake B150'),
+('B014F7BQUG', 'motherboard', 'ASUS LGA1151 DDR4');
 
 -- --------------------------------------------------------
 
@@ -158,28 +100,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`unique_id`, `username`, `password`, `firstName`, `lastName`, `gender`, `rank`, `emailAddress`) VALUES
 (1, 'admin', 'adminpw', 'Benny', 'Boy', 'Male', 0, 'fakeEmail@fake.com'),
-(3, 'c', 'e', 'a', 'b', 'Male', 1, 'd');
+(3, 'c', 'e', 'a', 'b', 'Male', 1, 'd'),
+(111, 'abcd', 'abcd', 'abcd', 'abcd', '', 1, 'abcd'),
+(112, 'ee', 'ee', 'ee', 'ee', 'Not Specified', 1, 'ee');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `activities`
---
-ALTER TABLE `activities`
-  ADD PRIMARY KEY (`unique_id`);
-
---
 -- Indexes for table `builds`
 --
 ALTER TABLE `builds`
-  ADD PRIMARY KEY (`unique_id`);
-
---
--- Indexes for table `follower`
---
-ALTER TABLE `follower`
   ADD PRIMARY KEY (`unique_id`);
 
 --
@@ -193,25 +125,15 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `activities`
---
-ALTER TABLE `activities`
-  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
---
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `follower`
---
-ALTER TABLE `follower`
-  MODIFY `unique_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `unique_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

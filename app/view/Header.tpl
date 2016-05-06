@@ -8,6 +8,5 @@
         <li> <a href="<?= BASE_URL ?>/BrowseBuilds"> My Builds  </a> </li>
         <li> <a href="<?= BASE_URL ?>/BrowseParts"> Browse Parts </a> </li>
         <li> <a href="<?= BASE_URL ?>/BrowseUsers"> Browse Users </a> </li>
-        <li> Submit Benchmarks</li>
     </ul>
 </div>
